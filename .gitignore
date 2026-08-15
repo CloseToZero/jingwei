@@ -1,0 +1,9 @@
+# Emacs 各种临时文件
+*~
+\#*\#
+.\#*
+
+# 操作系统元数据信息
+.DS_Store
+Thumbs.db
+Desktop.ini
