@@ -171,7 +171,7 @@
 
 \[ (A \Rightarrow B) \Leftrightarrow (\neg B \Rightarrow \neg A) \]
 
-* 反证法
+* 逆否证明法
 
 我们知道 \( (A \Rightarrow B) \Leftrightarrow (\neg B \Rightarrow \neg A) \)，故如果想证明 \( A \Rightarrow B \) ，则可以尝试直接证明\( \neg B \Rightarrow \neg A \)
 ，因为有可能后者比前者更容易证明。
