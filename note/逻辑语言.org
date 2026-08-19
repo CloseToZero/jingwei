@@ -1,6 +1,7 @@
 :PROPERTIES:
 :ID:       6bef267f-b879-4c8f-bdc2-6a3546a54896
 :END:
+#+filetags: :数学:数理逻辑:
 #+title: 逻辑语言
 
 * 命题
