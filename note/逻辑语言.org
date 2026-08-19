@@ -175,3 +175,26 @@
 
 我们知道 \( (A \Rightarrow B) \Leftrightarrow (\neg B \Rightarrow \neg A) \)，故如果想证明 \( A \Rightarrow B \) ，则可以尝试直接证明\( \neg B \Rightarrow \neg A \)
 ，因为有可能后者比前者更容易证明。
+
+* 排中律
+
+如果 \( A \) 是命题，则我们前面规定命题一定有真假，进而 \( A \) 和 \( \neg A \) 中有且仅有一个为真，
+进而 \( A \lor \neg A \) 一定为真命题，这个称为排中律，也就是只有真假两种可能，不存在其他中间可能。
+
+* 矛盾
+
+#+begin_definition
+*矛盾（contradiction）*
+符号 \( \bot \) 表示恒假的命题。若从某个假设可以同时推出 \( B \) 和 \( \neg B \)，则称推出了矛盾，
+因为这两个命题真假值相反，不可能同时为真。
+#+end_definition
+
+* 反证法
+
+由排中律可以得到反证法：
+
+#+begin_theorem
+*反证法*
+为了证明命题 \( A \) ，可以假设 \( \neg A \) 为真，并尝试推出矛盾 \( \bot \) ，而 \( \bot \) 恒假，
+进而 \( \neg A \Rightarrow \dots \Rightarrow \bot \) 为假命题，特别地， \( \neg A \) 非真，由此得到 \( \neg\neg A = A \) 为真。
+#+end_theorem
