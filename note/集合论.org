@@ -1,0 +1,194 @@
+:PROPERTIES:
+:ID:       2f888070-98f8-4cbb-b702-a93bf6610ce1
+:END:
+#+filetags: :数学:集合论:
+#+title: 集合论
+
+* 集合
+
+我们采用集合的朴素定义，虽然它不够严格，但足以满足大部分数学讨论的需要。
+
+#+begin_definition
+*集合*
+我们把若干对象汇集起来并视为一个整体，称这个整体为一个集合，其中的对象称为该集合
+的元素。集合由它包含哪些元素决定，元素的排列顺序以及重复书写均不影响集合。集合可
+以包含有限或无限多个元素，也可以不包含任何元素。
+#+end_definition
+
+集合可以通过列出它的组成元素来表示，举个例子，由 \( a, b, c \) 三个对象组成的集合可以记为：
+\( \{ a, b, c \} \) 。
+
+* 子集
+
+#+begin_definition
+*子集*
+给定集合 \( X, Y \) ，如果 \( X \) 的所有对象 \( Y \) 都有包含，也就是 \( \forall x \in X: x \in Y \) ，则我们称
+\( X \)为 \( Y \) 的子集， \( Y \) 为 \( X \) 的超集，记为 \( X \subseteq Y \) 或 \( Y \supseteq X \) 。特别地，如果 \( X \subseteq Y \) 且
+\( X \neq Y \) ，则我们称 \( X \) 为 \( Y \) 的真子集， \( Y \) 为 \( X \) 的真超集，记作 \( X \subsetneq Y \) 或 \( Y \supsetneq X \) 。
+#+end_definition
+
+容易证明如下性质：
+
+1. 自反性： \( X \subseteq X \)
+2. 传递性： \( (X \subseteq Y) \land (Y \subseteq Z) \Rightarrow (X \subseteq Z) \)
+
+
+* 集合的相等
+
+直觉上，两个集合 \( X, Y \) 相等，意味着 \( X \) 有的对象， \( Y \) 也有，反之亦然，
+也就是 \( \forall x \in X: x \in Y \) 以及 \( \forall y \in Y: y \in X \) ，特别的，这意味着 \( X \subseteq Y, Y \subseteq X \) ，
+于是，我们有了以下定义：
+
+#+begin_definition
+*集合相等*
+给定集合 \( X, Y \) ，\( X = Y := (X \subseteq Y) \land (Y \subseteq X) \)
+#+end_definition
+
+* 通过谓词筛选集合元素
+
+我们之前讲过 [[id:c46fbd47-1998-49da-8511-6389a5b81b33][通过谓词筛选类元素]] ，由于集合也是类，故也适用于集合，如果 \( E \) 为谓词，
+\( X \) 为集合，则存在集合 \( \{ x \in X: E(x) \} \) 为 \( X \) 中所有满足 \( E \) 的对象组成的集合，特
+别地，存在没有任何元素的集合：
+
+#+begin_definition
+*空集*
+我们称 \( \emptyset_X := \{ x \in X: x \neq x \} \) 为 \( X \) 的空集，由于任意对象 \( x \) 均有 \( x = x \) ，
+因此该集合不包含任何元素。
+#+end_definition
+
+\( \emptyset_X \) 这种记法容易让人觉得有无数多个空集，然而实际上只有一个空集，空集都是相等的：
+
+#+begin_theorem
+*空集是唯一的*
+给定集合 \( X, Y \) ，则 \( \emptyset_X = \emptyset_Y \) ，因此空集是唯一的，下标是没必要的，故我们一律记这唯
+一的空集为 \( \emptyset \) 。
+#+end_theorem
+
+上述定理是很容易证明的，这里不展开了。
+
+* 幂集
+
+如果 \( X \) 为一个集合，则我们断言存在一个集合 \( \mathcal{P}(X) \) ，它的元素由 \( X \) 的所有子集组成，
+即 \( \mathcal{P}(X) \) 为集合的集合，以下性质明显成立：
+
+1. \( \emptyset \in \mathcal{P}(X) \)
+2. \( X \in \mathcal{P}(X) \)
+3. \( \forall x \in X, \{ x \} \in \mathcal{P}(X) \)
+4. \( \forall Y \subseteq X, Y \subseteq \mathcal{P}(X) \)
+
+
+特别地， \( \mathcal{P}(X) \) 永远不为空。
+
+* 差集
+
+给定集合 \( A, B \) ，则：
+
+\[ A \setminus B := \{ x \in A: x \notin B \} \]
+
+即从 \( A \) 中去掉 \( B \) 中有的元素。特别地，如果 \( X \) 是 \( A \) 的超集，则把 \( X \) 视为环境/上
+下文的话，则我们称 \( X \setminus A \) 为 \( A \) 相对于 \( X \) 的补集，记为 \( A^c \) ，如果 \( X \) 是明确的，则
+我们简称 \( A^c \) 为 \( A \) 的补集。
+
+* 交集
+
+给定集合 \( A, B \)，则我们定义两者的交集：
+
+\[ A \cap B := \{ x \in A: x \in B \} \]
+
+假设 \( X \) 为 \( A, B \) 的超集，则定义两者的并集：
+
+\[ A \cup B := \{ x \in X: x \in A \lor x \in B \} \]
+
+这里多要求有一个环境/上下文 \( X \) 是出于技术上的原因，非必要的，并集的存在也可以通过一些公理来确保，
+从而不需要额外的上下文 \( X \) ，此时可以写成：
+
+\[ A \cup B := \{ x \in A \lor x \in B \} \]
+
+* 集合操作的性质
+
+令 \( X, Y, Z \) 为某个上下文集合的子集，则如下性质成立：
+
+1. \( X \cup Y = Y \cup X, X \cap Y = Y \cap X \) （交换律）
+2. \( X \cup (Y \cup Z) = (X \cup Y) \cup Z, X \cap (Y \cap Z) = (X \cap Y) \cap Z \) （结合律）
+3. \( X \cup (Y \cap Z) = (X \cup Y) \cap (X \cup Z), X \cap (Y \cup Z) = (X \cap Y) \cup (X \cap Z) \) （分配律）
+4. \( X \subseteq Y \Leftrightarrow X \cup Y = Y \Leftrightarrow X \cap Y = X \)
+
+
+* 有序对
+
+\( \{ a, b \} = \{ b, a \} \) 说明集合是无序的，然而我们希望能表达有序的一对对象，
+进而能表达，这个有序对的第一个对象是 \( a \) ，第二个对象是 \( b \) ，而集合做不到这点，它没
+有第 \( n \) 个位置的概念。
+
+给定两个对象 \( a, b \) ，我们希望存在对应的有序对，记为 \( (a, b) \) ，其中我们称 \( a \) 为第一分量，
+\( b \) 为第二分量。有序对 \( (a, b) = (a', b') \) 当且仅当 \( a = a', b = b' \) ，特别地，如果 \( a \neq b \) ，则
+\( (a, b) \neq (b, a) \) ，也就是不像集合，有序对是有序的。
+
+有趣的是，有序对可以通过集合来构造，不需要额外的公理，具体的：
+
+\[ (a, b) := \bigl \{ \{ a \}, \{ a, b \} \} \]
+
+容易验证这个定义满足 \( (a, b) = (a', b') \) 当且仅当 \( a = a', b = b' \) 。
+
+我们定义下取分量的操作， 令 \( x = (a, b) \) ，则 \( \mathrm{pr}_1(x) := a, \mathrm{pr}_2(x) := b \) ，
+我们称 \( \mathrm{pr}_j, j = 1, 2 \) 为 \( x \) 的第 \( j \) 个投影。
+
+* 笛卡尔积
+
+令 \( X, Y \) 为集合，则 \( X \times Y \) 为所有 \( (x, y), x \in X, y \in Y \) 有序对组成的集合，我们称 \( X \times Y \)
+为 \( X \) 和 \( Y \) 的笛卡尔积。
+
+笛卡尔积具有如下性质：
+
+1. \( X \times Y = \emptyset \Leftrightarrow (X = \emptyset) \lor (Y = \emptyset) \)
+2. 一般地，并不总是有 \( X \times Y = Y \times X \)
+
+
+* \( n \) 重笛卡尔积
+
+给定集合 \( X_1, \dots, X_n \) ，则 \( X_1 \times \dots \times X_n := (X_1 \times \dots \times X_{n - 1}) \times X_n \) ，
+我们把 \( x = (x_1,
+\dots, x_n) \) 看成 \( (\dots ((x_1, x_2), x_3), \dots, x_n) \) 的缩写，自然地，
+我们称 \( x_j, j = 1, \dots, n \) 为 \( x \) 的第 \( j \) 分量，\( \mathrm{pr}_j
+\) 也类似地进行定义，这里不展开。
+
+\( X_1 \times \dots \times X_n \) 也可以记为 \(  \prod_{j = 1}^{n} X_j \) ，特别地，如果 \( X_j = X, j = 1, \dots, n \) ，
+则也可以记为 \( X^n \) 。
+
+* 集族
+
+令 \( A \) 为集合， \( \forall \alpha \in A \) ，令 \( A_{\alpha} \subseteq X \) 为一个集合，则我们称 \( \mathcal{A} := \{ A_{\alpha}; a \in A \} \) 为集族，也就
+是集合的集合/集合的家族，\( A \) 则称为该集族的索引集。
+
+我们可以定义集族的交集：
+
+\[ \bigcap_{\alpha} A_{\alpha} := \{ x \in X; \forall a \in A: x \in A_{\alpha} \} \]
+
+也就是交集的元素要属于所有集族内的集合。类似地，可以定义并集：
+
+\[ \bigcup_{\alpha} A_{\alpha} := \{ x \in X; \exists a \in A: x \in A_{\alpha} \} \]
+
+注意，当 \( A \) 为空时， \( \{ x \in X; \forall a \in A: x \in A_{\alpha} \} \) 右侧的条件 \( \forall a \in A: x \in A_{\alpha} \) 永远为真，
+因此该集合等于 \( X \) ，这是有点反直觉的现象，因为一般集族的交集都比集族内所有集合都
+要“小”，这里集族内没有集合，直觉上，集族的交集，应该是空集，然而根据定义，会是
+\( X \) 。
+
+另外注意下，如果我们没有限定 \( \forall \alpha \in A, A_{\alpha} \subseteq X \)\( \) ，则我们需要限定要进行交集操作的集族
+的索引集 \( A \) 非空，否则 \( \bigcap_{\alpha} A_{\alpha} := \{ \forall a \in A: x \in A_{\alpha} \} \) ，右侧对任意对象都满足，也就是该
+交集为包含所有对象的集合，特别的，它包含了所有集合，因为集合也是对象，然而存在所
+有集合的集合在会产生悖论（罗素悖论，这里不展开），进而该交集要么不存在，要么不是
+集合（而是类）。
+
+\( \bigcap_{\alpha} A_{\alpha} \) 还有很多其他记法，比如 \( \bigcap_{\alpha \in A} A_{\alpha} \) ，以及如果 \( A = \{ 0, \dots, n \} \) ，
+则还可以写成 \( \bigcup_{j = 0}^{n} A_j \) 。
+
+* 集族操作的性质
+
+令 \( \{ A_{\alpha}; \alpha \in A \}, \{ B_{\beta}; \beta \in B \} \) 为集族且集族内的所有集合都是某个集合 \( X \) 的自己，
+则集合操作成立的几个性质，集族操作也成立：
+
+1. 如果 \( f: B \to A \) 为双射函数， 则 \( \bigcup_{\alpha \in A} A_{\alpha} = \bigcup_{\beta \in B} A_{f(\beta)}, \bigcap_{\alpha \in A} A_{\alpha} = \bigcap_{\beta \in B} A_{f(\beta)} \) （交换律）
+2. \( (\bigcup_{\alpha \in A} A_{\alpha}) \cup (\bigcup_{\beta \in B} B_{\beta}) = \bigcup_{(\alpha, \beta) \in A \times B} (A_{\alpha} \cup B_{\beta}) \)
+   \( (\bigcap_{\alpha \in A} A_{\alpha}) \cap (\bigcap_{\beta \in B} B_{\beta}) = \bigcap_{(\alpha, \beta) \in A \times B} (A_{\alpha} \cap B_{\beta}) \) （结合律）
+3. \( (\bigcup_{\alpha \in A} A_{\alpha}) \cap (\bigcup_{\beta \in B} B_{\beta}) = \bigcup_{(\alpha, \beta) \in A \times B} (A_{\alpha} \cap B_{\beta}) \)
+   \( (\bigcap_{\alpha \in A} A_{\alpha}) \cup (\bigcap_{\beta \in B} B_{\beta}) = \bigcap_{(\alpha, \beta) \in A \times B} (A_{\alpha} \cup B_{\beta}) \) （分配律）
