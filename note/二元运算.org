@@ -1,0 +1,80 @@
+:PROPERTIES:
+:ID:       0aeb34cb-4559-4c9c-845c-d67d58bf07d9
+:END:
+#+filetags: :数学:二元运算:
+#+title: 二元运算
+
+* 二元运算
+
+集合 \( X \) 上的一个二元运算（binary operation）是一个函数
+
+\[ \circledast : X \times X \to X \]
+
+通常把 \( \circledast(x, y) \) 写成 \( x \circledast y \) 。因为值域仍然是 \( X \) ，所以 \( X \) 中任意两个
+元素运算后仍在 \( X \) 中。
+
+** 子集上的运算与封闭性
+
+对于 \( A, B \subseteq X \) ，定义
+
+\[ A \circledast B := \{ a \circledast b; a \in A, b \in B \} \]
+
+当 \( A = \{ a \} \) 时，简写为 \( a \circledast B \) ；类似地，
+\( A \circledast b = \{ a \circledast b; a \in A \} \) 。
+
+非空子集 \( A \subseteq X \) 如果满足
+
+\[ A \circledast A \subseteq A \]
+
+则称 \( A \) 对运算 \( \circledast \) 封闭（closed under \( \circledast \)）。换句话说，在 \( A \) 中做运算不会
+跑出 \( A \) 。这里要求 \( A \neq \emptyset \) ，是为了排除空集因全称命题恒真而自动封闭的退化情形。
+
+* 结合律和交换律
+
+运算 \( \circledast \) 如果满足
+
+\[ x \circledast (y \circledast z) = (x \circledast y) \circledast z, \qquad x, y, z \in X \]
+
+则称它满足结合律；如果满足
+
+\[ x \circledast y = y \circledast x, \qquad x, y \in X \]
+
+则称它满足交换律。结合律说明有限多个元素连续运算时，括号的位置不影响结果，
+因此可以直接写成 \( x_1 \circledast x_2 \circledast \cdots \circledast x_n \) 。
+
+** 例子
+
+1. [[id:d95641d3-d8c5-4fee-9495-3072c41d0520][函数的复合]]是 \( \mathrm{Funct}(X,X) \) 上的二元运算。它满足结合律，但一般不满足交换律。
+2. [[id:4a15ccc7-659e-4645-b2ca-133741b16b70][并与交]]在 \( \mathcal{P}(X) \) 上，并 \( \cup \) 与交 \( \cap \) 都满足结合律和交换律。
+
+
+* 单位元
+
+如果 \( e \in X \) 满足
+
+\[ e \circledast x = x \circledast e = x, \qquad x \in X \]
+
+则称 \( e \) 为运算 \( \circledast \) 的单位元（identity element，也称幺元）。只满足
+\( e \circledast x = x \) 或 \( x \circledast e = x \) 时，分别称为左单位元或右单位元。
+
+一个二元运算至多有一个单位元。事实上，如果 \( e, e' \) 都是单位元，那么
+
+\[ e = e \circledast e' = e' \]
+
+函数复合的单位元是 \( \mathrm{id}_X \) ；在 \( \mathcal{P}(X) \) 上，并的单位元是
+\( \emptyset \) ，交的单位元是 \( X \) 。
+
+* 逐点诱导的运算
+
+设 \( \circledast \) 是集合 \( Y \) 上的二元运算。对于任意集合 \( X \) ，可以在
+\( \mathrm{Funct}(X,Y) \) 上定义逐点运算
+
+\[ (f \odot g)(x) := f(x) \circledast g(x), \qquad x \in X \]
+
+如果 \( Y \) 上的 \( \circledast \) 满足结合律或交换律，那么诱导出的 \( \odot \) 也满足相应的性质。如果
+\( e \in Y \) 是单位元，则常值函数
+
+\[ \mathbf{e}: X \to Y, \qquad x \mapsto e \]
+
+是 \( \mathrm{Funct}(X,Y) \) 关于 \( \odot \) 的单位元。上下文清楚时，通常仍用
+\( \circledast \) 同时表示原运算和它诱导出的逐点运算。

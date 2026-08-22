@@ -110,6 +110,9 @@ x = (x_1, \dots, x_n) \mapsto x_k
 称为第 \( k \) 个投影函数（projection）。
 
 * 函数的复合
+:PROPERTIES:
+:ID:       d95641d3-d8c5-4fee-9495-3072c41d0520
+:END:
 
 给定两个函数 \( f: X \to Y, g: Y \to V \) ，对于任意 \( x \in X \) ， \( f(x) \in Y \) ，
 所以可以继续把 \( f(x) \) 代入 \( g \) ，由此定义一个新的函数：
