@@ -1,0 +1,254 @@
+:PROPERTIES:
+:ID:       b34c86ce-6f56-4d5f-8859-3de65d1add7b
+:END:
+#+title: 函数
+#+LATEX_HEADER: \usepackage{tikz-cd}
+
+* 函数
+
+给定集合 \( X, Y \) ，一个从 \( X \) 到 \( Y \) 的函数/映射 \( f \) ，针对任意 \( x \in X \) ，
+都有且仅有一个对应的映射后的值 \( f(x) \in Y \) ，我们记为：
+
+\[ f: X \to Y \quad \text{ or } \quad X \to Y, x \mapsto f(x) \]
+
+这里我们称 \( f(x) \) 为 \( f \) 在 \( x \) 处的值， \( X \) 为 \( f \) 的定义域， \( Y \) 为 \( f \) 的陪域。
+
+函数 \( f \) 所有能取到的值的集合，我们称为它的 值域（range）/像（image），如下：
+
+\[ \mathrm{im}(f) := \{ y \in Y; \exists x \in X, y = f(x) \} \]
+
+二维图像可以抽象地看成点集，也就是笛卡尔积 \( X \times Y \) 的某个子集，每个函数有其对应的
+图像，如下：
+
+\[ \mathrm{graph}(f) := \{ (x, f(x)) \in X \times Y; x \in X \} \]
+
+明显的，不是所有图像都有对应的函数，举个例子：
+
+\[ \{ (1, 2), (1, 3) \} \]
+
+不是函数，因为一个 \( x = 1 \) 同时有两个对应的值。
+
+但如果特别排除上述一个 \( x \) 对应多个值的情况，同时排除 \( \exists x \in X \) 没有对应有序对的情况，
+则这些图像必有一个对应的函数。
+
+* 函数的相等
+
+两个函数 \( f: X \to Y, g: U \to V \) 相等当且仅当 \( X = U, Y = V, \forall x \in X, f(x) = g(x) \) 。
+
+* 一些函数的例子
+
+** 恒等函数
+
+令 \( X \) 为集合，则函数
+
+\[ \mathrm{id}_X: X \to X, \quad x \mapsto x \]
+
+称为 \( X \) 上的恒等函数（identity function）。如果 \( X \) 在上下文中是明确的，则可以省略下标，
+直接记为 \( \mathrm{id} \) 。
+
+** 包含映射
+
+如果 \( X \subseteq Y \) ，则函数
+
+\[ i: X \to Y, \quad x \mapsto x \]
+
+称为 \( X \) 到 \( Y \) 的包含映射（inclusion），也称为嵌入（embedding）/单射（injection）。
+特别地， \( i = \mathrm{id}_X \Leftrightarrow X = Y \) 。
+
+** 常值函数
+
+如果 \( X, Y \) 均非空且 \( b \in Y \) ，则函数
+
+\[ f: X \to Y, \quad x \mapsto b \]
+
+称为常值函数（constant function），也就是无论输入的 \( x \) 是什么，函数值总是 \( b \) 。
+
+** 限制和延拓
+
+给定函数 \( f: X \to Y \) 和子集 \( A \subseteq X \) ，则函数
+
+\[ f|_A: A \to Y, \quad x \mapsto f(x) \]
+
+称为 \( f \) 在 \( A \) 上的限制（restriction）。明显的， \( f|_A = f \Leftrightarrow A = X \) 。
+
+反过来，给定 \( A \subseteq X \) 和函数 \( g: A \to Y \) ，任何满足 \( f|_A = g \) 的函数
+\( f: X \to Y \) 都称为 \( g \) 的延拓（extension），记为 \( f \supseteq g \) 。比如，如果 \( i: X \to Y \)
+为包含映射，则 \( \mathrm{id}_Y \supseteq i \) 。这个记号来自函数图像作为集合时的包含关系。
+
+** 诱导函数
+
+给定函数 \( f: X \to Y \) ，如果 \( \mathrm{im}(f) \subseteq U \subseteq Y \subseteq V \) ，则可以定义
+
+\[ f_1: X \to U, \quad f_2: X \to V, \quad f_j(x) := f(x), \quad j = 1, 2 \]
+
+我们称 \( f_1, f_2 \) 为由 \( f \) 诱导的函数（induced functions）。它们对每个 \( x \) 给出的函数值相同，
+只是陪域不同，所以在陪域明确时，通常还是用同一个符号 \( f \) 表示它们。
+
+** 特征函数
+
+给定非空集合 \( X \) 和子集 \( A \subseteq X \) ，定义
+
+\[ \chi_A: X \to \{ 0, 1 \}, \quad
+x \mapsto \begin{cases}
+1, & x \in A, \\
+0, & x \in A^c .
+\end{cases} \]
+
+我们称 \( \chi_A \) 为 \( A \) 的特征函数（characteristic function），它用 \( 1 \) 表示 \( x \in A \) ，
+用 \( 0 \) 表示 \( x \notin A \) 。
+
+** 投影函数
+
+如果 \( X_1, \dots, X_n \) 均非空，则对每个 \( k = 1, \dots, n \) ，函数
+
+\[
+\mathrm{pr}_k: \prod_{j = 1}^{n} X_j \to X_k, \quad
+x = (x_1, \dots, x_n) \mapsto x_k
+\]
+
+称为第 \( k \) 个投影函数（projection）。
+
+* 函数的复合
+
+给定两个函数 \( f: X \to Y, g: Y \to V \) ，对于任意 \( x \in X \) ， \( f(x) \in Y \) ，
+所以可以继续把 \( f(x) \) 代入 \( g \) ，由此定义一个新的函数：
+
+\[ g \circ f: X \to V, \quad x \mapsto g(f(x)) \]
+
+我们称 \( g \circ f \) 为 \( f \) 和 \( g \) 的复合（composition），更准确地说，是 \( f \) 后接 \( g \) 。
+特别注意复合记号的顺序，在 \( g \circ f \) 中，先进行 \( f \) ，再进行 \( g \) 。
+
+函数的复合满足结合律（associativity）。给定函数
+\( f: X \to Y, g: Y \to U, h: U \to V \) ，则复合函数 \( (h \circ g) \circ f \) 和
+\( h \circ (g \circ f): X \to V \) 都有定义，并且
+
+\[ (h \circ g) \circ f = h \circ (g \circ f) \]
+
+因为对于任意 \( x \in X \) ，等号两边在 \( x \) 处的值都是 \( h(g(f(x))) \) 。因此在连续复合多个函数时，
+括号的位置并不重要，可以直接记为 \( h \circ g \circ f \) 。
+
+* 交换图
+
+函数之间的复合经常用带箭头的图来表示，其中 \( X \xrightarrow{f} Y \) 就表示函数 \( f: X \to Y \) 。
+
+如果图中任意两个集合之间，沿箭头走过不同路径所得到的复合函数都相等，则称这个图是交换的
+（commutative）。换句话说，任意长度的路径都可以 shortcut 成一条从起点到终点的箭头，而不改变对应的函数。
+
+比如，三角形交换就是
+
+\[ \begin{tikzcd}[column sep=huge, row sep=large]
+X \arrow[rr, "f"] \arrow[dr, "h"'] & & Y \arrow[dl, "g"] \\
+& V &
+\end{tikzcd} \]
+
+也就是 \( h = g \circ f \) 。
+
+而从 \( X \) 到 \( V \) 有下面两条路径时，图交换就是
+
+\[ \begin{tikzcd}[column sep=large, row sep=large]
+X \arrow[r, "f"] \arrow[d, "\varphi"'] & Y \arrow[d, "g"] \\
+U \arrow[r, "\psi"'] & V
+\end{tikzcd} \]
+
+图交换当且仅当 \( g \circ f = \psi \circ \varphi \) 。
+
+一般地，路径 \( X = X_0 \xrightarrow{f_1} X_1 \to \dots \xrightarrow{f_n} X_n = Y \) 对应的函数为
+\( f_n \circ \dots \circ f_1 \) ；交换图要求所有从 \( X \) 到 \( Y \) 的路径都给出同一个函数。
+
+* 单射、满射和双射
+
+给定函数 \( f: X \to Y \) ：
+
+1. 如果 \( \mathrm{im}(f) = Y \) ，则称 \( f \) 为满射（surjection），也就是 \( Y \) 中每个元素
+   都至少被映到一次。
+2. 如果 \( \forall x_1, x_2 \in X, x_1 \neq x_2 \Rightarrow f(x_1) \neq f(x_2) \) ，则称 \( f \) 为单射
+   （injection），也就是不同的输入一定会有不同的输出，或者说 \( Y \) 中每个元素至多被映到一次。
+   等价地，根据逆否命题， \( f(x_1) = f(x_2) \Rightarrow x_1 = x_2 \) 。
+3. 如果 \( f \) 既是单射又是满射，则称 \( f \) 为双射（bijection），也就是 \( Y \) 中每个元素
+   都恰好被映到一次。
+
+** 双射和逆函数
+
+函数 \( f: X \to Y \) 是双射，当且仅当存在函数 \( g: Y \to X \) ，使得
+
+\[ g \circ f = \mathrm{id}_X, \quad f \circ g = \mathrm{id}_Y \]
+
+此时 \( g \) 由 \( f \) 唯一决定，称为 \( f \) 的逆函数（inverse function），记为 \( f^{-1} \) 。
+
+如果 \( f: X \to Y, g: Y \to V \) 均为双射，则 \( g \circ f: X \to V \) 也是双射，并且
+
+\[ (g \circ f)^{-1} = f^{-1} \circ g^{-1} \]
+
+也就是复合函数取逆时，函数的顺序需要反过来。
+
+* 集合在函数下的像和原像
+
+给定函数 \( f: X \to Y \) 和子集 \( A \subseteq X \) ，定义
+
+\[ f(A) := \{ f(a) \in Y; a \in A \} \]
+
+我们称 \( f(A) \) 为 \( A \) 在 \( f \) 下的像（image）。特别地， \( \mathrm{im}(f) = f(X) \) 。
+
+类似地，对于子集 \( C \subseteq Y \) ，定义
+
+\[ f^{-1}(C) := \{ x \in X; f(x) \in C \} \]
+
+我们称 \( f^{-1}(C) \) 为 \( C \) 在 \( f \) 下的原像（preimage）。这里不要求 \( f \) 是双射，
+所以 \( f^{-1}(C) \) 中的 \( f^{-1} \) 只表示取原像，不一定表示逆函数。
+
+* 集值函数
+
+上面的像和原像可以看成由 \( f: X \to Y \) 诱导出的两个集值函数：
+
+\[ f: \mathcal{P}(X) \to \mathcal{P}(Y), \quad A \mapsto f(A), \qquad
+f^{-1}: \mathcal{P}(Y) \to \mathcal{P}(X), \quad B \mapsto f^{-1}(B) \]
+
+这里继续使用 \( f, f^{-1} \) 作为函数名，因为具体指原函数、逆函数还是集值函数，一般从上下文就能看出来。
+
+** 纤维
+
+对于 \( y \in Y \) ，我们称
+
+\[ f^{-1}(\{ y \}) = \{ x \in X; f(x) = y \} \]
+
+为 \( f \) 在 \( y \) 处的纤维（fiber），通常也简写成 \( f^{-1}(y) \) 。纤维就是方程
+\( f(x) = y \) 的解集，所以可能为空。如果 \( f \) 是双射，则逆函数给出的 \( f^{-1}(y) \) 是一个元素，且
+\( \{ f^{-1}(y) \} = f^{-1}(\{ y \}) \) ，具体含义同样由上下文区分。
+
+** 像和原像的性质
+
+令 \( \{ A_{\alpha} \}_{\alpha \in I} \) 为 \( X \) 的一族子集，则容易验证：
+
+1. \( A \subseteq B \subseteq X \Rightarrow f(A) \subseteq f(B) \)
+2. \( f(\bigcup_{\alpha \in I} A_{\alpha}) = \bigcup_{\alpha \in I} f(A_{\alpha}) \)
+3. \( f(\bigcap_{\alpha \in I} A_{\alpha}) \subseteq \bigcap_{\alpha \in I} f(A_{\alpha}) \)
+4. \( A \subseteq X \Rightarrow f(A^c) \supseteq f(X) \setminus f(A) \)
+
+注意像对并集保持等号，但对交集一般只有包含关系。
+
+类似地，令 \( \{ B_{\alpha} \}_{\alpha \in I} \) 为 \( Y \) 的一族子集，则：
+
+1. \( B \subseteq C \subseteq Y \Rightarrow f^{-1}(B) \subseteq f^{-1}(C) \)
+2. \( f^{-1}(\bigcup_{\alpha \in I} B_{\alpha}) = \bigcup_{\alpha \in I} f^{-1}(B_{\alpha}) \)
+3. \( f^{-1}(\bigcap_{\alpha \in I} B_{\alpha}) = \bigcap_{\alpha \in I} f^{-1}(B_{\alpha}) \)
+4. \( B \subseteq Y \Rightarrow f^{-1}(B^c) = (f^{-1}(B))^c \)
+
+也就是原像保持包含关系、任意并、任意交和补集。如果 \( g: Y \to V \) 是另一个函数，则
+
+\[ (g \circ f)^{-1} = f^{-1} \circ g^{-1}: \mathcal{P}(V) \to \mathcal{P}(X) \]
+
+这里等号两边表示的都是取原像的集值函数，不要求 \( f, g \) 是双射。
+
+* 函数集
+
+我们把所有从 \( X \) 到 \( Y \) 的函数组成的集合记为 \( \mathrm{Funct}(X, Y) \) ，也记为 \( Y^X \) 。
+因为每个函数都可以由它在 \( X \times Y \) 中的图像表示，所以
+
+\[ \mathrm{Funct}(X, Y) \subseteq \mathcal{P}(X \times Y) \]
+
+记号 \( Y^X \) 也解释了为什么 \( X^n \) 可以表示 \( X \) 的 \( n \) 次笛卡尔积：一个 \( n \) 元组
+\( (x_1, \dots, x_n) \) 可以等同于函数 \( \{ 1, \dots, n \} \to X, i \mapsto x_i \) 。
+
+最后，如果 \( U \subseteq Y \subseteq V \) ，按照前面根据上下文按需改变陪域的约定，有
+
+\[ \mathrm{Funct}(X, U) \subseteq \mathrm{Funct}(X, Y) \subseteq \mathrm{Funct}(X, V) \]
