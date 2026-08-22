@@ -156,6 +156,9 @@
 则也可以记为 \( X^n \) 。
 
 * 集族
+:PROPERTIES:
+:ID:       4a15ccc7-659e-4645-b2ca-133741b16b70
+:END:
 
 令 \( A \) 为集合， \( \forall \alpha \in A \) ，令 \( A_{\alpha} \subseteq X \) 为一个集合，则我们称 \( \mathcal{A} := \{ A_{\alpha}; a \in A \} \) 为集族，也就
 是集合的集合/集合的家族，\( A \) 则称为该集族的索引集。
