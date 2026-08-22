@@ -168,6 +168,7 @@ U \arrow[r, "\psi"'] & V
 3. 如果 \( f \) 既是单射又是满射，则称 \( f \) 为双射（bijection），也就是 \( Y \) 中每个元素
    都恰好被映到一次。
 
+
 ** 双射和逆函数
 
 函数 \( f: X \to Y \) 是双射，当且仅当存在函数 \( g: Y \to X \) ，使得
@@ -225,6 +226,7 @@ f^{-1}: \mathcal{P}(Y) \to \mathcal{P}(X), \quad B \mapsto f^{-1}(B) \]
 3. \( f(\bigcap_{\alpha \in I} A_{\alpha}) \subseteq \bigcap_{\alpha \in I} f(A_{\alpha}) \)
 4. \( A \subseteq X \Rightarrow f(A^c) \supseteq f(X) \setminus f(A) \)
 
+
 注意像对并集保持等号，但对交集一般只有包含关系。
 
 类似地，令 \( \{ B_{\alpha} \}_{\alpha \in I} \) 为 \( Y \) 的一族子集，则：
@@ -233,6 +235,7 @@ f^{-1}: \mathcal{P}(Y) \to \mathcal{P}(X), \quad B \mapsto f^{-1}(B) \]
 2. \( f^{-1}(\bigcup_{\alpha \in I} B_{\alpha}) = \bigcup_{\alpha \in I} f^{-1}(B_{\alpha}) \)
 3. \( f^{-1}(\bigcap_{\alpha \in I} B_{\alpha}) = \bigcap_{\alpha \in I} f^{-1}(B_{\alpha}) \)
 4. \( B \subseteq Y \Rightarrow f^{-1}(B^c) = (f^{-1}(B))^c \)
+
 
 也就是原像保持包含关系、任意并、任意交和补集。如果 \( g: Y \to V \) 是另一个函数，则
 
