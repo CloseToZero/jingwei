@@ -5,6 +5,9 @@
 #+title: 整除
 
 * 整除
+:PROPERTIES:
+:ID:       10ed4211-1ab3-43ff-b0f4-ed1dfa143f5c
+:END:
 
 给定 \( m \in \mathbb{N}^{\times} \) 和 \( n \in \mathbb{N} \)。如果存在
 \( k \in \mathbb{N} \)，使得
@@ -13,7 +16,7 @@
 
 则称 \( m \) 整除 \( n \)，记为
 
-\[ m \mid n \Longleftrightarrow \exists k \in \mathbb{N},\quad n = m k \]
+\[ m \mid n \Longleftrightarrow \exists k \in \mathbb{N}, \quad n = m k \]
 
 此时 \( m \) 称为 \( n \) 的约数（divisor，也称因数），\( n \) 称为 \( m \) 的倍数
 （multiple）。
@@ -44,14 +47,14 @@
 
 整除具有传递性：
 
-\[ a \mid b,\ b \mid c \Longrightarrow a \mid c \]
+\[ a \mid b, \ b \mid c \Longrightarrow a \mid c \]
 
 它也与加法和乘法相容：
 
 \[ \begin{aligned}
 a \mid b &\Longrightarrow a \mid b c, \\
-a \mid b,\ a \mid c &\Longrightarrow a \mid (b + c), \\
-a \mid b,\ a \mid c,\ c \leq b &\Longrightarrow a \mid (b - c).
+a \mid b, \ a \mid c &\Longrightarrow a \mid (b + c), \\
+a \mid b, \ a \mid c, \ c \leq b &\Longrightarrow a \mid (b - c).
 \end{aligned} \]
 
 这些性质都来自同一个简单事实：如果 \( b = a r \) 且 \( c = a s \)，那么
@@ -64,7 +67,7 @@ a \mid b,\ a \mid c,\ c \leq b &\Longrightarrow a \mid (b - c).
 
 在 \( \mathbb{N}^{\times} \) 上，整除关系是自反的、传递的，并且满足反对称性：
 
-\[ a \mid b,\ b \mid a \Longrightarrow a = b \]
+\[ a \mid b, \ b \mid a \Longrightarrow a = b \]
 
 事实上，对正自然数有 \( a \mid b \Longrightarrow a \leq b \)。因此双向整除同时给出
 \( a \leq b \) 和 \( b \leq a \)，只能有 \( a = b \)。
@@ -72,4 +75,4 @@ a \mid b,\ a \mid c,\ c \leq b &\Longrightarrow a \mid (b - c).
 因此整除关系在 \( \mathbb{N}^{\times} \) 上是一个[[id:a507a4cd-c4ee-493e-9037-1d8d3b73f6dd][偏序]]。它一般不是全序；例如
 \( 2 \nmid 3 \) 且 \( 3 \nmid 2 \)，所以 \( 2 \) 和 \( 3 \) 在整除关系下不可比。
 
-整除关系也是定义素数的基础：素数是除 \( 1 \) 和自身以外没有其他正因数的自然数。
+整除关系也是定义[[id:2fdb3f72-542b-41fd-9d6d-0aad3858b64c][素数]]的基础：素数是除 \( 1 \) 和自身以外没有其他正因数的自然数。

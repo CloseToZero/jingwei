@@ -221,6 +221,9 @@ f(n + 1) = V_{n + 1}\bigl(f(0), f(1), \ldots, f(n)\bigr) \]
 唯一确定。
 
 * 良序原理
+:PROPERTIES:
+:ID:       a751bda9-b52d-4b98-8287-01b8f495842b
+:END:
 
 自然数上的序还有一个重要性质：每个非空子集 \( A \subseteq \mathbb{N} \) 都有最小元。也就是说，
 存在 \( a_0 \in A \)，使得
