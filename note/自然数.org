@@ -165,6 +165,9 @@
 \[ m, n \in \mathbb{N}^{\times} \Longrightarrow m \cdot n \in \mathbb{N}^{\times} \]
 
 ** 序与差
+:PROPERTIES:
+:ID:       2e1d16ce-e0a6-45ae-af52-84bcab57a137
+:END:
 
 加法还可以用来定义自然数上的[[id:a507a4cd-c4ee-493e-9037-1d8d3b73f6dd][序关系]]：
 
@@ -192,6 +195,9 @@ m < n &\Longleftrightarrow m + \ell < n + \ell, & \ell &\in \mathbb{N}, \\
 m \leq n &\Longleftrightarrow m \cdot \ell \leq n \cdot \ell, & \ell &\in \mathbb{N}^{\times}, \\
 m < n &\Longleftrightarrow m \cdot \ell < n \cdot \ell, & \ell &\in \mathbb{N}^{\times}.
 \end{aligned} \]
+
+后两式通常称为正自然数乘法的<<乘法消去律>>：乘以同一个正自然数后，可以从所得的不等式中
+消去这个因子，恢复原来的序关系。
 
 * 一般递归原理
 
@@ -269,6 +275,9 @@ P(n) \Longrightarrow P(n + 1) \quad (n \geq n_0) \]
 \( P(m) \)，产生矛盾。
 
 * 除法算法
+:PROPERTIES:
+:ID:       8a8b881a-12f9-4e97-8d71-81380f1ad6f6
+:END:
 
 给定正自然数 \( m \in \mathbb{N}^{\times} \) 和任意 \( n \in \mathbb{N} \)，存在唯一的
 \( q, r \in \mathbb{N} \)，使得
