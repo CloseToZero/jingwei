@@ -119,6 +119,9 @@ X/{\sim_f} \arrow[ur, "\widetilde{f}"'] &
 \( \mathrm{im}(\widetilde{f}) = \mathrm{im}(f) \) ；特别地，如果 \( f \) 是满射，则 \( \widetilde{f} \) 是双射。
 
 * 序关系
+:PROPERTIES:
+:ID:       a507a4cd-c4ee-493e-9037-1d8d3b73f6dd
+:END:
 
 如果 \( X \) 上的关系 \( \leq \) 具有自反性、传递性和反对称性（antisymmetry），其中反对称性是指
 
