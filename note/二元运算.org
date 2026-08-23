@@ -39,8 +39,25 @@
 
 \[ x \circledast y = y \circledast x, \qquad x, y \in X \]
 
-则称它满足交换律。结合律说明有限多个元素连续运算时，括号的位置不影响结果，
-因此可以直接写成 \( x_1 \circledast x_2 \circledast \cdots \circledast x_n \) 。
+则称它满足交换律。
+
+** 任意长度的结合
+
+结合律的定义只涉及三个元素，但它可以推出：有限多个元素连续运算时，结果与括号的位置无关。
+设 \( K_n \) 是由 \( x_1, \ldots, x_n \) 按原顺序组成、但括号任意放置的合法表达式，那么
+
+\[ K_n
+= (\cdots ((x_1 \circledast x_2) \circledast x_3) \circledast \cdots)
+\circledast x_n \]
+
+长度为 \( 1, 2 \) 时结论显然，长度为 \( 3 \) 时就是结合律本身。一般的证明可以对表达式的长度
+使用[[id:83195310-a5d9-4e2e-bec8-ce7dd97d9b0b][强归纳]]。任意 \( K_{n + 1} \) 都能从最外层拆成
+\( K_\ell \circledast K_m \)，其中 \( \ell + m = n + 1 \)。归纳假设先把两个较短的表达式
+化成统一形式，再利用一次结合律把最右边的元素分离出来，便把问题化为长度为 \( n \) 的情形。
+
+因此，只要运算满足结合律，就可以省略括号，直接写成
+\( x_1 \circledast x_2 \circledast \cdots \circledast x_n \)。需要注意，这里只能改变括号的位置；
+如果运算不满足交换律，元素的顺序仍然不能改变。
 
 ** 例子
 
