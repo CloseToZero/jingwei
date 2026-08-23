@@ -31,7 +31,7 @@
 
 公理 \( (\mathrm{N}_1) \) 用来排除多余元素。考虑所有包含 \( 0 \) 且对后继封闭的子集：
 
-\[ \mathcal{I} := \{ M \subseteq \mathbb{N}; 0 \in M,\ \forall n \in M,\ \nu(n) \in M \} \]
+\[ \mathcal{I} := \{ M \subseteq \mathbb{N}; 0 \in M, \ \forall n \in M, \ \nu(n) \in M \} \]
 
 因为 \( \mathbb{N} \in \mathcal{I} \)，这个集族非空。它的交
 
@@ -172,8 +172,8 @@
 加法还可以用来定义自然数上的[[id:a507a4cd-c4ee-493e-9037-1d8d3b73f6dd][序关系]]：
 
 \[ \begin{aligned}
-m \leq n &\Longleftrightarrow \exists d \in \mathbb{N},\quad m + d = n, \\
-m < n &\Longleftrightarrow \exists d \in \mathbb{N}^{\times},\quad m + d = n.
+m \leq n &\Longleftrightarrow \exists d \in \mathbb{N}, \quad m + d = n, \\
+m < n &\Longleftrightarrow \exists d \in \mathbb{N}^{\times}, \quad m + d = n.
 \end{aligned} \]
 
 如果 \( m \leq n \)，上式中的 \( d \) 是唯一的，称为 \( n \) 与 \( m \) 的差，记为

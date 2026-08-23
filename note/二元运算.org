@@ -61,7 +61,7 @@
 
 ** 例子
 
-1. [[id:d95641d3-d8c5-4fee-9495-3072c41d0520][函数的复合]]是 \( \mathrm{Funct}(X,X) \) 上的二元运算。它满足结合律，但一般不满足交换律。
+1. [[id:d95641d3-d8c5-4fee-9495-3072c41d0520][函数的复合]]是 \( \mathrm{Funct}(X, X) \) 上的二元运算。它满足结合律，但一般不满足交换律。
 2. [[id:4a15ccc7-659e-4645-b2ca-133741b16b70][并与交]]在 \( \mathcal{P}(X) \) 上，并 \( \cup \) 与交 \( \cap \) 都满足结合律和交换律。
 
 
@@ -84,7 +84,7 @@
 * 逐点诱导的运算
 
 设 \( \circledast \) 是集合 \( Y \) 上的二元运算。对于任意集合 \( X \) ，可以在
-\( \mathrm{Funct}(X,Y) \) 上定义逐点运算
+\( \mathrm{Funct}(X, Y) \) 上定义逐点运算
 
 \[ (f \odot g)(x) := f(x) \circledast g(x), \qquad x \in X \]
 
@@ -93,5 +93,5 @@
 
 \[ \mathbf{e}: X \to Y, \qquad x \mapsto e \]
 
-是 \( \mathrm{Funct}(X,Y) \) 关于 \( \odot \) 的单位元。上下文清楚时，通常仍用
+是 \( \mathrm{Funct}(X, Y) \) 关于 \( \odot \) 的单位元。上下文清楚时，通常仍用
 \( \circledast \) 同时表示原运算和它诱导出的逐点运算。
