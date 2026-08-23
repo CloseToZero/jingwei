@@ -65,6 +65,38 @@
 2. [[id:4a15ccc7-659e-4645-b2ca-133741b16b70][并与交]]在 \( \mathcal{P}(X) \) 上，并 \( \cup \) 与交 \( \cap \) 都满足结合律和交换律。
 
 
+* 有限次运算
+:PROPERTIES:
+:ID:       972a99b0-b05d-4302-b591-e57d43b1f7d4
+:END:
+
+设 \( \circledast \) 是集合 \( X \) 上的结合运算，并给定 \( x_k \in X \)，\( k \in \mathbb{N} \)。
+利用[[id:bf47370f-e2dc-4fca-a8a9-6ea33e765789][一般递归原理]]定义
+
+\[ P_0 := x_0, \qquad P_{n + 1} := P_n \circledast x_{n + 1}, \qquad n \in \mathbb{N} \]
+
+便得到前 \( n + 1 \) 个元素的运算结果。由于结合律保证括号的位置不影响结果，可以写成
+
+\[ P_n = x_0 \circledast x_1 \circledast \cdots \circledast x_n \]
+
+当运算写作加法或乘法时，分别使用有限和与有限积的记号：
+
+\[ \sum_{k = 0}^{n} x_k := x_0 + x_1 + \cdots + x_n, \qquad
+\prod_{k = 0}^{n} x_k := x_0 x_1 \cdots x_n \]
+
+换掉求和或求积指标的字母不会改变结果，但元素的顺序一般仍然重要。只有当运算还满足交换律时，
+才可以任意重排这些元素；若 \( \sigma \) 是 \( \{ 0, \ldots, n \} \) 的一个排列，则
+
+\[ x_0 \circledast \cdots \circledast x_n
+= x_{\sigma(0)} \circledast \cdots \circledast x_{\sigma(n)} \]
+
+有限次运算也把分配律推广到任意项数。例如，若加法与乘法都是 \( X \) 上的结合运算，并且
+乘法对加法满足分配律，则对 \( m, n \in \mathbb{N} \) 有
+
+\[ \left( \sum_{j = 0}^{m} a_j \right)
+\left( \sum_{k = 0}^{n} b_k \right)
+= \sum_{j = 0}^{m} \sum_{k = 0}^{n} a_j b_k \]
+
 * 单位元
 
 如果 \( e \in X \) 满足
@@ -80,6 +112,44 @@
 
 函数复合的单位元是 \( \mathrm{id}_X \) ；在 \( \mathcal{P}(X) \) 上，并的单位元是
 \( \emptyset \) ，交的单位元是 \( X \) 。
+
+** 幂与自然数倍
+:PROPERTIES:
+:ID:       39110993-5f7d-48e1-aa14-1008201bdac9
+:END:
+
+幂是[[id:972a99b0-b05d-4302-b591-e57d43b1f7d4][有限次运算]]的一个特殊情形：把参与运算的元素都取成同一个 \( a \)，便得到 \( a \) 与
+自身的反复运算。前面处理任意非空的元素列，只需要结合律；这里进一步要求运算具有单位元
+\( e \)，从而可以把零个 \( a \) 的情形也纳入定义。因此，对 \( a \in X \)，定义
+
+\[ a^0 := e, \qquad a^{n + 1} := a^n \circledast a, \qquad n \in \mathbb{N} \]
+
+换句话说，\( a^n \) 是 \( n \) 个 \( a \) 的运算结果；\( a^0 \) 则对应空的运算。空的运算接在
+任何有限次运算之前或之后都不应改变结果，所以它的值只能取单位元 \( e \)。
+
+由结合律可以得到如下指数律，其中 \( m, n \in \mathbb{N} \)：
+
+\[ e^n = e, \qquad
+a^n \circledast a^m = a^{n + m}, \qquad
+(a^n)^m = a^{n m} \]
+
+若 \( a \circledast b = b \circledast a \)，则还可以分别重排 \( a \) 与 \( b \) 的因子，从而
+
+\[ a^n \circledast b^n = (a \circledast b)^n \]
+
+同一个构造改用加法记号时，就得到自然数倍：当运算满足交换律、单位元写作 \( 0_X \) 时，
+把 \( a \) 与自身相加 \( n \) 次记为 \( n \cdot a \)，并定义
+
+\[ 0 \cdot a := 0_X, \qquad (n + 1) \cdot a := n \cdot a + a, \qquad n \in \mathbb{N} \]
+
+相应的指数律变成以下加法法则，其中 \( m, n \in \mathbb{N} \)：
+
+\[ \begin{aligned}
+n \cdot 0_X &= 0_X, \\
+n \cdot a + m \cdot a &= (n + m) \cdot a, \\
+m \cdot (n \cdot a) &= (m n) \cdot a, \\
+n \cdot a + n \cdot b &= n \cdot (a + b)
+\end{aligned} \]
 
 * 逐点诱导的运算
 
