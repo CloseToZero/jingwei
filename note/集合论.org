@@ -160,24 +160,24 @@
 :ID:       4a15ccc7-659e-4645-b2ca-133741b16b70
 :END:
 
-令 \( A \) 为集合， \( \forall \alpha \in A \) ，令 \( A_{\alpha} \subseteq X \) 为一个集合，则我们称 \( \mathcal{A} := \{ A_{\alpha}; a \in A \} \) 为集族，也就
-是集合的集合/集合的家族，\( A \) 则称为该集族的索引集。
+令 \( A \) 为集合， \( \forall \alpha \in A \) ，令 \( A_{\alpha} \subseteq X \) 为一个集合，则我们称 \( \mathcal{A} := \{ A_{\alpha}; \alpha \in A \} \) 为集族，也就
+是集合的集合/集合的家族，\( A \) 则称为该集族的指标集。
 
 我们可以定义集族的交集：
 
-\[ \bigcap_{\alpha} A_{\alpha} := \{ x \in X; \forall a \in A: x \in A_{\alpha} \} \]
+\[ \bigcap_{\alpha} A_{\alpha} := \{ x \in X; \forall \alpha \in A: x \in A_{\alpha} \} \]
 
 也就是交集的元素要属于所有集族内的集合。类似地，可以定义并集：
 
-\[ \bigcup_{\alpha} A_{\alpha} := \{ x \in X; \exists a \in A: x \in A_{\alpha} \} \]
+\[ \bigcup_{\alpha} A_{\alpha} := \{ x \in X; \exists \alpha \in A: x \in A_{\alpha} \} \]
 
-注意，当 \( A \) 为空时， \( \{ x \in X; \forall a \in A: x \in A_{\alpha} \} \) 右侧的条件 \( \forall a \in A: x \in A_{\alpha} \) 永远为真，
+注意，当 \( A \) 为空时， \( \{ x \in X; \forall \alpha \in A: x \in A_{\alpha} \} \) 右侧的条件 \( \forall \alpha \in A: x \in A_{\alpha} \) 永远为真，
 因此该集合等于 \( X \) ，这是有点反直觉的现象，因为一般集族的交集都比集族内所有集合都
 要“小”，这里集族内没有集合，直觉上，集族的交集，应该是空集，然而根据定义，会是
 \( X \) 。
 
 另外注意下，如果我们没有限定 \( \forall \alpha \in A, A_{\alpha} \subseteq X \) ，则我们需要限定要进行交集操作的集族
-的索引集 \( A \) 非空，否则 \( \bigcap_{\alpha} A_{\alpha} := \{ \forall a \in A: x \in A_{\alpha} \} \) ，右侧对任意对象都满足，也就是该
+的指标集 \( A \) 非空，否则 \( \bigcap_{\alpha} A_{\alpha} := \{ \forall \alpha \in A: x \in A_{\alpha} \} \) ，右侧对任意对象都满足，也就是该
 交集为包含所有对象的集合，特别的，它包含了所有集合，因为集合也是对象，然而存在所
 有集合的集合在会产生悖论（罗素悖论，这里不展开），进而该交集要么不存在，要么不是
 集合（而是类）。
