@@ -148,6 +148,49 @@ x \circledast a = y \circledast a \Longrightarrow x = y \]
 函数复合一般不能交换，所以置换群也未必是交换群。它说明群的运算不必是通常意义下的数值乘法；
 一个群也可以由某个对象的可逆变换组成。
 
+对 \( n \in \mathbb{N} \)，约定 \( [0] := \emptyset \)，而当 \( n \geq 1 \) 时令
+
+\[ [n] := \{ 1, \ldots, n \} \]
+
+并记
+
+\[ S_n := S_{[n]} \]
+
+若 \( X \) 恰有 \( n \) 个元素，任选一个双射
+
+\[ \alpha: X \to [n] \]
+
+则 \( \alpha \) 给出映射
+
+\[ \Phi: S_X \to S_n, \qquad
+\Phi(\sigma) := \alpha \circ \sigma \circ \alpha^{-1},
+\qquad \sigma \in S_X \]
+
+对任意 \( \sigma, \tau \in S_X \)，
+
+\[ \Phi(\sigma \circ \tau)
+= \alpha \circ \sigma \circ \tau \circ \alpha^{-1}
+= (\alpha \circ \sigma \circ \alpha^{-1})
+\circ (\alpha \circ \tau \circ \alpha^{-1})
+= \Phi(\sigma) \circ \Phi(\tau) \]
+
+所以 \( \Phi \) 保持复合运算；而映射
+
+\[ S_n \to S_X, \qquad
+\rho \mapsto \alpha^{-1} \circ \rho \circ \alpha,
+\qquad \rho \in S_n \]
+
+是它的逆函数。因此 \( \Phi \) 是保持群运算的
+双射，也就是一个[[id:7912c576-ce75-44ca-87be-3cb0262b1f5c][群同构]]。所以，忽略元素的名字以后，任意 \( n \) 元集合上的置换群都具有相同的群结构，
+统一记作 \( S_n \)。当 \( n \geq 1 \) 时，一个置换 \( \sigma \in S_n \) 由函数值
+\( \sigma(1), \ldots, \sigma(n) \) 唯一确定。\( \sigma(1) \) 有 \( n \) 种选择；选定以后，
+\( \sigma(2) \) 只能从剩余的 \( n-1 \) 个元素中选择，依此类推，共有
+
+\[ n(n-1) \cdots 1 = n! \]
+
+种置换。当 \( n = 0 \) 时，\( S_0 \) 只含空函数，而 \( 0! = 1 \)。因此对所有
+\( n \in \mathbb{N} \)，\( S_n \) 都含有 \( n! \) 个元素。
+
 ** 逐点运算与直积
 :PROPERTIES:
 :ID:       ee6f356c-dac6-4ec1-9fcb-814f9a5af1f8
