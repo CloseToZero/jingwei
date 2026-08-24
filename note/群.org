@@ -1,0 +1,215 @@
+:PROPERTIES:
+:ID:       16741eed-81e6-4d41-ae5c-758d5247aa22
+:END:
+#+filetags: :数学:代数:
+#+title: 群
+
+* 群的定义
+:PROPERTIES:
+:ID:       7f48fdb8-f418-490f-8bba-548fa1b5ced7
+:END:
+
+群是在[[id:fb25f8a4-ef91-418d-9f79-6ae30bb70e36][二元运算]]上加入三个条件得到的代数结构。设 \( G \) 是非空集合，
+\( \circledast: G \times G \to G \) 是一个二元运算。如果满足
+下列条件，就称 \( (G, \circledast) \) 是一个群（group）：
+
+1. 运算满足[[id:ca68574c-ad68-488d-8f9b-520a7ad37526][结合律]]，即对任意 \( g, h, k \in G \)，有
+   \( (g \circledast h) \circledast k = g \circledast (h \circledast k) \)；
+2. 运算具有[[id:8dffcbcc-4ee2-4f29-9b36-c816fa755974][单位元]] \( e \in G \)，即 \( e \circledast g = g \circledast e = g \)；
+3. 每个 \( g \in G \) 都有逆元 \( h \in G \)，使
+   \( g \circledast h = h \circledast g = e \)。
+
+
+如果运算还满足交换律，就称它为交换群或阿贝尔群（Abelian group）。上下文明确时，通常直接用
+\( G \) 表示整个群，不再把运算写在记号中。
+
+一般的群采用乘法记号：把 \( g \circledast h \) 简写成 \( gh \)，单位元仍写作 \( e \)，逆元写作
+\( g^{-1} \)。交换群也常采用加法记号，此时单位元写作 \( 0 \)，\( g \) 的逆元写作 \( -g \)。
+这只是两套记号；能否交换取决于交换律，而不取决于运算被写成加法还是乘法。
+
+* 群的基本性质
+:PROPERTIES:
+:ID:       888261bf-08eb-424f-abcf-caf190c21ee1
+:END:
+
+定义中关于单位元和逆元的条件只断言它们存在。下面先证明它们的唯一性，再由此求解群
+中的两类基本方程。
+
+** 单位元和逆元的唯一性
+:PROPERTIES:
+:ID:       ea46b49f-5526-48db-9c14-e1d9ed8c1ed2
+:END:
+
+[[id:8dffcbcc-4ee2-4f29-9b36-c816fa755974][单位元若存在就是唯一的]]。对任意 \( g \in G \)，逆元也唯一：如果 \( h \) 和 \( k \) 都是
+\( g \) 的逆元，那么
+
+\[ h = h \circledast e
+= h \circledast (g \circledast k)
+= (h \circledast g) \circledast k
+= e \circledast k
+= k \]
+
+因此可以无歧义地把它记作 \( g^{\flat} \)。特别地，单位元的逆元仍是单位元：
+
+\[ e^{\flat} = e \]
+
+** 方程的唯一可解性
+:PROPERTIES:
+:ID:       ec5ba467-9af8-46d5-b285-6bea49ba20aa
+:END:
+
+对任意 \( a, b \in G \)，下面两个方程都有唯一解：
+
+\[ a \circledast x = b
+\Longleftrightarrow x = a^{\flat} \circledast b, \qquad
+y \circledast a = b
+\Longleftrightarrow y = b \circledast a^{\flat} \]
+
+例如，\( x = a^{\flat} \circledast b \) 确实满足 \( a \circledast x = b \)。反过来，如果
+\( a \circledast x = b \)，那么
+
+\[ x = (a^{\flat} \circledast a) \circledast x
+= a^{\flat} \circledast (a \circledast x)
+= a^{\flat} \circledast b \]
+
+所以它也是唯一解；另一个方程完全类似。由此也立刻得到
+
+\[ a \circledast x = a \circledast y \Longrightarrow x = y, \qquad
+x \circledast a = y \circledast a \Longrightarrow x = y \]
+
+此外，\( g \) 是 \( g^{\flat} \) 的逆元，所以逆元的唯一性给出
+
+\[ \left( g^{\flat} \right)^{\flat} = g \]
+
+** 只要求一侧逆元
+:PROPERTIES:
+:ID:       519b7d17-524b-42b1-a774-992655b94785
+:END:
+
+设非空集合 \( H \) 上的运算满足结合律，并且具有单位元 \( e \)。若 \( h' \circledast g = e \)，就称
+\( h' \) 是 \( g \) 的左逆元；这里的“左”是说 \( h' \) 出现在 \( g \) 的左侧。类似地，若
+\( g \circledast h' = e \)，就称 \( h' \) 是 \( g \) 的右逆元。
+
+如果 \( H \) 中每个元素都有左逆元，那么每个左逆元也是右逆元，因而 \( H \) 已经是群。下面证明
+这一点。设 \( h' \) 是 \( h \) 的左逆元，再取 \( h' \) 的一个左逆元 \( h'' \)，则
+
+\[ h'' \circledast h' = e, \qquad h' \circledast h = e \]
+
+于是
+
+\[ h'' = h'' \circledast e
+= h'' \circledast (h' \circledast h)
+= (h'' \circledast h') \circledast h
+= e \circledast h
+= h \]
+
+从而 \( h \circledast h' = h'' \circledast h' = e \)。只假设每个元素都有右逆元时，结论完全类似。
+
+** 乘积的逆元
+:PROPERTIES:
+:ID:       e7d0f888-0ac3-4339-a41e-595ac896e1b6
+:END:
+
+乘积的逆元会把因子的顺序反转：
+
+\[ (g \circledast h)^{\flat} = h^{\flat} \circledast g^{\flat} \]
+
+只需验证 \( h^{\flat} \circledast g^{\flat} \) 满足 \( g \circledast h \) 的逆元定义：
+
+\[ (h^{\flat} \circledast g^{\flat}) \circledast (g \circledast h)
+= h^{\flat} \circledast (g^{\flat} \circledast g) \circledast h
+= e, \qquad
+(g \circledast h) \circledast (h^{\flat} \circledast g^{\flat})
+= g \circledast (h \circledast h^{\flat}) \circledast g^{\flat}
+= e \]
+
+所以 \( h^{\flat} \circledast g^{\flat} \) 同时是 \( g \circledast h \) 的左逆元和右逆元；由逆元的
+唯一性便得到上述等式。
+
+* 例子与非例子
+:PROPERTIES:
+:ID:       19be2ead-daa0-4821-a7d2-3bbfff931987
+:END:
+
+** 平凡群
+
+单元素集合 \( \{ e \} \) 上只有一种二元运算，即 \( e \circledast e = e \)；它构成一个交换群，
+称为平凡群。
+
+** 置换群
+:PROPERTIES:
+:ID:       63f62c90-1c92-45d0-8fbf-e26840077d66
+:END:
+
+设 \( X \) 是集合。所有从 \( X \) 到自身的[[id:51d3587c-f0cb-4902-a7a5-0a1392313f92][双射]]组成集合 \( S_X \)。在[[id:d95641d3-d8c5-4fee-9495-3072c41d0520][函数复合]]下，
+\( S_X \) 构成群：单位元是 \( \operatorname{id}_X \)，群中的逆元就是逆函数。当 \( X \) 有限时，
+\( S_X \) 的元素称为 \( X \) 上的[[id:f5e15866-678c-4c31-8a22-eb65f010f3c1][置换]]，\( S_X \) 称为 \( X \) 上的置换群（permutation group）。
+
+函数复合一般不能交换，所以置换群也未必是交换群。它说明群的运算不必是通常意义下的数值乘法；
+一个群也可以由某个对象的可逆变换组成。
+
+** 逐点运算与直积
+:PROPERTIES:
+:ID:       ee6f356c-dac6-4ec1-9fcb-814f9a5af1f8
+:END:
+
+若 \( G \) 是群，\( X \) 是任意集合，那么函数集 \( G^X \) 上的[[id:994a5ce7-13a9-4631-be33-c214dc20d8d9][逐点运算]]
+
+\[ (f \circledast h)(x) := f(x) \circledast h(x) \]
+
+也构成群。它的单位元是常值函数 \( x \mapsto e \)，而
+
+\[ f^{\flat}(x) := f(x)^{\flat} \]
+
+给出 \( f \) 的逆元。当 \( X = \emptyset \) 时，\( G^X \) 只含空函数，因而得到平凡群。
+
+当 \( X = \{ 1, \ldots, m \} \) 时，这个构造给出逐坐标运算的群 \( G^m \)。
+
+进一步允许每个坐标分别取值于群 \( G_1, \ldots, G_m \)，就得到[[id:7b045198-91ac-4e69-924a-3f73e886aad6][笛卡尔积]]
+\( G_1 \times \cdots \times G_m \) 上的运算
+
+\[ (g_1, \ldots, g_m) \circledast (h_1, \ldots, h_m)
+:= (g_1 \circledast h_1, \ldots, g_m \circledast h_m) \]
+
+这个笛卡尔积在上述运算下也是群，称为这些群的直积（direct product）。
+
+** 自然数为什么还不是群
+
+\( (\mathbb{N}, +) \) 已经具有结合律和单位元 \( 0 \)，但非零自然数在 \( \mathbb{N} \) 中没有
+加法逆元，所以它不是群。类似地，\( (\mathbb{N}^{\times}, \cdot) \) 中除 \( 1 \) 外的元素都没有
+乘法逆元。因此，为了使减法和除法不再受到这些限制，需要把自然数扩充到更大的数系。
+
+* 子群
+:PROPERTIES:
+:ID:       fab9edf6-d3e0-4cf9-ab42-df69530cbbcf
+:END:
+
+前面的例子通过函数集和笛卡尔积构造了新的群；另一种基本方法，是在一个已有的群中寻找对群运算
+和取逆元都封闭的子集。把原来的运算限制到这样的子集上，仍然会得到一个群。
+
+设 \( G \) 是群，\( H \subseteq G \) 非空。先记
+
+\[ H \circledast H := \{ h_1 \circledast h_2; \ h_1, h_2 \in H \} \]
+
+如果 \( H \) 满足
+
+\[ H \circledast H \subseteq H, \qquad
+h \in H \Longrightarrow h^{\flat} \in H \]
+
+那么 \( H \) 连同限制在其上的同一个运算也构成群，称为 \( G \) 的子群（subgroup），记作
+\( H \leq G \)。结合律会从 \( G \) 自动继承；而由于 \( H \) 非空，任取 \( h \in H \)，便有
+\( e = h^{\flat} \circledast h \in H \)，所以不必再单独要求 \( H \) 包含单位元。条件
+\( H \circledast H \subseteq H \) 正是说 \( H \) 对群运算[[id:42f060a0-26e3-4f9d-a35c-f6526bd360e2][封闭]]。
+
+** 基本例子
+:PROPERTIES:
+:ID:       dbb3b437-3920-4911-893b-d74e20c52c12
+:END:
+
+最小的子群是平凡子群 \( \{ e \} \)，最大的子群是 \( G \) 本身。
+
+更一般地，设 \( (H_\alpha)_{\alpha \in A} \) 是 \( G \) 的一族子群，那么
+
+\[ \bigcap_{\alpha \in A} H_\alpha \leq G \]
+
+因为单位元属于每个 \( H_\alpha \)，而乘法和取逆元都不会离开其中任何一个 \( H_\alpha \)。

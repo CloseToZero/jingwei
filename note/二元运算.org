@@ -5,6 +5,9 @@
 #+title: 二元运算
 
 * 二元运算
+:PROPERTIES:
+:ID:       fb25f8a4-ef91-418d-9f79-6ae30bb70e36
+:END:
 
 集合 \( X \) 上的一个二元运算（binary operation）是一个函数
 
@@ -14,6 +17,9 @@
 元素运算后仍在 \( X \) 中。
 
 ** 子集上的运算与封闭性
+:PROPERTIES:
+:ID:       42f060a0-26e3-4f9d-a35c-f6526bd360e2
+:END:
 
 对于 \( A, B \subseteq X \) ，定义
 
@@ -30,6 +36,9 @@
 跑出 \( A \) 。这里要求 \( A \neq \emptyset \) ，是为了排除空集因全称命题恒真而自动封闭的退化情形。
 
 * 结合律和交换律
+:PROPERTIES:
+:ID:       ca68574c-ad68-488d-8f9b-520a7ad37526
+:END:
 
 运算 \( \circledast \) 如果满足
 
@@ -98,6 +107,9 @@
 = \sum_{j = 0}^{m} \sum_{k = 0}^{n} a_j b_k \]
 
 * 单位元
+:PROPERTIES:
+:ID:       8dffcbcc-4ee2-4f29-9b36-c816fa755974
+:END:
 
 如果 \( e \in X \) 满足
 
@@ -152,6 +164,9 @@ n \cdot a + n \cdot b &= n \cdot (a + b)
 \end{aligned} \]
 
 * 逐点诱导的运算
+:PROPERTIES:
+:ID:       994a5ce7-13a9-4631-be33-c214dc20d8d9
+:END:
 
 设 \( \circledast \) 是集合 \( Y \) 上的二元运算。对于任意集合 \( X \) ，可以在
 \( \mathrm{Funct}(X, Y) \) 上定义逐点运算
