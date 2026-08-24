@@ -1,0 +1,263 @@
+:PROPERTIES:
+:ID:       78e0aa21-7dfb-4d46-9233-0274e4ca772d
+:END:
+#+filetags: :数学:代数:
+#+title: 群同态
+#+LATEX_HEADER: \usepackage{tikz-cd}
+
+* 群同态
+:PROPERTIES:
+:ID:       638008c3-837c-41f1-a27f-2cec894eb9eb
+:END:
+
+设 \( G = (G, \circledast) \) 和 \( G' = (G', \ast) \) 是两个[[id:16741eed-81e6-4d41-ae5c-758d5247aa22][群]]，单位元分别为 \( e \) 和
+\( e' \)。如果函数 \( \varphi: G \to G' \) 满足
+
+\[ \varphi(g \circledast h)
+= \varphi(g) \ast \varphi(h), \qquad g, h \in G \]
+
+就称 \( \varphi \) 是一个群同态（group homomorphism）。这个条件表示 \( \varphi \) 保持群运算：
+先在 \( G \) 中运算再应用 \( \varphi \)，与先应用 \( \varphi \) 再在 \( G' \) 中运算，结果相同。
+
+从一个群到自身的同态称为自同态（endomorphism）。恒等函数 \( \operatorname{id}_G \) 是自同态；
+常值函数 \( g \mapsto e' \) 是同态，称为平凡同态。两个同态的[[id:d95641d3-d8c5-4fee-9495-3072c41d0520][复合]]仍是同态。
+
+* 同态自动保持单位元和逆元
+:PROPERTIES:
+:ID:       9691e919-f4b5-4b7a-894e-307c629d71e1
+:END:
+
+同态的定义只要求保持群运算，但这已经迫使它保持单位元和逆元。因为
+
+\[ \varphi(e) \ast \varphi(e)
+= \varphi(e \circledast e)
+= \varphi(e)
+= \varphi(e) \ast e' \]
+
+利用群中的[[id:ec5ba467-9af8-46d5-b285-6bea49ba20aa][消去律]]可得
+
+\[ \varphi(e) = e' \]
+
+进一步，
+
+\[ \varphi(g^{\flat}) \ast \varphi(g)
+= \varphi(g^{\flat} \circledast g)
+= e', \qquad
+\varphi(g) \ast \varphi(g^{\flat})
+= e' \]
+
+所以 \( \varphi(g^{\flat}) \) 是 \( \varphi(g) \) 的逆元，即
+
+\[ \varphi(g^{\flat}) = \varphi(g)^{\flat} \]
+
+* 像与核
+:PROPERTIES:
+:ID:       f89172d6-6e35-46bc-b13f-d7ac41bec0f7
+:END:
+
+同态 \( \varphi: G \to G' \) 的像为
+
+\[ \operatorname{im}(\varphi)
+:= \{ \varphi(g); \ g \in G \} \]
+
+它由实际能够通过 \( \varphi \) 得到的元素组成。同态的核为
+
+\[ \ker(\varphi)
+:= \varphi^{-1}(\{ e' \})
+= \{ g \in G; \ \varphi(g) = e' \} \]
+
+它由所有被 \( \varphi \) 映到单位元的元素组成。
+
+** 像是子群
+:PROPERTIES:
+:ID:       cc40d01d-99db-4ed6-b021-7d86ed8015af
+:END:
+
+单位元 \( e' = \varphi(e) \) 属于 \( \operatorname{im}(\varphi) \)。若
+\( g', h' \in \operatorname{im}(\varphi) \)，取 \( g, h \in G \) 使
+\( g' = \varphi(g) \)、\( h' = \varphi(h) \)，则
+
+\[ g' \ast h' = \varphi(g \circledast h)
+\in \operatorname{im}(\varphi), \qquad
+(g')^{\flat} = \varphi(g^{\flat})
+\in \operatorname{im}(\varphi) \]
+
+因此 \( \operatorname{im}(\varphi) \) 是 \( G' \) 的[[id:fab9edf6-d3e0-4cf9-ab42-df69530cbbcf][子群]]。
+
+** 核是正规子群
+:PROPERTIES:
+:ID:       743950ca-e9e0-4d01-b4b4-b7ac747302fc
+:END:
+
+由于 \( \varphi(e) = e' \)，核非空。若 \( g, h \in \ker(\varphi) \)，则
+
+\[ \varphi(g \circledast h)
+= \varphi(g) \ast \varphi(h)
+= e', \qquad
+\varphi(g^{\flat})
+= \varphi(g)^{\flat}
+= e' \]
+
+所以核对群运算和取逆元封闭，是 \( G \) 的子群。它还具有更强的性质：对任意
+\( a \in G \) 和 \( k \in \ker(\varphi) \)，有
+
+\[ \varphi(a \circledast k \circledast a^{\flat})
+= \varphi(a) \ast e' \ast \varphi(a)^{\flat}
+= e' \]
+
+因此 \( a \circledast k \circledast a^{\flat} \in \ker(\varphi) \)，从而
+
+\[ a \circledast k
+= (a \circledast k \circledast a^{\flat}) \circledast a
+\in \ker(\varphi) \circledast a \]
+
+这说明 \( a \circledast \ker(\varphi) \subseteq \ker(\varphi) \circledast a \)。另一方面，
+
+\[ k \circledast a
+= a \circledast (a^{\flat} \circledast k \circledast a)
+\in a \circledast \ker(\varphi) \]
+
+所以反向包含也成立。由此
+
+\[ a \circledast \ker(\varphi)
+= \ker(\varphi) \circledast a \]
+
+即 \( \ker(\varphi) \) 是 \( G \) 的[[id:429cee9b-3abb-44ad-b29e-b0e73a6365b0][正规子群]]。
+
+* 核如何记录同态丢失的信息
+:PROPERTIES:
+:ID:       f08723a5-2a44-49a0-8d8d-a118ec2a9ecb
+:END:
+
+令 \( K := \ker(\varphi) \)。对任意 \( g \in G \)，有
+
+\[ g \circledast K
+= \varphi^{-1}(\{ \varphi(g) \}) \]
+
+也就是说，\( g \) 关于核的左陪集，恰好由所有与 \( g \) 具有相同像的元素组成。确实，如果
+\( h = g \circledast k \)，其中 \( k \in K \)，那么
+
+\[ \varphi(h)
+= \varphi(g) \ast \varphi(k)
+= \varphi(g) \]
+
+反过来，如果 \( \varphi(h) = \varphi(g) \)，那么
+
+\[ \varphi(g^{\flat} \circledast h)
+= \varphi(g)^{\flat} \ast \varphi(h)
+= e' \]
+
+所以 \( g^{\flat} \circledast h \in K \)，也就是 \( h \in g \circledast K \)。因此
+
+\[ \varphi(g) = \varphi(h)
+\Longleftrightarrow
+g \circledast K = h \circledast K \]
+
+因此，核的陪集正是被同态识别为同一个像的各组元素。特别地，
+
+\[ \varphi \text{ 是单射}
+\Longleftrightarrow
+\ker(\varphi) = \{ e \} \]
+
+* 商同态
+:PROPERTIES:
+:ID:       434cb349-6e4f-4194-a180-544da97f3188
+:END:
+
+设 \( N \) 是 \( G \) 的正规子群。[[id:7a2de05b-32fc-49e1-aeec-21b23a2f5417][商群]] \( G/N \) 所对应的
+[[id:176477d9-5624-4251-ae88-25dcf2c87de1][典范商映射]]为
+
+\[ p: G \to G/N, \qquad
+g \mapsto g \circledast N \]
+
+是满同态（满射的群同态），因为
+
+\[ p(g \circledast h)
+= (g \circledast h) \circledast N
+= (g \circledast N) \circledast (h \circledast N)
+= p(g) \circledast p(h) \]
+
+并且每个陪集都是某个 \( p(g) \)。它的核为
+
+\[ \ker(p) = N \]
+
+因为 \( p(g) \) 等于商群的单位元 \( N \)，当且仅当 \( g \in N \)。这个映射也称为商同态
+（quotient homomorphism）。
+
+* 同构
+:PROPERTIES:
+:ID:       7912c576-ce75-44ca-87be-3cb0262b1f5c
+:END:
+
+双射的群同态称为群同构（group isomorphism）。如果 \( G \) 与 \( G' \) 之间存在同构，就称
+二者同构，记作
+
+\[ G \cong G' \]
+
+同构不仅使两个集合中的元素一一对应，还保持群运算。因此可以把 \( \varphi(g) \) 看成元素
+\( g \) 在另一套标签下的名字：元素的写法变了，单位元、逆元和任意有限次群运算之间的关
+系都没有变。
+
+同构 \( \varphi \) 的反函数 \( \varphi^{-1}: G' \to G \) 仍是同态。下面验证这一点。若
+\( g' = \varphi(g) \) 且 \( h' = \varphi(h) \)，则
+
+\[ \varphi^{-1}(g' \ast h')
+= \varphi^{-1}(\varphi(g \circledast h))
+= g \circledast h
+= \varphi^{-1}(g') \circledast \varphi^{-1}(h') \]
+
+从一个群到自身的同构称为自同构（automorphism）。
+
+** 同态经过商群的分解
+:PROPERTIES:
+:ID:       cec7ef6b-1c45-4034-a342-207ef36d5066
+:END:
+
+设 \( K := \ker(\varphi) \)。前面已经证明，两个元素具有相同的像，当且仅当它们属于同一个
+\( K \) 的陪集。因此 \( \varphi \) 在每个陪集上取值不变，可以把对元素 \( g \) 的依赖改为对陪集
+\( g \circledast K \) 的依赖。又因为核是正规子群，\( G/K \) 是群，所以可以定义
+
+\[ \widetilde{\varphi}: G/K \to G', \qquad
+g \circledast K \mapsto \varphi(g) \]
+
+从集合层面看，这正是[[id:2544c5ca-75dd-461e-8236-e6812a7e36e5][函数经过商集的分解]]：先把具有相同函数值的元素合并成等价类，再
+让函数从这些等价类出发。在这里，等价类恰好是核的陪集，商集 \( G/K \) 还继承了群结构，
+而诱导函数 \( \widetilde{\varphi} \) 也保持群运算。
+
+这个定义与代表元的选择无关。对任意 \( g, h \in G \)，
+
+\[ \widetilde{\varphi}\bigl((g \circledast K) \circledast (h \circledast K)\bigr)
+= \widetilde{\varphi}\bigl((g \circledast h) \circledast K\bigr)
+= \varphi(g \circledast h)
+= \varphi(g) \ast \varphi(h) \]
+
+所以 \( \widetilde{\varphi} \) 是同态。如果
+\( \widetilde{\varphi}(g \circledast K) = \widetilde{\varphi}(h \circledast K) \)，那么
+\( \varphi(g) = \varphi(h) \)，因而 \( g \circledast K = h \circledast K \)；所以它还是单射。它的像为
+
+\[ \operatorname{im}(\widetilde{\varphi})
+= \operatorname{im}(\varphi) \]
+
+若记 \( p: G \to G/K \) 为商同态，那么
+
+\[ \begin{tikzcd}
+G \arrow[r, "\varphi"] \arrow[d, "p"'] & G' \\
+G/K \arrow[ur, "\widetilde{\varphi}"']
+\end{tikzcd} \]
+
+是交换图，即
+
+\[ \varphi = \widetilde{\varphi} \circ p \]
+
+由于 \( p \) 是满射，这个等式也唯一确定了 \( \widetilde{\varphi} \)：每个陪集都形如
+\( p(g) = g \circledast K \)，所以必须有
+
+\[ \widetilde{\varphi}(g \circledast K) = \varphi(g) \]
+
+因此，把 \( \widetilde{\varphi} \) 的陪域限制为 \( \operatorname{im}(\varphi) \)，便得到同构
+
+\[ G/\ker(\varphi) \cong \operatorname{im}(\varphi) \]
+
+特别地，如果 \( \varphi \) 是满同态，那么
+
+\[ G/\ker(\varphi) \cong G' \]
