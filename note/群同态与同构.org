@@ -2,7 +2,7 @@
 :ID:       78e0aa21-7dfb-4d46-9233-0274e4ca772d
 :END:
 #+filetags: :数学:代数:
-#+title: 群同态
+#+title: 群同态与同构
 #+LATEX_HEADER: \usepackage{tikz-cd}
 
 * 群同态
