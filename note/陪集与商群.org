@@ -1,0 +1,137 @@
+:PROPERTIES:
+:ID:       0dcb7d80-d16b-4c61-9a22-16ca57e48c46
+:END:
+#+filetags: :数学:代数:
+#+title: 陪集与商群
+
+* 陪集
+:PROPERTIES:
+:ID:       2ffbbbef-8f89-4948-a64f-66c37627aa5d
+:END:
+
+设 \( G = (G, \circledast) \) 是一个[[id:16741eed-81e6-4d41-ae5c-758d5247aa22][群]]，\( N \) 是 \( G \) 的一个[[id:fab9edf6-d3e0-4cf9-ab42-df69530cbbcf][子群]]。对任意
+\( g \in G \)，定义
+
+\[ g \circledast N := \{ g \circledast n; \ n \in N \}, \qquad
+N \circledast g := \{ n \circledast g; \ n \in N \} \]
+
+前者称为 \( g \) 关于 \( N \) 的左陪集（left coset），后者称为右陪集（right coset）。在左陪
+集中，\( g \) 写在 \( n \) 的左侧；在右陪集中，\( g \) 写在 \( n \) 的右侧。群运算未必满足交换律，所以两
+者不必相同。
+
+** 陪集是等价类
+:PROPERTIES:
+:ID:       ac9d2be9-6e22-425e-abd5-f1393a4e1edf
+:END:
+
+在 \( G \) 上定义关系
+
+\[ g \sim_N h
+\Longleftrightarrow g \in h \circledast N
+\Longleftrightarrow h^{\flat} \circledast g \in N \]
+
+第一个条件是说，\( g \) 可以由 \( h \) 在右侧乘上 \( N \) 中的某个元素得到。这个关系是一个
+[[id:dbf0e2c4-086b-4144-a816-a4f15b51526f][等价关系]]。因为 \( e \in N \)，所以 \( g^{\flat} \circledast g = e \in N \)，关系具有反身性。如果
+\( h^{\flat} \circledast g \in N \)，那么它的逆元
+
+\[ (h^{\flat} \circledast g)^{\flat} = g^{\flat} \circledast h \]
+
+也属于 \( N \)，所以关系具有对称性。最后，若 \( g \sim_N h \) 且 \( h \sim_N k \)，则
+
+\[ (k^{\flat} \circledast h) \circledast
+(h^{\flat} \circledast g)
+= k^{\flat} \circledast g \in N \]
+
+所以 \( g \sim_N k \)，关系也具有传递性。
+
+元素 \( g \) 的等价类恰好是它的左陪集：
+
+\[ [g] = g \circledast N \]
+
+因此所有左陪集组成的集合记作
+
+\[ G/N := \{ g \circledast N; \ g \in G \} \]
+
+陪集作为等价类，要么相同，要么不相交；它们的并是整个 \( G \)。目前 \( G/N \) 还只是一个集合，
+尚未得到群运算，这是接下来要讨论的。
+
+* 正规子群
+:PROPERTIES:
+:ID:       429cee9b-3abb-44ad-b29e-b0e73a6365b0
+:END:
+
+我们希望直接用代表元定义两个左陪集的乘积：
+
+\[ (g \circledast N) \circledast (h \circledast N)
+:= (g \circledast h) \circledast N \]
+
+问题在于，同一个陪集可以选择不同的代表元，右边必须与选择无关。保证这一点的条件是
+
+\[ g \circledast N = N \circledast g, \qquad g \in G \]
+
+满足这个条件的子群 \( N \) 称为 \( G \) 的正规子群（normal subgroup）。
+
+下面验证正规性确实消除了代表元的影响。设
+
+\[ g' = g \circledast n_1, \qquad
+h' = h \circledast n_2, \qquad n_1, n_2 \in N \]
+
+由于 \( N \circledast h = h \circledast N \)，存在 \( n_3 \in N \) 使
+
+\[ n_1 \circledast h = h \circledast n_3 \]
+
+于是
+
+\[ g' \circledast h'
+= g \circledast n_1 \circledast h \circledast n_2
+= g \circledast h \circledast n_3 \circledast n_2
+\in (g \circledast h) \circledast N \]
+
+这里 \( n_3 \circledast n_2 \in N \)，所以 \( g' \circledast h' \) 与 \( g \circledast h \) 属于同一个
+左陪集，进而
+
+\[ (g' \circledast h') \circledast N
+= (g \circledast h) \circledast N \]
+
+这正说明上面的陪集乘法不依赖代表元。
+
+* 商群
+:PROPERTIES:
+:ID:       7a2de05b-32fc-49e1-aeec-21b23a2f5417
+:END:
+
+设 \( N \) 是 \( G \) 的正规子群。在左陪集组成的集合 \( G/N \) 上定义
+
+\[ (g \circledast N) \circledast (h \circledast N)
+:= (g \circledast h) \circledast N \]
+
+这个运算已经由正规性保证为良定义。它的结合律继承自 \( G \)，单位元是
+
+\[ N = e \circledast N \]
+
+而 \( g \circledast N \) 的逆元是
+
+\[ (g \circledast N)^{\flat} = g^{\flat} \circledast N \]
+
+因为
+
+\[ (g^{\flat} \circledast N) \circledast (g \circledast N)
+= (g^{\flat} \circledast g) \circledast N
+= N, \qquad
+(g \circledast N) \circledast (g^{\flat} \circledast N)
+= (g \circledast g^{\flat}) \circledast N
+= N \]
+
+所以 \( G/N \) 构成群，称为 \( G \) 对 \( N \) 的商群（quotient group）。它的元素不是 \( G \)
+中的单个元素，而是 \( G \) 的陪集。
+
+** 交换群的子群都是正规子群
+:PROPERTIES:
+:ID:       8e608281-20ed-4f8c-95d1-a0dbc9143442
+:END:
+
+如果 \( G \) 是交换群，那么它的每个子群 \( N \) 都是正规子群，因为
+
+\[ g \circledast N = N \circledast g \]
+
+此时商群 \( G/N \) 也仍是交换群。
