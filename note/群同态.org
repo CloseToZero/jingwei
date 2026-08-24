@@ -208,6 +208,54 @@ g \mapsto g \circledast N \]
 
 从一个群到自身的同构称为自同构（automorphism）。
 
+** 自同构群
+
+一个群 \( G \) 的所有自同构组成集合 \( \operatorname{Aut}(G) \)。恒等函数属于其中；自同构的复合
+仍是自同构；自同构的逆函数也仍是自同构。因此 \( \operatorname{Aut}(G) \) 在函数复合下构成群，
+称为 \( G \) 的自同构群（automorphism group）。
+
+每个自同构都是从 \( G \) 到自身的双射，所以 \( \operatorname{Aut}(G) \) 是[[id:63f62c90-1c92-45d0-8fbf-e26840077d66][置换群]] \( S_G \) 的子群。
+
+** 内自同构
+
+固定 \( a \in G \)，定义
+
+\[ c_a: G \to G, \qquad
+c_a(g) := a \circledast g \circledast a^{\flat} \]
+
+这个映射保持群运算，因为
+
+\[ c_a(g) \circledast c_a(h)
+= a \circledast g \circledast a^{\flat}
+\circledast a \circledast h \circledast a^{\flat}
+= a \circledast g \circledast h \circledast a^{\flat}
+= c_a(g \circledast h) \]
+
+而 \( c_{a^{\flat}} \) 是 \( c_a \) 的逆函数，所以 \( c_a \) 是自同构，称为由 \( a \) 诱导的内自同构
+（inner automorphism）。当 \( G \) 是交换群时，\( c_a(g) = g \)，所以这些内自同构都是恒等函数。
+
+** 通过双射搬运群结构
+
+设 \( X \) 是集合，\( \varphi: G \to X \) 是双射。可以利用 \( \varphi \) 在 \( X \) 上定义运算
+
+\[ x \ast y
+:= \varphi\bigl(\varphi^{-1}(x)
+\circledast \varphi^{-1}(y)\bigr), \qquad x, y \in X \]
+
+若 \( x = \varphi(g) \)、\( y = \varphi(h) \)、\( z = \varphi(k) \)，那么
+
+\[ (x \ast y) \ast z
+= \varphi\bigl((g \circledast h) \circledast k\bigr)
+= \varphi\bigl(g \circledast (h \circledast k)\bigr)
+= x \ast (y \ast z) \]
+
+所以这个运算满足结合律。它的单位元是 \( \varphi(e) \)，而 \( x \) 的逆元是
+
+\[ \varphi\left(\left(\varphi^{-1}(x)\right)^{\flat}\right) \]
+
+因此 \( (X, \ast) \) 是群，并且 \( \varphi: G \to X \) 是群同构。这个构造称为沿双射 \( \varphi \)
+搬运群结构；它把 \( G \) 的元素换成 \( X \) 中的新名字，同时按照这些新名字重新定义群运算。
+
 ** 同态经过商群的分解
 :PROPERTIES:
 :ID:       cec7ef6b-1c45-4034-a342-207ef36d5066
