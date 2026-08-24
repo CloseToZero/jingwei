@@ -198,7 +198,7 @@ g \mapsto g \circledast N \]
 \( g \) 在另一套标签下的名字：元素的写法变了，单位元、逆元和任意有限次群运算之间的关
 系都没有变。
 
-同构 \( \varphi \) 的反函数 \( \varphi^{-1}: G' \to G \) 仍是同态。下面验证这一点。若
+同构 \( \varphi \) 的逆函数 \( \varphi^{-1}: G' \to G \) 仍是同态。下面验证这一点。若
 \( g' = \varphi(g) \) 且 \( h' = \varphi(h) \)，则
 
 \[ \varphi^{-1}(g' \ast h')
