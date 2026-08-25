@@ -61,11 +61,11 @@
 
 长度为 \( 1, 2 \) 时结论显然，长度为 \( 3 \) 时就是结合律本身。一般的证明可以对表达式的长度
 使用[[id:83195310-a5d9-4e2e-bec8-ce7dd97d9b0b][强归纳]]。任意 \( K_{n + 1} \) 都能从最外层拆成
-\( K_\ell \circledast K_m \)，其中 \( \ell + m = n + 1 \)。归纳假设先把两个较短的表达式
+\( K_\ell \circledast K_m \) ，其中 \( \ell + m = n + 1 \) 。归纳假设先把两个较短的表达式
 化成统一形式，再利用一次结合律把最右边的元素分离出来，便把问题化为长度为 \( n \) 的情形。
 
 因此，只要运算满足结合律，就可以省略括号，直接写成
-\( x_1 \circledast x_2 \circledast \cdots \circledast x_n \)。需要注意，这里只能改变括号的位置；
+\( x_1 \circledast x_2 \circledast \cdots \circledast x_n \) 。需要注意，这里只能改变括号的位置；
 如果运算不满足交换律，元素的顺序仍然不能改变。
 
 ** 例子
@@ -79,7 +79,7 @@
 :ID:       972a99b0-b05d-4302-b591-e57d43b1f7d4
 :END:
 
-设 \( \circledast \) 是集合 \( X \) 上的结合运算，并给定 \( x_k \in X \)，\( k \in \mathbb{N} \)。
+设 \( \circledast \) 是集合 \( X \) 上的结合运算，并给定 \( x_k \in X \) ，\( k \in \mathbb{N} \) 。
 利用[[id:bf47370f-e2dc-4fca-a8a9-6ea33e765789][一般递归原理]]定义
 
 \[ P_0 := x_0, \qquad P_{n + 1} := P_n \circledast x_{n + 1}, \qquad n \in \mathbb{N} \]
@@ -130,38 +130,38 @@
 :ID:       39110993-5f7d-48e1-aa14-1008201bdac9
 :END:
 
-幂是[[id:972a99b0-b05d-4302-b591-e57d43b1f7d4][有限次运算]]的一个特殊情形：把参与运算的元素都取成同一个 \( a \)，便得到 \( a \) 与
+幂是[[id:972a99b0-b05d-4302-b591-e57d43b1f7d4][有限次运算]]的一个特殊情形：把参与运算的元素都取成同一个 \( a \) ，便得到 \( a \) 与
 自身的反复运算。前面处理任意非空的元素列，只需要结合律；这里进一步要求运算具有单位元
-\( e \)，从而可以把零个 \( a \) 的情形也纳入定义。因此，对 \( a \in X \)，定义
+\( e \) ，从而可以把零个 \( a \) 的情形也纳入定义。因此，对 \( a \in X \) ，定义
 
 \[ a^0 := e, \qquad a^{n + 1} := a^n \circledast a, \qquad n \in \mathbb{N} \]
 
 换句话说，\( a^n \) 是 \( n \) 个 \( a \) 的运算结果；\( a^0 \) 则对应空的运算。空的运算接在
-任何有限次运算之前或之后都不应改变结果，所以它的值只能取单位元 \( e \)。
+任何有限次运算之前或之后都不应改变结果，所以它的值只能取单位元 \( e \) 。
 
-由结合律可以得到如下指数律，其中 \( m, n \in \mathbb{N} \)：
+由结合律可以得到如下指数律，其中 \( m, n \in \mathbb{N} \) ：
 
 \[ e^n = e, \qquad
 a^n \circledast a^m = a^{n + m}, \qquad
 (a^n)^m = a^{n m} \]
 
-若 \( a \circledast b = b \circledast a \)，则还可以分别重排 \( a \) 与 \( b \) 的因子，从而
+若 \( a \circledast b = b \circledast a \) ，则还可以分别重排 \( a \) 与 \( b \) 的因子，从而
 
 \[ a^n \circledast b^n = (a \circledast b)^n \]
 
 同一个构造改用加法记号时，就得到自然数倍：当运算满足交换律、单位元写作 \( 0_X \) 时，
-把 \( a \) 与自身相加 \( n \) 次记为 \( n \cdot a \)，并定义
+把 \( a \) 与自身相加 \( n \) 次记为 \( n \cdot a \) ，并定义
 
 \[ 0 \cdot a := 0_X, \qquad (n + 1) \cdot a := n \cdot a + a, \qquad n \in \mathbb{N} \]
 
-相应的指数律变成以下加法法则，其中 \( m, n \in \mathbb{N} \)：
+相应的指数律变成以下加法法则，其中 \( m, n \in \mathbb{N} \) ：
 
-\[ \begin{aligned}
+\begin{align*}
 n \cdot 0_X &= 0_X, \\
 n \cdot a + m \cdot a &= (n + m) \cdot a, \\
 m \cdot (n \cdot a) &= (m n) \cdot a, \\
 n \cdot a + n \cdot b &= n \cdot (a + b)
-\end{aligned} \]
+\end{align*}
 
 * 逐点诱导的运算
 :PROPERTIES:

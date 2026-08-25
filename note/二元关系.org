@@ -102,7 +102,7 @@
 
 ** 相等关系
 
-最小的等价关系是相等关系，也就是对角线 \( \Delta_X \)：
+最小的等价关系是相等关系，也就是对角线 \( \Delta_X \) ：
 
 \[ x \sim y \Leftrightarrow x = y \]
 
@@ -121,10 +121,12 @@
 \( p: X \to X/{\sim_f} \) 为商映射，则存在唯一函数 \( \widetilde{f}: X/{\sim_f} \to Y \) ，满足
 \( \widetilde{f}([x]) = f(x) \) ，也就是下面的图交换：
 
-\[ \begin{tikzcd}[column sep=large, row sep=large]
+\begin{equation*}
+\begin{tikzcd}[column sep=large, row sep=large]
 X \arrow[r, "f"] \arrow[d, "p"'] & Y \\
 X/{\sim_f} \arrow[ur, "\widetilde{f}"'] &
-\end{tikzcd} \]
+\end{tikzcd}
+\end{equation*}
 
 因此 \( f = \widetilde{f} \circ p \) 。其中 \( \widetilde{f} \) 是单射且
 \( \mathrm{im}(\widetilde{f}) = \mathrm{im}(f) \) ；特别地，如果 \( f \) 是满射，则 \( \widetilde{f} \) 是双射。
@@ -151,11 +153,11 @@ X/{\sim_f} \arrow[ur, "\widetilde{f}"'] &
 
 给定一个偏序 \( \leq \) ，定义
 
-\[ \begin{aligned}
+\begin{align*}
 x \geq y &\Leftrightarrow y \leq x, \\
 x < y &\Leftrightarrow (x \leq y) \land (x \neq y), \\
 x > y &\Leftrightarrow y < x .
-\end{aligned} \]
+\end{align*}
 
 如果 \( X \) 是全序集，则对于任意 \( x, y \in X \) ， \( x < y, x = y, x > y \) 中恰好有一个成立。
 如果 \( x \nleq y \) 且 \( y \nleq x \) ，则称 \( x, y \) 不可比（incomparable）；偏序不是全序，当且仅当

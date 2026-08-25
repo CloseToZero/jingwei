@@ -23,7 +23,7 @@
 #+begin_definition
 *子集*
 给定集合 \( X, Y \) ，如果 \( X \) 的所有对象 \( Y \) 都有包含，也就是 \( \forall x \in X: x \in Y \) ，则我们称
-\( X \)为 \( Y \) 的子集， \( Y \) 为 \( X \) 的超集，记为 \( X \subseteq Y \) 或 \( Y \supseteq X \) 。特别地，如果 \( X \subseteq Y \) 且
+\( X \) 为 \( Y \) 的子集， \( Y \) 为 \( X \) 的超集，记为 \( X \subseteq Y \) 或 \( Y \supseteq X \) 。特别地，如果 \( X \subseteq Y \) 且
 \( X \neq Y \) ，则我们称 \( X \) 为 \( Y \) 的真子集， \( Y \) 为 \( X \) 的真超集，记作 \( X \subsetneq Y \) 或 \( Y \supsetneq X \) 。
 #+end_definition
 
@@ -94,7 +94,7 @@
 
 * 交集
 
-给定集合 \( A, B \)，则我们定义两者的交集：
+给定集合 \( A, B \) ，则我们定义两者的交集：
 
 \[ A \cap B := \{ x \in A: x \in B \} \]
 

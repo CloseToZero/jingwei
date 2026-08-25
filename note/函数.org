@@ -92,11 +92,13 @@
 
 给定非空集合 \( X \) 和子集 \( A \subseteq X \) ，定义
 
-\[ \chi_A: X \to \{ 0, 1 \}, \quad
+\begin{equation*}
+\chi_A: X \to \{ 0, 1 \}, \quad
 x \mapsto \begin{cases}
 1, & x \in A, \\
 0, & x \in A^c .
-\end{cases} \]
+\end{cases}
+\end{equation*}
 
 我们称 \( \chi_A \) 为 \( A \) 的特征函数（characteristic function），它用 \( 1 \) 表示 \( x \in A \) ，
 用 \( 0 \) 表示 \( x \notin A \) 。
@@ -143,19 +145,23 @@ x = (x_1, \dots, x_n) \mapsto x_k
 
 比如，三角形交换就是
 
-\[ \begin{tikzcd}[column sep=huge, row sep=large]
+\begin{equation*}
+\begin{tikzcd}[column sep=huge, row sep=large]
 X \arrow[rr, "f"] \arrow[dr, "h"'] & & Y \arrow[dl, "g"] \\
 & V &
-\end{tikzcd} \]
+\end{tikzcd}
+\end{equation*}
 
 也就是 \( h = g \circ f \) 。
 
 而从 \( X \) 到 \( V \) 有下面两条路径时，图交换就是
 
-\[ \begin{tikzcd}[column sep=large, row sep=large]
+\begin{equation*}
+\begin{tikzcd}[column sep=large, row sep=large]
 X \arrow[r, "f"] \arrow[d, "\varphi"'] & Y \arrow[d, "g"] \\
 U \arrow[r, "\psi"'] & V
-\end{tikzcd} \]
+\end{tikzcd}
+\end{equation*}
 
 图交换当且仅当 \( g \circ f = \psi \circ \varphi \) 。
 

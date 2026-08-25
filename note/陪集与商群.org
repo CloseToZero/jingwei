@@ -10,7 +10,7 @@
 :END:
 
 设 \( G = (G, \circledast) \) 是一个[[id:16741eed-81e6-4d41-ae5c-758d5247aa22][群]]，\( N \) 是 \( G \) 的一个[[id:fab9edf6-d3e0-4cf9-ab42-df69530cbbcf][子群]]。对任意
-\( g \in G \)，定义
+\( g \in G \) ，定义
 
 \[ g \circledast N := \{ g \circledast n; \ n \in N \}, \qquad
 N \circledast g := \{ n \circledast g; \ n \in N \} \]
@@ -31,18 +31,18 @@ N \circledast g := \{ n \circledast g; \ n \in N \} \]
 \Longleftrightarrow h^{\flat} \circledast g \in N \]
 
 第一个条件是说，\( g \) 可以由 \( h \) 在右侧乘上 \( N \) 中的某个元素得到。这个关系是一个
-[[id:dbf0e2c4-086b-4144-a816-a4f15b51526f][等价关系]]。因为 \( e \in N \)，所以 \( g^{\flat} \circledast g = e \in N \)，关系具有反身性。如果
-\( h^{\flat} \circledast g \in N \)，那么它的逆元
+[[id:dbf0e2c4-086b-4144-a816-a4f15b51526f][等价关系]]。因为 \( e \in N \) ，所以 \( g^{\flat} \circledast g = e \in N \) ，关系具有反身性。如果
+\( h^{\flat} \circledast g \in N \) ，那么它的逆元
 
 \[ (h^{\flat} \circledast g)^{\flat} = g^{\flat} \circledast h \]
 
-也属于 \( N \)，所以关系具有对称性。最后，若 \( g \sim_N h \) 且 \( h \sim_N k \)，则
+也属于 \( N \) ，所以关系具有对称性。最后，若 \( g \sim_N h \) 且 \( h \sim_N k \) ，则
 
 \[ (k^{\flat} \circledast h) \circledast
 (h^{\flat} \circledast g)
 = k^{\flat} \circledast g \in N \]
 
-所以 \( g \sim_N k \)，关系也具有传递性。
+所以 \( g \sim_N k \) ，关系也具有传递性。
 
 元素 \( g \) 的等价类恰好是它的左陪集：
 
@@ -52,7 +52,7 @@ N \circledast g := \{ n \circledast g; \ n \in N \} \]
 
 \[ G/N := \{ g \circledast N; \ g \in G \} \]
 
-陪集作为等价类，要么相同，要么不相交；它们的并是整个 \( G \)。目前 \( G/N \) 还只是一个集合，
+陪集作为等价类，要么相同，要么不相交；它们的并是整个 \( G \) 。目前 \( G/N \) 还只是一个集合，
 尚未得到群运算，这是接下来要讨论的。
 
 * 正规子群
@@ -76,7 +76,7 @@ N \circledast g := \{ n \circledast g; \ n \in N \} \]
 \[ g' = g \circledast n_1, \qquad
 h' = h \circledast n_2, \qquad n_1, n_2 \in N \]
 
-由于 \( N \circledast h = h \circledast N \)，存在 \( n_3 \in N \) 使
+由于 \( N \circledast h = h \circledast N \) ，存在 \( n_3 \in N \) 使
 
 \[ n_1 \circledast h = h \circledast n_3 \]
 
@@ -87,7 +87,7 @@ h' = h \circledast n_2, \qquad n_1, n_2 \in N \]
 = g \circledast h \circledast n_3 \circledast n_2
 \in (g \circledast h) \circledast N \]
 
-这里 \( n_3 \circledast n_2 \in N \)，所以 \( g' \circledast h' \) 与 \( g \circledast h \) 属于同一个
+这里 \( n_3 \circledast n_2 \in N \) ，所以 \( g' \circledast h' \) 与 \( g \circledast h \) 属于同一个
 左陪集，进而
 
 \[ (g' \circledast h') \circledast N
@@ -105,7 +105,7 @@ h' = h \circledast n_2, \qquad n_1, n_2 \in N \]
 \[ (g \circledast N) \circledast (h \circledast N)
 := (g \circledast h) \circledast N \]
 
-这个运算已经由正规性保证为良定义。它的结合律继承自 \( G \)，单位元是
+这个运算已经由正规性保证为良定义。它的结合律继承自 \( G \) ，单位元是
 
 \[ N = e \circledast N \]
 

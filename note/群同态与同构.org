@@ -11,13 +11,13 @@
 :END:
 
 设 \( G = (G, \circledast) \) 和 \( G' = (G', \ast) \) 是两个[[id:16741eed-81e6-4d41-ae5c-758d5247aa22][群]]，单位元分别为 \( e \) 和
-\( e' \)。如果函数 \( \varphi: G \to G' \) 满足
+\( e' \) 。如果函数 \( \varphi: G \to G' \) 满足
 
 \[ \varphi(g \circledast h)
 = \varphi(g) \ast \varphi(h), \qquad g, h \in G \]
 
 就称 \( \varphi \) 是一个群同态（group homomorphism）。这个条件表示 \( \varphi \) 保持群运算：
-先在 \( G \) 中运算再应用 \( \varphi \)，与先应用 \( \varphi \) 再在 \( G' \) 中运算，结果相同。
+先在 \( G \) 中运算再应用 \( \varphi \) ，与先应用 \( \varphi \) 再在 \( G' \) 中运算，结果相同。
 
 从一个群到自身的同态称为自同态（endomorphism）。恒等函数 \( \operatorname{id}_G \) 是自同态；
 常值函数 \( g \mapsto e' \) 是同态，称为平凡同态。两个同态的[[id:d95641d3-d8c5-4fee-9495-3072c41d0520][复合]]仍是同态。
@@ -73,9 +73,9 @@
 :ID:       cc40d01d-99db-4ed6-b021-7d86ed8015af
 :END:
 
-单位元 \( e' = \varphi(e) \) 属于 \( \operatorname{im}(\varphi) \)。若
-\( g', h' \in \operatorname{im}(\varphi) \)，取 \( g, h \in G \) 使
-\( g' = \varphi(g) \)、\( h' = \varphi(h) \)，则
+单位元 \( e' = \varphi(e) \) 属于 \( \operatorname{im}(\varphi) \) 。若
+\( g', h' \in \operatorname{im}(\varphi) \) ，取 \( g, h \in G \) 使
+\( g' = \varphi(g) \) 、\( h' = \varphi(h) \) ，则
 
 \[ g' \ast h' = \varphi(g \circledast h)
 \in \operatorname{im}(\varphi), \qquad
@@ -89,7 +89,7 @@
 :ID:       743950ca-e9e0-4d01-b4b4-b7ac747302fc
 :END:
 
-由于 \( \varphi(e) = e' \)，核非空。若 \( g, h \in \ker(\varphi) \)，则
+由于 \( \varphi(e) = e' \) ，核非空。若 \( g, h \in \ker(\varphi) \) ，则
 
 \[ \varphi(g \circledast h)
 = \varphi(g) \ast \varphi(h)
@@ -99,19 +99,19 @@
 = e' \]
 
 所以核对群运算和取逆元封闭，是 \( G \) 的子群。它还具有更强的性质：对任意
-\( a \in G \) 和 \( k \in \ker(\varphi) \)，有
+\( a \in G \) 和 \( k \in \ker(\varphi) \) ，有
 
 \[ \varphi(a \circledast k \circledast a^{\flat})
 = \varphi(a) \ast e' \ast \varphi(a)^{\flat}
 = e' \]
 
-因此 \( a \circledast k \circledast a^{\flat} \in \ker(\varphi) \)，从而
+因此 \( a \circledast k \circledast a^{\flat} \in \ker(\varphi) \) ，从而
 
 \[ a \circledast k
 = (a \circledast k \circledast a^{\flat}) \circledast a
 \in \ker(\varphi) \circledast a \]
 
-这说明 \( a \circledast \ker(\varphi) \subseteq \ker(\varphi) \circledast a \)。另一方面，
+这说明 \( a \circledast \ker(\varphi) \subseteq \ker(\varphi) \circledast a \) 。另一方面，
 
 \[ k \circledast a
 = a \circledast (a^{\flat} \circledast k \circledast a)
@@ -129,25 +129,25 @@
 :ID:       f08723a5-2a44-49a0-8d8d-a118ec2a9ecb
 :END:
 
-令 \( K := \ker(\varphi) \)。对任意 \( g \in G \)，有
+令 \( K := \ker(\varphi) \) 。对任意 \( g \in G \) ，有
 
 \[ g \circledast K
 = \varphi^{-1}(\{ \varphi(g) \}) \]
 
 也就是说，\( g \) 关于核的左陪集，恰好由所有与 \( g \) 具有相同像的元素组成。确实，如果
-\( h = g \circledast k \)，其中 \( k \in K \)，那么
+\( h = g \circledast k \) ，其中 \( k \in K \) ，那么
 
 \[ \varphi(h)
 = \varphi(g) \ast \varphi(k)
 = \varphi(g) \]
 
-反过来，如果 \( \varphi(h) = \varphi(g) \)，那么
+反过来，如果 \( \varphi(h) = \varphi(g) \) ，那么
 
 \[ \varphi(g^{\flat} \circledast h)
 = \varphi(g)^{\flat} \ast \varphi(h)
 = e' \]
 
-所以 \( g^{\flat} \circledast h \in K \)，也就是 \( h \in g \circledast K \)。因此
+所以 \( g^{\flat} \circledast h \in K \) ，也就是 \( h \in g \circledast K \) 。因此
 
 \[ \varphi(g) = \varphi(h)
 \Longleftrightarrow
@@ -177,11 +177,11 @@ g \mapsto g \circledast N \]
 = (g \circledast N) \circledast (h \circledast N)
 = p(g) \circledast p(h) \]
 
-并且每个陪集都是某个 \( p(g) \)。它的核为
+并且每个陪集都是某个 \( p(g) \) 。它的核为
 
 \[ \ker(p) = N \]
 
-因为 \( p(g) \) 等于商群的单位元 \( N \)，当且仅当 \( g \in N \)。这个映射也称为商同态
+因为 \( p(g) \) 等于商群的单位元 \( N \) ，当且仅当 \( g \in N \) 。这个映射也称为商同态
 （quotient homomorphism）。
 
 * 同构
@@ -199,7 +199,7 @@ g \mapsto g \circledast N \]
 系都没有变。
 
 同构 \( \varphi \) 的逆函数 \( \varphi^{-1}: G' \to G \) 仍是同态。下面验证这一点。若
-\( g' = \varphi(g) \) 且 \( h' = \varphi(h) \)，则
+\( g' = \varphi(g) \) 且 \( h' = \varphi(h) \) ，则
 
 \[ \varphi^{-1}(g' \ast h')
 = \varphi^{-1}(\varphi(g \circledast h))
@@ -210,7 +210,7 @@ g \mapsto g \circledast N \]
 
 ** 自同构群
 
-一个群 \( G \) 的所有自同构组成集合 \( \operatorname{Aut}(G) \)。恒等函数属于其中；自同构的复合
+一个群 \( G \) 的所有自同构组成集合 \( \operatorname{Aut}(G) \) 。恒等函数属于其中；自同构的复合
 仍是自同构；自同构的逆函数也仍是自同构。因此 \( \operatorname{Aut}(G) \) 在函数复合下构成群，
 称为 \( G \) 的自同构群（automorphism group）。
 
@@ -218,7 +218,7 @@ g \mapsto g \circledast N \]
 
 ** 内自同构
 
-固定 \( a \in G \)，定义
+固定 \( a \in G \) ，定义
 
 \[ c_a: G \to G, \qquad
 c_a(g) := a \circledast g \circledast a^{\flat} \]
@@ -232,7 +232,7 @@ c_a(g) := a \circledast g \circledast a^{\flat} \]
 = c_a(g \circledast h) \]
 
 而 \( c_{a^{\flat}} \) 是 \( c_a \) 的逆函数，所以 \( c_a \) 是自同构，称为由 \( a \) 诱导的内自同构
-（inner automorphism）。当 \( G \) 是交换群时，\( c_a(g) = g \)，所以这些内自同构都是恒等函数。
+（inner automorphism）。当 \( G \) 是交换群时，\( c_a(g) = g \) ，所以这些内自同构都是恒等函数。
 
 ** 通过双射搬运群结构
 
@@ -242,14 +242,14 @@ c_a(g) := a \circledast g \circledast a^{\flat} \]
 := \varphi\bigl(\varphi^{-1}(x)
 \circledast \varphi^{-1}(y)\bigr), \qquad x, y \in X \]
 
-若 \( x = \varphi(g) \)、\( y = \varphi(h) \)、\( z = \varphi(k) \)，那么
+若 \( x = \varphi(g) \) 、\( y = \varphi(h) \) 、\( z = \varphi(k) \) ，那么
 
 \[ (x \ast y) \ast z
 = \varphi\bigl((g \circledast h) \circledast k\bigr)
 = \varphi\bigl(g \circledast (h \circledast k)\bigr)
 = x \ast (y \ast z) \]
 
-所以这个运算满足结合律。它的单位元是 \( \varphi(e) \)，而 \( x \) 的逆元是
+所以这个运算满足结合律。它的单位元是 \( \varphi(e) \) ，而 \( x \) 的逆元是
 
 \[ \varphi\left(\left(\varphi^{-1}(x)\right)^{\flat}\right) \]
 
@@ -261,7 +261,7 @@ c_a(g) := a \circledast g \circledast a^{\flat} \]
 :ID:       cec7ef6b-1c45-4034-a342-207ef36d5066
 :END:
 
-设 \( K := \ker(\varphi) \)。前面已经证明，两个元素具有相同的像，当且仅当它们属于同一个
+设 \( K := \ker(\varphi) \) 。前面已经证明，两个元素具有相同的像，当且仅当它们属于同一个
 \( K \) 的陪集。因此 \( \varphi \) 在每个陪集上取值不变，可以把对元素 \( g \) 的依赖改为对陪集
 \( g \circledast K \) 的依赖。又因为核是正规子群，\( G/K \) 是群，所以可以定义
 
@@ -272,7 +272,7 @@ g \circledast K \mapsto \varphi(g) \]
 让函数从这些等价类出发。在这里，等价类恰好是核的陪集，商集 \( G/K \) 还继承了群结构，
 而诱导函数 \( \widetilde{\varphi} \) 也保持群运算。
 
-这个定义与代表元的选择无关。对任意 \( g, h \in G \)，
+这个定义与代表元的选择无关。对任意 \( g, h \in G \) ，
 
 \[ \widetilde{\varphi}\bigl((g \circledast K) \circledast (h \circledast K)\bigr)
 = \widetilde{\varphi}\bigl((g \circledast h) \circledast K\bigr)
@@ -280,29 +280,31 @@ g \circledast K \mapsto \varphi(g) \]
 = \varphi(g) \ast \varphi(h) \]
 
 所以 \( \widetilde{\varphi} \) 是同态。如果
-\( \widetilde{\varphi}(g \circledast K) = \widetilde{\varphi}(h \circledast K) \)，那么
-\( \varphi(g) = \varphi(h) \)，因而 \( g \circledast K = h \circledast K \)；所以它还是单射。它的像为
+\( \widetilde{\varphi}(g \circledast K) = \widetilde{\varphi}(h \circledast K) \) ，那么
+\( \varphi(g) = \varphi(h) \) ，因而 \( g \circledast K = h \circledast K \) ；所以它还是单射。它的像为
 
 \[ \operatorname{im}(\widetilde{\varphi})
 = \operatorname{im}(\varphi) \]
 
 若记 \( p: G \to G/K \) 为商同态，那么
 
-\[ \begin{tikzcd}
+\begin{equation*}
+\begin{tikzcd}
 G \arrow[r, "\varphi"] \arrow[d, "p"'] & G' \\
 G/K \arrow[ur, "\widetilde{\varphi}"']
-\end{tikzcd} \]
+\end{tikzcd}
+\end{equation*}
 
 是交换图，即
 
 \[ \varphi = \widetilde{\varphi} \circ p \]
 
-由于 \( p \) 是满射，这个等式也唯一确定了 \( \widetilde{\varphi} \)：每个陪集都形如
-\( p(g) = g \circledast K \)，所以必须有
+由于 \( p \) 是满射，这个等式也唯一确定了 \( \widetilde{\varphi} \) ：每个陪集都形如
+\( p(g) = g \circledast K \) ，所以必须有
 
 \[ \widetilde{\varphi}(g \circledast K) = \varphi(g) \]
 
-因此，把 \( \widetilde{\varphi} \) 的陪域限制为 \( \operatorname{im}(\varphi) \)，便得到同构
+因此，把 \( \widetilde{\varphi} \) 的陪域限制为 \( \operatorname{im}(\varphi) \) ，便得到同构
 
 \[ G/\ker(\varphi) \cong \operatorname{im}(\varphi) \]
 

@@ -9,27 +9,27 @@
 :ID:       10ed4211-1ab3-43ff-b0f4-ed1dfa143f5c
 :END:
 
-给定 \( m \in \mathbb{N}^{\times} \) 和 \( n \in \mathbb{N} \)。如果存在
-\( k \in \mathbb{N} \)，使得
+给定 \( m \in \mathbb{N}^{\times} \) 和 \( n \in \mathbb{N} \) 。如果存在
+\( k \in \mathbb{N} \) ，使得
 
 \[ n = m k \]
 
-则称 \( m \) 整除 \( n \)，记为
+则称 \( m \) 整除 \( n \) ，记为
 
 \[ m \mid n \Longleftrightarrow \exists k \in \mathbb{N}, \quad n = m k \]
 
 此时 \( m \) 称为 \( n \) 的约数（divisor，也称因数），\( n \) 称为 \( m \) 的倍数
 （multiple）。
 由[[id:2e1d16ce-e0a6-45ae-af52-84bcab57a137::乘法消去律][乘法消去律]]，\( k \) 是唯一的，称为 \( n \) 除以 \( m \) 的商（quotient），记为
-\( k = n/m \)。如果不存在这样的 \( k \)，则记为 \( m \nmid n \)。
+\( k = n/m \) 。如果不存在这样的 \( k \) ，则记为 \( m \nmid n \) 。
 
-这里要求 \( m > 0 \)。特别地，若允许 \( m = 0 \)，那么 \( 0 \mid 0 \) 虽然成立，但相应的
+这里要求 \( m > 0 \) 。特别地，若允许 \( m = 0 \) ，那么 \( 0 \mid 0 \) 虽然成立，但相应的
 商不唯一，无法与除法算法中的商相容。
 
 * 与除法算法的关系
 
-前面的[[id:8a8b881a-12f9-4e97-8d71-81380f1ad6f6][除法算法]]说明：给定 \( m \in \mathbb{N}^{\times} \) 和 \( n \in \mathbb{N} \)，存在唯一的
-\( q, r \in \mathbb{N} \)，使得
+前面的[[id:8a8b881a-12f9-4e97-8d71-81380f1ad6f6][除法算法]]说明：给定 \( m \in \mathbb{N}^{\times} \) 和 \( n \in \mathbb{N} \) ，存在唯一的
+\( q, r \in \mathbb{N} \) ，使得
 
 \[ n = q m + r, \qquad r < m \]
 
@@ -41,7 +41,7 @@
 
 * 基本性质
 
-设 \( a, b, c \in \mathbb{N}^{\times} \)，\( n \in \mathbb{N} \)。直接由定义可得
+设 \( a, b, c \in \mathbb{N}^{\times} \) ，\( n \in \mathbb{N} \) 。直接由定义可得
 
 \[ a \mid a, \qquad 1 \mid n, \qquad a \mid 0 \]
 
@@ -51,13 +51,13 @@
 
 它也与加法和乘法相容：
 
-\[ \begin{aligned}
+\begin{align*}
 a \mid b &\Longrightarrow a \mid b c, \\
 a \mid b, \ a \mid c &\Longrightarrow a \mid (b + c), \\
 a \mid b, \ a \mid c, \ c \leq b &\Longrightarrow a \mid (b - c).
-\end{aligned} \]
+\end{align*}
 
-这些性质都来自同一个简单事实：如果 \( b = a r \) 且 \( c = a s \)，那么
+这些性质都来自同一个简单事实：如果 \( b = a r \) 且 \( c = a s \) ，那么
 
 \[ b + c = a(r + s) \]
 
@@ -69,11 +69,11 @@ a \mid b, \ a \mid c, \ c \leq b &\Longrightarrow a \mid (b - c).
 
 \[ a \mid b, \ b \mid a \Longrightarrow a = b \]
 
-事实上，对正自然数有 \( a \mid b \Longrightarrow a \leq b \)。因此双向整除同时给出
-\( a \leq b \) 和 \( b \leq a \)，只能有 \( a = b \)。
+事实上，对正自然数有 \( a \mid b \Longrightarrow a \leq b \) 。因此双向整除同时给出
+\( a \leq b \) 和 \( b \leq a \) ，只能有 \( a = b \) 。
 
 因此整除关系在 \( \mathbb{N}^{\times} \) 上是一个[[id:a507a4cd-c4ee-493e-9037-1d8d3b73f6dd][偏序]]。它一般不是全序；例如
-\( 2 \nmid 3 \) 且 \( 3 \nmid 2 \)，所以 \( 2 \) 和 \( 3 \) 在整除关系下不可比。
+\( 2 \nmid 3 \) 且 \( 3 \nmid 2 \) ，所以 \( 2 \) 和 \( 3 \) 在整除关系下不可比。
 
 在整除关系的基础上，还可以定义并计算[[id:d8efd345-674e-490d-ab79-2147dfbec477][最大公约数]]。
 

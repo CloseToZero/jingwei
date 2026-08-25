@@ -13,18 +13,18 @@
 \( \circledast: G \times G \to G \) 是一个二元运算。如果满足
 下列条件，就称 \( (G, \circledast) \) 是一个群（group）：
 
-1. 运算满足[[id:ca68574c-ad68-488d-8f9b-520a7ad37526][结合律]]，即对任意 \( g, h, k \in G \)，有
-   \( (g \circledast h) \circledast k = g \circledast (h \circledast k) \)；
-2. 运算具有[[id:8dffcbcc-4ee2-4f29-9b36-c816fa755974][单位元]] \( e \in G \)，即 \( e \circledast g = g \circledast e = g \)；
-3. 每个 \( g \in G \) 都有逆元 \( h \in G \)，使
-   \( g \circledast h = h \circledast g = e \)。
+1. 运算满足[[id:ca68574c-ad68-488d-8f9b-520a7ad37526][结合律]]，即对任意 \( g, h, k \in G \) ，有
+   \( (g \circledast h) \circledast k = g \circledast (h \circledast k) \) ；
+2. 运算具有[[id:8dffcbcc-4ee2-4f29-9b36-c816fa755974][单位元]] \( e \in G \) ，即 \( e \circledast g = g \circledast e = g \) ；
+3. 每个 \( g \in G \) 都有逆元 \( h \in G \) ，使
+   \( g \circledast h = h \circledast g = e \) 。
 
 
 如果运算还满足交换律，就称它为交换群或阿贝尔群（Abelian group）。上下文明确时，通常直接用
 \( G \) 表示整个群，不再把运算写在记号中。
 
-一般的群采用乘法记号：把 \( g \circledast h \) 简写成 \( gh \)，单位元仍写作 \( e \)，逆元写作
-\( g^{-1} \)。交换群也常采用加法记号，此时单位元写作 \( 0 \)，\( g \) 的逆元写作 \( -g \)。
+一般的群采用乘法记号：把 \( g \circledast h \) 简写成 \( gh \) ，单位元仍写作 \( e \) ，逆元写作
+\( g^{-1} \) 。交换群也常采用加法记号，此时单位元写作 \( 0 \) ，\( g \) 的逆元写作 \( -g \) 。
 这只是两套记号；能否交换取决于交换律，而不取决于运算被写成加法还是乘法。
 
 * 群的基本性质
@@ -40,7 +40,7 @@
 :ID:       ea46b49f-5526-48db-9c14-e1d9ed8c1ed2
 :END:
 
-[[id:8dffcbcc-4ee2-4f29-9b36-c816fa755974][单位元若存在就是唯一的]]。对任意 \( g \in G \)，逆元也唯一：如果 \( h \) 和 \( k \) 都是
+[[id:8dffcbcc-4ee2-4f29-9b36-c816fa755974][单位元若存在就是唯一的]]。对任意 \( g \in G \) ，逆元也唯一：如果 \( h \) 和 \( k \) 都是
 \( g \) 的逆元，那么
 
 \[ h = h \circledast e
@@ -49,7 +49,7 @@
 = e \circledast k
 = k \]
 
-因此可以无歧义地把它记作 \( g^{\flat} \)。特别地，单位元的逆元仍是单位元：
+因此可以无歧义地把它记作 \( g^{\flat} \) 。特别地，单位元的逆元仍是单位元：
 
 \[ e^{\flat} = e \]
 
@@ -58,15 +58,15 @@
 :ID:       ec5ba467-9af8-46d5-b285-6bea49ba20aa
 :END:
 
-对任意 \( a, b \in G \)，下面两个方程都有唯一解：
+对任意 \( a, b \in G \) ，下面两个方程都有唯一解：
 
 \[ a \circledast x = b
 \Longleftrightarrow x = a^{\flat} \circledast b, \qquad
 y \circledast a = b
 \Longleftrightarrow y = b \circledast a^{\flat} \]
 
-例如，\( x = a^{\flat} \circledast b \) 确实满足 \( a \circledast x = b \)。反过来，如果
-\( a \circledast x = b \)，那么
+例如，\( x = a^{\flat} \circledast b \) 确实满足 \( a \circledast x = b \) 。反过来，如果
+\( a \circledast x = b \) ，那么
 
 \[ x = (a^{\flat} \circledast a) \circledast x
 = a^{\flat} \circledast (a \circledast x)
@@ -86,12 +86,12 @@ x \circledast a = y \circledast a \Longrightarrow x = y \]
 :ID:       519b7d17-524b-42b1-a774-992655b94785
 :END:
 
-设非空集合 \( H \) 上的运算满足结合律，并且具有单位元 \( e \)。若 \( h' \circledast g = e \)，就称
+设非空集合 \( H \) 上的运算满足结合律，并且具有单位元 \( e \) 。若 \( h' \circledast g = e \) ，就称
 \( h' \) 是 \( g \) 的左逆元；这里的“左”是说 \( h' \) 出现在 \( g \) 的左侧。类似地，若
-\( g \circledast h' = e \)，就称 \( h' \) 是 \( g \) 的右逆元。
+\( g \circledast h' = e \) ，就称 \( h' \) 是 \( g \) 的右逆元。
 
 如果 \( H \) 中每个元素都有左逆元，那么每个左逆元也是右逆元，因而 \( H \) 已经是群。下面证明
-这一点。设 \( h' \) 是 \( h \) 的左逆元，再取 \( h' \) 的一个左逆元 \( h'' \)，则
+这一点。设 \( h' \) 是 \( h \) 的左逆元，再取 \( h' \) 的一个左逆元 \( h'' \) ，则
 
 \[ h'' \circledast h' = e, \qquad h' \circledast h = e \]
 
@@ -103,7 +103,7 @@ x \circledast a = y \circledast a \Longrightarrow x = y \]
 = e \circledast h
 = h \]
 
-从而 \( h \circledast h' = h'' \circledast h' = e \)。只假设每个元素都有右逆元时，结论完全类似。
+从而 \( h \circledast h' = h'' \circledast h' = e \) 。只假设每个元素都有右逆元时，结论完全类似。
 
 ** 乘积的逆元
 :PROPERTIES:
@@ -133,7 +133,7 @@ x \circledast a = y \circledast a \Longrightarrow x = y \]
 
 ** 平凡群
 
-单元素集合 \( \{ e \} \) 上只有一种二元运算，即 \( e \circledast e = e \)；它构成一个交换群，
+单元素集合 \( \{ e \} \) 上只有一种二元运算，即 \( e \circledast e = e \) ；它构成一个交换群，
 称为平凡群。
 
 ** 置换群
@@ -141,14 +141,14 @@ x \circledast a = y \circledast a \Longrightarrow x = y \]
 :ID:       63f62c90-1c92-45d0-8fbf-e26840077d66
 :END:
 
-设 \( X \) 是集合。所有从 \( X \) 到自身的[[id:51d3587c-f0cb-4902-a7a5-0a1392313f92][双射]]组成集合 \( S_X \)。在[[id:d95641d3-d8c5-4fee-9495-3072c41d0520][函数复合]]下，
-\( S_X \) 构成群：单位元是 \( \operatorname{id}_X \)，群中的逆元就是逆函数。当 \( X \) 有限时，
+设 \( X \) 是集合。所有从 \( X \) 到自身的[[id:51d3587c-f0cb-4902-a7a5-0a1392313f92][双射]]组成集合 \( S_X \) 。在[[id:d95641d3-d8c5-4fee-9495-3072c41d0520][函数复合]]下，
+\( S_X \) 构成群：单位元是 \( \operatorname{id}_X \) ，群中的逆元就是逆函数。当 \( X \) 有限时，
 \( S_X \) 的元素称为 \( X \) 上的[[id:f5e15866-678c-4c31-8a22-eb65f010f3c1][置换]]，\( S_X \) 称为 \( X \) 上的置换群（permutation group）。
 
 函数复合一般不能交换，所以置换群也未必是交换群。它说明群的运算不必是通常意义下的数值乘法；
 一个群也可以由某个对象的可逆变换组成。
 
-对 \( n \in \mathbb{N} \)，约定 \( [0] := \emptyset \)，而当 \( n \geq 1 \) 时令
+对 \( n \in \mathbb{N} \) ，约定 \( [0] := \emptyset \) ，而当 \( n \geq 1 \) 时令
 
 \[ [n] := \{ 1, \ldots, n \} \]
 
@@ -166,7 +166,7 @@ x \circledast a = y \circledast a \Longrightarrow x = y \]
 \Phi(\sigma) := \alpha \circ \sigma \circ \alpha^{-1},
 \qquad \sigma \in S_X \]
 
-对任意 \( \sigma, \tau \in S_X \)，
+对任意 \( \sigma, \tau \in S_X \) ，
 
 \[ \Phi(\sigma \circ \tau)
 = \alpha \circ \sigma \circ \tau \circ \alpha^{-1}
@@ -182,14 +182,14 @@ x \circledast a = y \circledast a \Longrightarrow x = y \]
 
 是它的逆函数。因此 \( \Phi \) 是保持群运算的
 双射，也就是一个[[id:7912c576-ce75-44ca-87be-3cb0262b1f5c][群同构]]。所以，忽略元素的名字以后，任意 \( n \) 元集合上的置换群都具有相同的群结构，
-统一记作 \( S_n \)。当 \( n \geq 1 \) 时，一个置换 \( \sigma \in S_n \) 由函数值
+统一记作 \( S_n \) 。当 \( n \geq 1 \) 时，一个置换 \( \sigma \in S_n \) 由函数值
 \( \sigma(1), \ldots, \sigma(n) \) 唯一确定。\( \sigma(1) \) 有 \( n \) 种选择；选定以后，
-\( \sigma(2) \) 只能从剩余的 \( n-1 \) 个元素中选择，依此类推，共有
+\( \sigma(2) \) 只能从剩余的 \( n - 1 \) 个元素中选择，依此类推，共有
 
-\[ n(n-1) \cdots 1 = n! \]
+\[ n(n - 1) \cdots 1 = n! \]
 
-种置换。当 \( n = 0 \) 时，\( S_0 \) 只含空函数，而 \( 0! = 1 \)。因此对所有
-\( n \in \mathbb{N} \)，\( S_n \) 都含有 \( n! \) 个元素。
+种置换。当 \( n = 0 \) 时，\( S_0 \) 只含空函数，而 \( 0! = 1 \) 。因此对所有
+\( n \in \mathbb{N} \) ，\( S_n \) 都含有 \( n! \) 个元素。
 
 ** 逐点运算与直积
 :PROPERTIES:
@@ -200,15 +200,15 @@ x \circledast a = y \circledast a \Longrightarrow x = y \]
 
 \[ (f \circledast h)(x) := f(x) \circledast h(x) \]
 
-也构成群。它的单位元是常值函数 \( x \mapsto e \)，而
+也构成群。它的单位元是常值函数 \( x \mapsto e \) ，而
 
 \[ f^{\flat}(x) := f(x)^{\flat} \]
 
 给出 \( f \) 的逆元。当 \( X = \emptyset \) 时，\( G^X \) 只含空函数，因而得到平凡群。
 
-当 \( X = \{ 1, \ldots, m \} \) 时，这个构造给出逐坐标运算的群 \( G^m \)。
+当 \( X = \{ 1, \ldots, m \} \) 时，这个构造给出逐坐标运算的群 \( G^m \) 。
 
-进一步允许每个坐标分别取值于群 \( G_1, \ldots, G_m \)，就得到[[id:7b045198-91ac-4e69-924a-3f73e886aad6][笛卡尔积]]
+进一步允许每个坐标分别取值于群 \( G_1, \ldots, G_m \) ，就得到[[id:7b045198-91ac-4e69-924a-3f73e886aad6][笛卡尔积]]
 \( G_1 \times \cdots \times G_m \) 上的运算
 
 \[ (g_1, \ldots, g_m) \circledast (h_1, \ldots, h_m)
@@ -218,7 +218,7 @@ x \circledast a = y \circledast a \Longrightarrow x = y \]
 
 ** 自然数为什么还不是群
 
-\( (\mathbb{N}, +) \) 已经具有结合律和单位元 \( 0 \)，但非零自然数在 \( \mathbb{N} \) 中没有
+\( (\mathbb{N}, +) \) 已经具有结合律和单位元 \( 0 \) ，但非零自然数在 \( \mathbb{N} \) 中没有
 加法逆元，所以它不是群。类似地，\( (\mathbb{N}^{\times}, \cdot) \) 中除 \( 1 \) 外的元素都没有
 乘法逆元。因此，为了使减法和除法不再受到这些限制，需要把自然数扩充到更大的数系。
 
@@ -240,8 +240,8 @@ x \circledast a = y \circledast a \Longrightarrow x = y \]
 h \in H \Longrightarrow h^{\flat} \in H \]
 
 那么 \( H \) 连同限制在其上的同一个运算也构成群，称为 \( G \) 的子群（subgroup），记作
-\( H \leq G \)。结合律会从 \( G \) 自动继承；而由于 \( H \) 非空，任取 \( h \in H \)，便有
-\( e = h^{\flat} \circledast h \in H \)，所以不必再单独要求 \( H \) 包含单位元。条件
+\( H \leq G \) 。结合律会从 \( G \) 自动继承；而由于 \( H \) 非空，任取 \( h \in H \) ，便有
+\( e = h^{\flat} \circledast h \in H \) ，所以不必再单独要求 \( H \) 包含单位元。条件
 \( H \circledast H \subseteq H \) 正是说 \( H \) 对群运算[[id:42f060a0-26e3-4f9d-a35c-f6526bd360e2][封闭]]。
 
 ** 基本例子
@@ -249,10 +249,10 @@ h \in H \Longrightarrow h^{\flat} \in H \]
 :ID:       dbb3b437-3920-4911-893b-d74e20c52c12
 :END:
 
-最小的子群是平凡子群 \( \{ e \} \)，最大的子群是 \( G \) 本身。
+最小的子群是平凡子群 \( \{ e \} \) ，最大的子群是 \( G \) 本身。
 
 更一般地，设 \( (H_\alpha)_{\alpha \in A} \) 是 \( G \) 的一族子群，那么
 
 \[ \bigcap_{\alpha \in A} H_\alpha \leq G \]
 
-因为单位元属于每个 \( H_\alpha \)，而乘法和取逆元都不会离开其中任何一个 \( H_\alpha \)。
+因为单位元属于每个 \( H_\alpha \) ，而乘法和取逆元都不会离开其中任何一个 \( H_\alpha \) 。
