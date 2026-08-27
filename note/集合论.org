@@ -107,6 +107,18 @@
 
 \[ A \cup B := \{ x \in A \lor x \in B \} \]
 
+* 对称差
+:PROPERTIES:
+:ID:       a8010f26-4209-4066-98cf-a3285185efc2
+:END:
+
+给定集合 \( A, B \) ，它们的对称差（symmetric difference）定义为
+
+\[ A \mathbin{\triangle} B
+:= (A \setminus B) \cup (B \setminus A) \]
+
+因此，\( A \mathbin{\triangle} B \) 恰好由只属于 \( A, B \) 中一个集合的元素组成。
+
 * 集合操作的性质
 
 令 \( X, Y, Z \) 为某个上下文集合的子集，则如下性质成立：

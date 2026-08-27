@@ -33,6 +33,9 @@
 则这些图像必有一个对应的函数。
 
 * 函数的相等
+:PROPERTIES:
+:ID:       957b36fc-34cb-4993-aeb2-355777668a97
+:END:
 
 两个函数 \( f: X \to Y, g: U \to V \) 相等当且仅当 \( X = U, Y = V, \forall x \in X, f(x) = g(x) \) 。
 
@@ -274,3 +277,24 @@ f^{-1}: \mathcal{P}(Y) \to \mathcal{P}(X), \quad B \mapsto f^{-1}(B) \]
 最后，如果 \( U \subseteq Y \subseteq V \) ，按照前面根据上下文按需改变陪域的约定，有
 
 \[ \mathrm{Funct}(X, U) \subseteq \mathrm{Funct}(X, Y) \subseteq \mathrm{Funct}(X, V) \]
+
+* 函数的支集
+:PROPERTIES:
+:ID:       713f81a4-f537-4e0f-b9dd-7c05c8d78b52
+:END:
+
+设集合 \( Y \) 中指定了一个元素 \( 0_Y \) ，函数 \( f: X \to Y \) 的支集（support）定义为
+
+\[ \operatorname{supp}(f)
+:= \{ x \in X; f(x) \neq 0_Y \} \]
+
+支集记录 \( f \) 取非零值的所有位置。特别地，\( \operatorname{supp}(f) = \emptyset \) 当且仅当
+\( f \) 是常值函数 \( x \mapsto 0_Y \) 。若 \( \operatorname{supp}(f) \) 是有限集，就称 \( f \)
+具有有限支集（finite support），也就是说，\( f \) 只有有限多个位置取非零值。
+
+若 \( A \subseteq X \) ，则[[id:d10784d1-c548-4ec6-b2c5-fb58d88450a7][特征函数]] \( \chi_A: X \to \{ 0, 1 \} \) 满足
+
+\[ \operatorname{supp}(\chi_A) = A \]
+
+这里没有在 \( X \) 上指定拓扑，所以支集就是非零点组成的集合；在拓扑语境中，通常把这个
+集合的闭包称为支集。
