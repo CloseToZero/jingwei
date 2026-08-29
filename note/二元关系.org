@@ -63,6 +63,9 @@
 （equivalence relation），通常记为 \( \sim \) 。
 
 ** 等价类和商集
+:PROPERTIES:
+:ID:       12c84abc-99a5-4547-95cb-6c29f9887458
+:END:
 
 对于 \( x \in X \) ，定义
 

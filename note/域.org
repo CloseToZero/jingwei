@@ -158,3 +158,48 @@ x \neq 0 \Longrightarrow x^{-1} \in L \]
 并且
 
 \[ x > y > 0 \Longrightarrow 0 < x^{-1} < y^{-1} \]
+
+* 平方根
+:PROPERTIES:
+:ID:       5234d375-ee00-436c-99bd-6c7f83abe1f8
+:END:
+
+设 \( K \) 是有序域，\( a \in K \) 且 \( a \geq 0 \) 。若存在 \( b \in K \) 满足
+
+\[ b \geq 0, \qquad b^2 = a \]
+
+就称 \( b \) 是 \( a \) 在 \( K \) 中的平方根（square root），记作 \( \sqrt{a} \) 。
+
+平方根至多有一个。若 \( b, c \geq 0 \) 且 \( b^2 = c^2 = a \) ，则
+
+\[ 0 = b^2 - c^2 = (b - c)(b + c) \]
+
+域没有零因子，所以 \( b = c \) 或 \( b = -c \) 。第二种情形结合 \( b, c \geq 0 \) 仍然只能给出
+\( b = c = 0 \) ，因此非负解总是唯一的。
+
+这里的存在性不能省略，也不是有序域公理自动保证的。负元素不可能有平方根，因为域中
+非零元素的平方为正；即使 \( a > 0 \) ，方程 \( x^2 = a \) 也未必在 \( K \) 中有解。
+[[id:d6fa3eeb-be4c-4b30-912c-83dedeb9306f][有理数中的平方根]]给出了 \( \sqrt{2} \notin \mathbb{Q} \) 这一具体例子。
+
+若 \( a > 0 \) 且 \( \sqrt{a} \) 存在，那么 \( \sqrt{a} > 0 \) 。方程 \( x^2 = a \) 的全部解恰好是
+
+\[ x = \sqrt{a} \quad\text{或}\quad x = -\sqrt{a} \]
+
+因为
+
+\[ x^2 = a
+\Longleftrightarrow
+(x - \sqrt{a})(x + \sqrt{a}) = 0 \]
+
+而域没有零因子。对 \( a = 0 \) ，约定 \( \sqrt{0} = 0 \) 。
+
+若 \( \sqrt{a} \) 与 \( \sqrt{b} \) 都存在，则 \( \sqrt{ab} \) 也存在，并且
+
+\[ \sqrt{ab} = \sqrt{a}\sqrt{b}, \qquad a, b \geq 0 \]
+
+因为 \( \sqrt{a}\sqrt{b} \geq 0 \) ，并且它的平方等于 \( ab \) ；平方根的唯一性随即给出等式。
+同理，对任意 \( x \in K \) ，
+
+\[ \sqrt{x^2} = \lvert x \rvert \]
+
+因为 \( \lvert x \rvert \geq 0 \) 且 \( \lvert x \rvert^2 = x^2 \) 。
