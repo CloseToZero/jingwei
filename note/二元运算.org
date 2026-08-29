@@ -163,6 +163,31 @@ m \cdot (n \cdot a) &= (m n) \cdot a, \\
 n \cdot a + n \cdot b &= n \cdot (a + b)
 \end{align*}
 
+** 整数次幂
+:PROPERTIES:
+:ID:       0051f0fe-808a-4644-aba9-eca4b2a709be
+:END:
+
+自然数次幂只需要结合律和单位元。若元素 \( a \) 还可逆，就可以用逆元补上负整数次幂。对
+\( n \in \mathbb{N}^{\times} \) ，定义
+
+\[ a^{-n} := \left(a^{\flat}\right)^n \]
+
+特别地， \( a^{-1} = a^{\flat} \) 。这个定义与原有的自然数次幂合在一起，就给出了
+\( a^k \) 对每个 \( k \in \mathbb{Z} \) 的含义。
+
+这样定义以后，自然数次幂的指数律扩张为
+
+\[ a^m \circledast a^n = a^{m + n}, \qquad
+\left(a^m\right)^n = a^{mn}, \qquad m, n \in \mathbb{Z}. \]
+
+若可逆元素 \( a, b \) 彼此交换，则对每个 \( n \in \mathbb{Z} \) 还有
+
+\[ (a \circledast b)^n = a^n \circledast b^n. \]
+
+在域的乘法中，每个非零元素都可逆，所以非零元素的幂可以取任意整数指数；零元素的负整数
+次幂没有定义，因为零没有乘法逆元。
+
 * 逐点诱导的运算
 :PROPERTIES:
 :ID:       994a5ce7-13a9-4631-be33-c214dc20d8d9
