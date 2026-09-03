@@ -1,0 +1,657 @@
+:PROPERTIES:
+:ID:       417c7944-3e4c-4060-b464-170fab3bc4c0
+:END:
+#+filetags: :数学:分析:数系:
+#+title: 实数
+
+* 从有理数到实数
+:PROPERTIES:
+:ID:       c1a196ce-5a2e-4ab9-b103-a5e0b1f2613d
+:END:
+
+有理数已经可以任意进行四则运算，但仍不足以解出所有代数方程。例如，
+[[id:d6fa3eeb-be4c-4b30-912c-83dedeb9306f][有理数中的平方根]]说明
+
+\[ \sqrt{2} \notin \mathbb{Q} \]
+
+逐个补入缺少的方程解并不能揭示分析所需要的结构。把有序数系想象成一条从左到右递增的
+数轴，极限和逼近经常让一批数从一侧越来越接近某个边界。设非空集合 \( A \) 记录了边界
+左侧的这些数，那么 \( A \) 的上界都位于边界右侧；若这些上界中有最小者，这个最小上界就
+精确地落在边界上。
+
+反过来，若 \( A \) 有上界，却没有最小的上界，那么每个上界都还能向左移动一些而继续成为
+上界，但始终找不到真正的边界点。这意味着当前数系中缺少了本应位于那里的数，也就是序中
+出现了“空隙”。[[id:535546a3-5830-408d-80b2-e159f1230a65][序完备性]]要求所有这样的边界都存在，从而排除这种空隙。
+
+实数域 \( \mathbb{R} \) 将 \( \mathbb{Q} \) 扩张成一个序完备的[[id:bb756c65-7d30-4eb1-918a-6fdc1cdc5691][有序域]]。
+序完备性不仅补入 \( \sqrt{2} \) 这类无理数，还一次性填补了有理数序中的所有空隙。
+
+* 有理数为何不序完备
+
+为了看见 \( \mathbb{Q} \) 中缺少的空隙，考虑
+
+\[ A := \{ x \in \mathbb{Q}; x > 0, \quad x^2 < 2 \}, \qquad
+B := \{ x \in \mathbb{Q}; x > 0, \quad x^2 > 2 \} \]
+
+集合 \( A \) 和 \( B \) 都非空，因为 \( 1 \in A \) 且 \( 2 \in B \) 。若 \( a \in A \) 且
+\( b \in B \) ，则 \( a < b \) ；否则 \( a \geq b > 0 \) 会推出
+\( a^2 \geq b^2 > 2 \) ，与 \( a \in A \) 矛盾。
+
+如果 \( \mathbb{Q} \) 序完备，Dedekind 分割性质将给出一个 \( c \in \mathbb{Q} \) ，使
+
+\[ a \leq c \leq b, \qquad a \in A, \quad b \in B \]
+
+也就是说， \( c \) 同时是 \( A \) 的上界和 \( B \) 的下界。由于 \( \sqrt{2} \notin \mathbb{Q} \) ，
+\( c^2 \neq 2 \) 。下面分别说明 \( c^2 < 2 \) 和 \( c^2 > 2 \) 都不可能。
+
+定义
+
+\[ \xi := \frac{2c + 2}{c + 2} \]
+
+因为 \( c \geq 1 \) ，分子和分母都为正，所以 \( \xi > 0 \) 。直接计算得到
+
+\begin{align*}
+\xi - c &= \frac{2 - c^2}{c + 2}, \\
+\xi^2 - 2 &= \frac{2(c^2 - 2)}{(c + 2)^2}.
+\end{align*}
+
+若 \( c^2 < 2 \) ，第一个等式给出 \( \xi > c \) ，第二个等式给出 \( \xi^2 < 2 \) ，所以
+\( \xi \in A \) 。这与 \( c \) 是 \( A \) 的上界矛盾。
+
+若 \( c^2 > 2 \) ，同样有 \( \xi < c \) 且 \( \xi^2 > 2 \) ，所以 \( \xi \in B \) 。这与
+\( c \) 是 \( B \) 的下界矛盾。
+
+因此不存在能够分隔 \( A \) 和 \( B \) 的有理数， \( \mathbb{Q} \) 不是序完备的。直观上，缺失的
+分隔点就是 \( \sqrt{2} \) 。
+
+* Dedekind 分割
+
+有理数中的一个空隙可以由它右侧的所有有理数记录。为此，称子集
+\( U \subseteq \mathbb{Q} \) 为一个上分割，如果：
+
+1. \( U \neq \emptyset \) 且 \( U \neq \mathbb{Q} \) ；
+2. 若 \( u \in U \) 且 \( v > u \) ，则 \( v \in U \) ；
+3. \( U \) 没有最小元。
+
+
+这种用边界一侧的有理数集合记录边界的方法称为 Dedekind 分割（Dedekind cut）；这里
+采用的是记录右侧有理数的上分割版本。
+
+第二个条件表示 \( U \) 包含某个边界右侧的所有有理数。第三个条件则要求边界本身不属于
+右侧集合，从而保证边界的表示唯一。若边界是有理数 \( q \) 而又允许 \( U \) 有最小元，那么
+
+\[ \{ x \in \mathbb{Q}; x > q \}, \qquad
+\{ x \in \mathbb{Q}; x \geq q \} \]
+
+会成为表示同一个边界的两个不同集合；若边界是无理数，又根本无法把边界本身放进
+\( \mathbb{Q} \) 的子集中。要求 \( U \) 没有最小元，便统一选择“不包含边界的右侧”，使每个
+边界只对应一个上分割。
+
+令 \( \mathcal{D} \) 表示所有上分割组成的集合。
+
+每个有理数 \( q \) 都确定一个上分割
+
+\[ U_q := \{ x \in \mathbb{Q}; x > q \} \]
+
+而且 \( q \neq r \) 时 \( U_q \neq U_r \) 。因此映射
+
+\[ \iota: \mathbb{Q} \to \mathcal{D}, \qquad
+q \mapsto U_q \]
+
+是单射。以后把 \( q \) 与 \( U_q \) 认作同一个元素。
+
+用右侧集合记录边界会使包含方向与数的大小方向相反：边界越大，
+位于它右侧的有理数越少。因此在 \( \mathcal{D} \) 上定义
+
+\[ U \leq V
+\Longleftrightarrow
+U \supseteq V \]
+
+例如 \( q < r \) 时 \( U_q \supsetneq U_r \) ，所以这个序确实延续了 \( \mathbb{Q} \) 原有的序。
+任意两个上分割必有一个包含另一个：否则可以取 \( u \in U \setminus V \) 和
+\( v \in V \setminus U \) ；若 \( u < v \) ，向上封闭性会给出 \( v \in U \) ，若 \( v < u \) ，
+则会给出 \( u \in V \) ，两种情形都矛盾。因此反向包含序是全序。
+
+上分割的关键优点是缺少的边界已经被集合本身取代。取一个非空分割族
+\( \mathcal{A} \subseteq \mathcal{D} \) ，并假设它有下界 \( L \in \mathcal{D} \) 。令
+
+\[ S := \bigcup_{U \in \mathcal{A}} U \]
+
+因为 \( L \leq U \) 对每个 \( U \in \mathcal{A} \) 成立，按照反向包含序有
+\( U \subseteq L \) ，所以 \( S \subseteq L \neq \mathbb{Q} \) 。集合 \( S \) 非空、向上封闭且没有
+最小元，因此 \( S \) 仍是上分割。
+
+对每个 \( U \in \mathcal{A} \) 都有 \( S \supseteq U \) ，所以 \( S \leq U \) ，即 \( S \) 是
+\( \mathcal{A} \) 的下界。若 \( T \) 是另一个下界，则 \( T \supseteq U \) 对所有
+\( U \in \mathcal{A} \) 成立，进而 \( T \supseteq S \) ，也就是 \( T \leq S \) 。因此
+
+\[ S = \inf(\mathcal{A}) \]
+
+每个非空且有下界的分割族都有下确界；由序完备性的等价刻画， \( \mathcal{D} \) 是序完备的。
+这就是 Dedekind 分割能够填补所有序空隙的原因。
+
+还需要在 \( \mathcal{D} \) 上定义算术运算。记
+
+\[ O := U_0 = \{ q \in \mathbb{Q}; q > 0 \}, \qquad
+I := U_1 = \{ q \in \mathbb{Q}; q > 1 \} \]
+
+它们将分别成为零元和乘法单位元。加法沿用有理数的加法：
+
+\[ U + V := \{ u + v; u \in U, \quad v \in V \} \]
+
+为了得到加法逆元，最直接的想法是把 \( U \) 中的元素逐个取负。但是
+
+\[ \{ -u; u \in U \} \]
+
+位于新边界的左侧并且向下封闭，不是上分割。暂用 \( a \) 表示 \( U \) 所记录的边界；我们
+真正想得到的是
+
+\[ \{ x \in \mathbb{Q}; x > -a \} \]
+
+但 \( a \) 只是帮助理解的边界记号，并不是构造中已经得到的数，不能直接用来给出定义。记
+\( U^{\mathrm{c}} := \mathbb{Q} \setminus U \) 。任取 \( r \in U^{\mathrm{c}} \) ，则 \( r \) 位于
+原边界的左侧，或在原边界是有理数时恰好等于边界。取负后，\( -r \) 位于新边界
+\( -a \) 的右侧或恰好落在新边界上。让 \( r \) 遍历 \( U^{\mathrm{c}} \) ，并收集位于某个
+\( -r \) 右侧的所有有理数，便得到我们想要的集合。条件“\( x \) 位于 \( -r \) 右侧”可以
+写成 \( x > -r \) ，也就是 \( x + r > 0 \) 。因此定义
+
+\[ -U := \{ x \in \mathbb{Q};
+\text{存在 } r \in U^{\mathrm{c}} \text{ 使 } x + r > 0 \} \]
+
+严格不等号保证边界本身不会被放进上分割。例如 \( U = U_q \) 时，这个定义给出
+\( -U = U_{-q} \) ，而不是含有最小元 \( -q \) 的集合。
+
+对 \( U, V \geq O \) ，先定义非负元素的乘法：
+
+\[ U \cdot V := \{ uv; u \in U, \quad v \in V \} \]
+
+一般的乘法再按照符号法则定义：
+
+\begin{equation*}
+U \cdot V := \begin{cases}
+-\bigl((-U) \cdot V\bigr), & U < O, \quad V \geq O, \\
+-\bigl(U \cdot (-V)\bigr), & U \geq O, \quad V < O, \\
+(-U) \cdot (-V), & U < O, \quad V < O.
+\end{cases}
+\end{equation*}
+
+乘法逆元也不能通过逐个取倒数得到：若 \( U \) 记录正边界 \( a \) ，则 \( u > a \) 会给出
+\( u^{-1} < a^{-1} \) ，所以 \( \{ u^{-1}; u \in U \} \) 位于新边界的左侧。我们想得到的是
+
+\[ \{ x \in \mathbb{Q}; x > a^{-1} \} \]
+
+同样不能直接使用这个尚未构造出来的 \( a \) ，而要借助 \( U^{\mathrm{c}} \) 间接表达。取从左侧
+逼近边界的正有理数 \( r \in U^{\mathrm{c}} \) ，条件 \( x > a^{-1} \) 可以写成
+\( x > r^{-1} \) 对某个这样的 \( r \) 成立，也就是 \( xr > 1 \) 。因此对 \( U > O \) 定义
+
+\[ U^{-1} := \{ x \in \mathbb{Q}; x > 0, \quad
+\text{存在 } r \in U^{\mathrm{c}} \text{ 使 } r > 0 \text{ 且 } xr > 1 \} \]
+
+严格不等号保证有理边界的倒数不会成为集合的最小元。
+
+若 \( U < O \) ，则定义
+
+\[ U^{-1} := -\bigl((-U)^{-1}\bigr) \]
+
+对非零有理数 \( q \) 给出的分割 \( U_q \) ，这两个定义都得到
+\( U_q^{-1} = U_{q^{-1}} \) 。零元 \( O \) 没有乘法逆元。
+
+这些运算仍然得到上分割，并使 \( \mathcal{D} \) 成为有序域。验证结合律、分配律和逆元公式需要逐项
+使用有理数中的相应运算规律；构造的要点是所有运算都只依赖分割所确定的边界。嵌入 \( \iota \)
+还满足
+
+\[ \iota(p + q) = \iota(p) + \iota(q), \qquad
+\iota(pq) = \iota(p)\iota(q), \qquad
+p, q \in \mathbb{Q} \]
+
+所以 \( \mathbb{Q} \) 可以作为有序子域保留在新结构中。
+
+定义
+
+\[ \mathbb{R} := \mathcal{D} \]
+
+并配备上面的序、加法和乘法。这样得到的 \( \mathbb{R} \) 是包含 \( \mathbb{Q} \) 的序完备有序域，
+称为实数域；其元素称为实数。
+
+这个扩张在同构意义下唯一。若 \( K \) 是另一个包含 \( \mathbb{Q} \) 的序完备有序域，则下面关于
+阿基米德性质与有理数稠密性的证明同样适用于 \( K \) 。对每个 \( x \in K \) ，记
+
+\[ U_x := \{ q \in \mathbb{Q}; q > x \} \]
+
+有理数稠密性保证 \( x \) 的左右两侧都有有理数，所以 \( U_x \) 非空且不等于
+\( \mathbb{Q} \) 。它显然向上封闭；若 \( q \in U_x \) ，有理数稠密性给出
+\( x < r < q \) 的 \( r \in \mathbb{Q} \) ，所以 \( U_x \) 没有最小元。因此 \( U_x \) 是
+上分割。
+
+若 \( x < y \) ，有理数稠密性给出 \( x < q < y \) 的 \( q \in \mathbb{Q} \) ；此时
+\( q \in U_x \) 而 \( q \notin U_y \) ，所以 \( U_x \neq U_y \) 。\( y < x \) 时同理。因此
+映射 \( x \mapsto U_x \) 是单射；这意味着 \( x \) 由其右侧的有理数唯一确定。
+
+反过来，设 \( U \) 是一个上分割，并记
+
+\[ A := \mathbb{Q} \setminus U \]
+
+由上分割的第一个条件，\( A \) 与 \( U \) 都非空。任取 \( u \in U \) 。若某个
+\( r \in A \) 满足 \( r \geq u \) ，则 \( U \) 的向上封闭性会给出 \( r \in U \) ，与
+\( r \in A \) 矛盾。因此每个 \( r \in A \) 都满足 \( r < u \) ，也就是说，\( U \) 中的每个
+元素都是 \( A \) 的上界。于是可以在 \( K \) 中取
+
+\[ x := \sup(A) \]
+
+下面证明 \( U \) 正是 \( x \) 右侧的有理数集合。若 \( q > x \) 而 \( q \in A \) ，那么因为
+\( x \) 是 \( A \) 的上界，必有 \( q \leq x \) ，这与 \( q > x \) 矛盾。因此
+\( q \notin A \) ，也就是 \( q \in U \) 。所以
+
+\[ \{ q \in \mathbb{Q}; q > x \} \subseteq U \]
+
+反过来，若 \( q \in U \) ，由 \( U \) 没有最小元，可以取 \( u \in U \) 使 \( u < q \) 。
+前面已经说明 \( u \) 是 \( A \) 的上界；由于 \( x \) 是 \( A \) 的最小上界，
+\( x \leq u < q \) ，所以 \( q > x \) 。这就给出
+
+\[ U \subseteq \{ q \in \mathbb{Q}; q > x \} \]
+
+综上，
+
+\[ U = \{ q \in \mathbb{Q}; q > x \} \]
+
+因此每个上分割都来自唯一的 \( x \in K \) 。这个对应保持序和域运算，因而给出一个在
+\( \mathbb{Q} \) 上恒等的有序域同构 \( K \cong \mathbb{R} \) 。
+
+* 实数的自然序
+
+通过前面的嵌入，可以把几个数系依次认作子集：
+
+\[ \mathbb{N} \subseteq \mathbb{Z}
+\subseteq \mathbb{Q} \subseteq \mathbb{R} \]
+
+\( \mathbb{R} \) 上由分割得到的序称为实数的自然序；它限制到前三个数系时就是各自原来的序。
+实数 \( x \) 满足 \( x > 0 \) 或 \( x < 0 \) 时，分别称为正实数或负实数。非负实数的集合记为
+
+\[ \mathbb{R}_{\geq 0} := \{ x \in \mathbb{R}; x \geq 0 \} \]
+
+全序使实数可以沿数轴从左到右排列。数轴向两端没有界，来自下面的阿基米德性质；数轴
+没有空隙，则正是序完备性的直观含义。
+
+* 扩展实数
+
+在讨论无界集合的确界时，加入两个记号会更方便。定义扩展实数集
+
+\[ \overline{\mathbb{R}} := \mathbb{R} \cup \{ -\infty, \infty \} \]
+
+并约定
+
+\[ -\infty < x < \infty, \qquad x \in \mathbb{R} \]
+
+这里的 \( \pm\infty \) 不是实数，只是添加到数轴两端的两个新元素。
+
+实数运算可以部分扩张到 \( \overline{\mathbb{R}} \) 。例如，只要右边没有出现相互冲突的无穷方向，
+就定义
+
+\[ x + \infty := \infty \quad (x > -\infty), \qquad
+x - \infty := -\infty \quad (x < \infty) \]
+
+乘法由非零因子的符号决定。对 \( x \in \overline{\mathbb{R}} \setminus \{ 0 \} \) ，定义
+
+\begin{equation*}
+x \cdot \infty := \begin{cases}
+\infty, & x > 0, \\
+-\infty, & x < 0,
+\end{cases}
+\qquad
+x \cdot (-\infty) := \begin{cases}
+-\infty, & x > 0, \\
+\infty, & x < 0.
+\end{cases}
+\end{equation*}
+
+对 \( x \in \mathbb{R} \) ，还约定
+
+\[ \frac{x}{\infty} = \frac{x}{-\infty} := 0 \]
+
+而对非零实数 \( x \) ，定义
+
+\begin{equation*}
+\frac{x}{0} := \begin{cases}
+\infty, & x > 0, \\
+-\infty, & x < 0.
+\end{cases}
+\end{equation*}
+
+这些只是部分运算。特别地，
+
+\[ \infty - \infty, \qquad
+0 \cdot (\pm\infty), \qquad
+\frac{\pm\infty}{\pm\infty}, \qquad
+\frac{0}{0}, \qquad
+\frac{\pm\infty}{0} \]
+
+都没有定义。因此 \( \overline{\mathbb{R}} \) 不是域，涉及无穷的式子不能像普通实数等式那样任意
+移项或约分。
+
+扩展数轴使每个实数子集都能统一拥有广义确界。若非空集合
+\( A \subseteq \mathbb{R} \) 没有上界，
+定义 \( \sup(A) := \infty \) ；若它没有下界，定义 \( \inf(A) := -\infty \) 。对空集约定
+
+\[ \sup(\emptyset) := -\infty, \qquad
+\inf(\emptyset) := \infty \]
+
+于是每个 \( A \subseteq \mathbb{R} \) 都在 \( \overline{\mathbb{R}} \) 中具有上确界和下确界。
+
+** 确界的逼近刻画
+
+确界的“最小”与“最大”可以改写成一种更适合分析的逼近性质。对任意
+\( A \subseteq \mathbb{R} \) 和 \( x \in \mathbb{R} \) ，有
+
+\[ x < \sup(A)
+\Longleftrightarrow
+\text{存在 } a \in A \text{ 使 } x < a \]
+
+以及
+
+\[ x > \inf(A)
+\Longleftrightarrow
+\text{存在 } a \in A \text{ 使 } x > a \]
+
+证明第一个等价关系时，若 \( x < \sup(A) \) 但所有 \( a \in A \) 都满足 \( a \leq x \) ，那么
+\( x \) 就是 \( A \) 的上界，这与 \( \sup(A) \) 是最小上界矛盾。反过来，若某个
+\( a \in A \) 满足 \( x < a \) ，则 \( x < a \leq \sup(A) \) 。无界集和空集的情形也与前面的
+\( \pm\infty \) 约定相容；下确界的结论同理。
+
+* 阿基米德性质
+
+在有序域 \( K \) 中，把 \( n \in \mathbb{N} \) 认作单位元 \( 1_K \) 的 \( n \) 倍
+\( n \cdot 1_K \) 。若这些元素组成的集合
+
+\[ \{ n \cdot 1_K; n \in \mathbb{N} \}
+= \{ 0_K, 1_K, 1_K + 1_K, \ldots \} \]
+
+没有上界，就称 \( K \) 具有阿基米德性质（Archimedean property）。通常仍将 \( n \cdot 1_K \)
+简写为 \( n \) 。等价地，对任意
+\( a > 0 \) 和 \( b \in K \) ，总存在 \( n \in \mathbb{N} \) 使 \( b < na \) 。
+
+实数域具有阿基米德性质。给定 \( x \in \mathbb{R} \) ，若 \( x < 0 \) ，取 \( n = 0 \) 即有
+\( n > x \) 。以下设 \( x \geq 0 \) ，并考虑
+
+\[ A := \{ n \in \mathbb{N}; n \leq x \} \]
+
+集合 \( A \) 非空且以 \( x \) 为上界，所以 \( s := \sup(A) \) 存在。由确界的逼近刻画，可以取
+\( a \in A \) 使
+
+\[ s - \frac{1}{2} < a \]
+
+于是 \( a + 1 > s \) 。因为 \( s \) 是 \( A \) 的上界， \( a + 1 \notin A \) ，而
+\( a + 1 \in \mathbb{N} \) ，所以按照 \( A \) 的定义只能有 \( a + 1 > x \) 。这就为任意实数
+\( x \) 找到了更大的自然数。
+
+阿基米德性质还有两个常用形式。若 \( \varepsilon > 0 \) ，存在
+\( n \in \mathbb{N}^{\times} \) 使
+
+\[ \frac{1}{n} < \varepsilon \]
+
+否则 \( n \leq 1/\varepsilon \) 对所有正自然数都成立， \( \mathbb{N} \) 就会有上界。由此还可得到：
+若 \( a \geq 0 \) 且
+
+\[ a \leq \frac{1}{n}, \qquad n \in \mathbb{N}^{\times} \]
+
+对每个 \( n \) 都成立，则 \( a = 0 \) 。
+
+* 有理数的稠密性
+
+实数之间无论相隔多近，总能插入一个有理数。更准确地说，若 \( a, b \in \mathbb{R} \) 且
+\( a < b \) ，则存在 \( r \in \mathbb{Q} \) 使
+
+\[ a < r < b \]
+
+先由阿基米德性质取 \( n \in \mathbb{N}^{\times} \) ，使
+
+\[ n > \frac{1}{b - a} \]
+
+于是 \( n(b - a) > 1 \) ，即
+
+\[ na + 1 < nb \]
+
+接下来要在 \( na \) 右侧找到第一个整数。先取 \( M \in \mathbb{N} \) 使 \( M > -na \) ，于是
+\( na + M > 0 \) 。所有大于 \( na + M \) 的自然数组成非空集合；由
+[[id:a751bda9-b52d-4b98-8287-01b8f495842b][良序原理]]，其中有最小元 \( k \) 。最小性给出
+
+\[ k - 1 \leq na + M < k \]
+
+这里 \( na + M > 0 \) 保证 \( k \geq 1 \) ，所以 \( k - 1 \) 确实是自然数。
+
+令 \( m := k - M \in \mathbb{Z} \) ，便有
+
+\[ m - 1 \leq na < m \]
+
+结合 \( na + 1 < nb \) 可得
+
+\[ na < m \leq na + 1 < nb \]
+
+两边除以正数 \( n \) ，得到
+
+\[ a < \frac{m}{n} < b \]
+
+因此取 \( r := m/n \) 即可。这个性质称为 \( \mathbb{Q} \) 在 \( \mathbb{R} \) 中稠密。
+
+* \( n \) 次方根
+
+序完备性保证每个非负实数都有任意正整数次方根。
+设 \( a \in \mathbb{R} \) 满足 \( a \geq 0 \) ，并取
+\( n \in \mathbb{N}^{\times} \) 。我们要证明存在唯一的 \( x \geq 0 \) 使
+
+\[ x^n = a \]
+
+先说明唯一性。若 \( 0 \leq x < y \) ，则
+
+\[ y^n - x^n = (y - x)
+\sum_{k = 0}^{n - 1} y^{n - 1 - k} x^k > 0 \]
+
+所以函数 \( x \mapsto x^n \) 在非负实数上严格递增，不可能有两个不同的非负数具有相同的
+\( n \) 次幂。
+
+下面证明存在性。 \( n = 1 \) 或 \( a = 0 \) 时结论直接成立，所以以下设 \( n \geq 2 \) 且
+\( a > 0 \) 。考虑所有 \( n \) 次幂不超过 \( a \) 的非负实数：
+
+\[ A := \{ x \in \mathbb{R}; x \geq 0, \quad x^n \leq a \} \]
+
+集合 \( A \) 包含 \( 0 \) 。它也有上界：令 \( M := \max\{ 1, a \} \) ，若 \( x > M \) ，则
+\( x > 1 \) 且 \( x > a \) ，从而 \( x^n \geq x > a \) ，所以 \( x \notin A \) 。因此
+
+\[ s := \sup(A) \]
+
+是一个非负实数。我们将分别排除 \( s^n < a \) 和 \( s^n > a \) ，从而迫使 \( s^n = a \) 。
+
+先假设 \( s^n < a \) 。令
+
+\[ C := \sum_{k = 0}^{n - 1} \binom{n}{k} s^k > 0 \]
+
+其中 \( k = 0 \) 对应的项等于 \( 1 \) ，所以 \( C > 0 \) 。取
+
+\[ \varepsilon := \frac{1}{2}
+\min\left\{ 1, \frac{a - s^n}{C} \right\} > 0 \]
+
+于是 \( \varepsilon \leq 1 \) 且 \( \varepsilon C < a - s^n \) 。
+
+由[[id:39d5a501-3139-46b0-85f8-da139f54a6fa][二项式定理]]以及 \( \varepsilon^{n - k} \leq \varepsilon \) ，有
+
+\begin{align*}
+(s + \varepsilon)^n
+&= s^n + \sum_{k = 0}^{n - 1}\binom{n}{k} s^k \varepsilon^{n - k} \\
+&\leq s^n + \varepsilon C < a.
+\end{align*}
+
+所以 \( s + \varepsilon \in A \) ，这与 \( s \) 是 \( A \) 的上界矛盾。因此 \( s^n < a \) 不可能。
+
+再假设 \( s^n > a \) 。此时 \( s > 0 \) 。取
+
+\[ \varepsilon := \frac{1}{2}
+\min\left\{ s, \frac{s^n - a}{n s^{n - 1}} \right\} > 0 \]
+
+于是 \( \varepsilon < s \) 且 \( \varepsilon n s^{n - 1} < s^n - a \) 。
+
+由于 \( 0 \leq s - \varepsilon < s \) ，因式分解给出
+
+\begin{align*}
+s^n - (s - \varepsilon)^n
+&= \varepsilon \sum_{k = 0}^{n - 1} s^{n - 1 - k}(s - \varepsilon)^k \\
+&\leq \varepsilon n s^{n - 1} < s^n - a.
+\end{align*}
+
+所以 \( (s - \varepsilon)^n > a \) 。若 \( x \in A \) 且 \( x \geq s - \varepsilon \) ，幂函数的
+递增性会推出 \( x^n \geq (s - \varepsilon)^n > a \) ，与 \( x \in A \) 矛盾。因此每个
+\( x \in A \) 都满足 \( x < s - \varepsilon \) ，即 \( s - \varepsilon \) 也是 \( A \) 的上界。
+这又与 \( s = \sup(A) \) 矛盾。
+
+两种不等情形都被排除，所以 \( s^n = a \) 。把这个唯一的非负解记为
+
+\[ \sqrt[n]{a} \]
+
+称为 \( a \) 的非负 \( n \) 次方根。
+
+当 \( n \) 为偶数且 \( a > 0 \) 时，\( \sqrt[n]{a} \) 和 \( -\sqrt[n]{a} \) 都满足方程
+\( x^n = a \) 。
+
+反过来，若实数 \( x \) 满足 \( x^n = a \) ，因为 \( n \) 为偶数，就有
+
+\[ \lvert x \rvert^n = x^n = a \]
+
+由非负解的唯一性，\( \lvert x \rvert = \sqrt[n]{a} \) ，所以这两个数就是方程的全部实数解。
+
+当 \( n \) 为奇数时，先证明每个 \( a \in \mathbb{R} \) 都有实数 \( n \) 次方根。
+\( a \geq 0 \) 时，前面已经得到了一个非负解。
+
+若 \( a < 0 \) ，则 \( -a > 0 \) ，可以利用前面得到的非负方根
+\( \sqrt[n]{-a} \) 求出 \( a \) 的实数方根。由于
+
+\[ \left( -\sqrt[n]{-a} \right)^n
+= -\left( \sqrt[n]{-a} \right)^n = -(-a) = a \]
+
+所以 \( -\sqrt[n]{-a} \) 是方程 \( x^n = a \) 的一个实数解。
+
+下面证明奇数次幂在整个 \( \mathbb{R} \) 上严格递增，从而说明解的唯一性。取任意
+\( x < y \) ，按两个数的符号分情况讨论。
+
+若 \( 0 \leq x < y \) ，前面已经证明 \( x^n < y^n \) 。
+
+若 \( x < y \leq 0 \) ，则 \( 0 \leq -y < -x \) ，
+非负情形的递增性给出 \( (-y)^n < (-x)^n \) 。
+因为 \( n \) 为奇数，\( (-y)^n = -y^n \) 且 \( (-x)^n = -x^n \) ，所以上式可以写成
+
+\[ -y^n < -x^n \]
+
+两边同乘 \( -1 \) ，不等号反向，得到 \( y^n > x^n \) ，也就是 \( x^n < y^n \) 。
+
+若 \( x < 0 < y \) ，因为 \( n \) 为奇数，有 \( x^n < 0 < y^n \) ，所以仍有
+\( x^n < y^n \) 。
+
+这三种情形涵盖了所有 \( x < y \) 的情况，所以奇数次幂在整个 \( \mathbb{R} \) 上严格递增，
+方程 \( x^n = a \) 不可能有两个不同的实数解。
+
+结合存在性，当 \( n \) 为奇数时，每个 \( a \in \mathbb{R} \) 都有唯一的实数 \( n \) 次方根，仍记为
+\( \sqrt[n]{a} \) 。对 \( a < 0 \) ，上面的计算给出
+
+\[ \sqrt[n]{a} = -\sqrt[n]{-a} \]
+
+最后讨论方根函数的单调性。当 \( n \) 为偶数时，\( x \mapsto \sqrt[n]{x} \) 是幂函数
+\( x \mapsto x^n \) 在 \( \mathbb{R}_{\geq 0} \) 上的逆函数；当 \( n \) 为奇数时，它是该幂函数
+在整个 \( \mathbb{R} \) 上的逆函数。两种情形中，相应的幂函数都严格递增，所以方根函数在
+各自的定义域上也严格递增。
+
+正实数还可以取有理数次幂。设 \( a > 0 \) ，并把 \( r \in \mathbb{Q} \) 写成唯一的
+[[id:19fd57e1-b52b-4425-9f44-82d7bdf3a1c2][最简分数]]
+
+\[ r = \frac{p}{q}, \qquad
+p \in \mathbb{Z}, \quad q \in \mathbb{N}^{\times}, \qquad
+\gcd(\lvert p \rvert, q) = 1 \]
+
+定义
+
+\[ a^r := \left(\sqrt[q]{a}\right)^p \]
+
+其中右边的整数次幂使用[[id:0051f0fe-808a-4644-aba9-eca4b2a709be][整数次幂]]的定义。最简分数表示的唯一性保证这个定义不会因
+\( r \) 的分式写法而产生歧义。
+
+即使使用未约分的分数，按同一公式计算也会得到相同结果。
+
+设 \( r = p/q = p'/q' \) ，其中 \( p, p' \in \mathbb{Z} \) 且
+\( q, q' \in \mathbb{N}^{\times} \) 。记两种表示得到的值为
+
+\[ u := \left(\sqrt[q]{a}\right)^p, \qquad
+v := \left(\sqrt[q']{a}\right)^{p'} \]
+
+这两个数都为正。将它们分别取 \( q q' \) 次幂，整数次幂的运算法则给出
+
+\[ u^{q q'} = a^{p q'}, \qquad v^{q q'} = a^{p' q} \]
+
+由 \( p/q = p'/q' \) 可得 \( p q' = p' q \) ，所以 \( u^{q q'} = v^{q q'} \) 。
+正数上的 \( q q' \) 次幂函数严格递增，因而 \( u = v \) ，即两种分数表示给出的结果相同。
+
+特别地， \( \sqrt{2} \) 现在作为实数存在，而前面已经证明它不属于 \( \mathbb{Q} \) 。不属于
+\( \mathbb{Q} \) 的实数称为无理数（irrational number），它们组成集合
+\( \mathbb{R} \setminus \mathbb{Q} \) 。
+
+* 无理数的稠密性
+
+无理数也可以插入任意两个不同的实数之间。设 \( a < b \) 。先利用有理数的稠密性依次取
+\( r_1, r_2 \in \mathbb{Q} \) ，使
+
+\[ a < r_1 < r_2 < b \]
+
+令
+
+\[ \xi := r_1 + \frac{r_2 - r_1}{\sqrt{2}} \]
+
+由 \( 1^2 < 2 < 2^2 \) 以及平方函数在非负实数上的严格递增性，有
+\( 1 < \sqrt{2} < 2 \) ，因而 \( 0 < 1/\sqrt{2} < 1 \) 。所以
+
+\[ r_1 < \xi < r_2 \]
+
+从而 \( a < \xi < b \) 。若 \( \xi \) 是有理数，则
+
+\[ \sqrt{2} = \frac{r_2 - r_1}{\xi - r_1} \]
+
+也会是有理数，产生矛盾。因此 \( \xi \in \mathbb{R} \setminus \mathbb{Q} \) ，无理数在
+\( \mathbb{R} \) 中同样稠密。
+
+* 区间
+
+实数子集 \( J \subseteq \mathbb{R} \) 若满足
+
+\[ x, y \in J, \quad x < z < y
+\Longrightarrow
+z \in J \]
+
+就称为区间（interval）。也就是说，区间一旦包含两个点，就必须包含它们之间的每个实数。
+
+若 \( J \) 非空，则
+
+\[ a := \inf(J), \qquad b := \sup(J) \]
+
+分别称为 \( J \) 的左端点和右端点，它们属于 \( \overline{\mathbb{R}} \) 。若有限左端点
+\( a \) 属于 \( J \) ，就称 \( J \) 左闭；否则称为左开。右端点同理。
+
+两端都开时记为
+
+\[ (a, b) := \{ x \in \mathbb{R}; a < x < b \}, \qquad
+-\infty \leq a \leq b \leq \infty \]
+
+并约定 \( (a, a) := \emptyset \) 。两端都闭时记为
+
+\[ [a, b] := \{ x \in \mathbb{R}; a \leq x \leq b \}, \qquad
+a, b \in \mathbb{R}, \quad a \leq b \]
+
+半开半闭的情形分别记为 \( (a, b] \) 和 \( [a, b) \) 。单点集
+\( \{ a \} = [a, a] \) 是闭区间；空集同时约定为开区间和闭区间。
+
+区间的两个端点都是实数时，称它为有界区间；否则称为无界区间。除 \( \mathbb{R} \) 外，无界
+区间具有
+
+\[ [a, \infty), \quad (a, \infty), \quad
+(-\infty, a], \quad (-\infty, a) \]
+
+四种形式。含有至少两个点的区间称为非退化区间（perfect interval）。
+
+对非空有界区间 \( J \) ，定义其长度为
+
+\[ \lvert J\rvert := \sup(J) - \inf(J) \]
+
+长度只由两个端点决定，与端点是否属于区间无关。
