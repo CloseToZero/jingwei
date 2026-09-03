@@ -357,7 +357,139 @@ x \cdot (-\infty) := \begin{cases}
 \( a \in A \) 满足 \( x < a \) ，则 \( x < a \leq \sup(A) \) 。无界集和空集的情形也与前面的
 \( \pm\infty \) 约定相容；下确界的结论同理。
 
+* 确界与集合运算
+
+下面讨论集合中的元素经过取负、相加、相乘或取倒数后，确界怎样变化。所有集合都假设非空，
+确界则允许取扩展实数中的值。
+
+** 取负
+
+对非空集合 \( A \subseteq \mathbb{R} \) ，记
+
+\[ -A := \{ -a; a \in A \} \]
+
+取负反转大小关系，因而交换上确界与下确界：
+
+\[ \sup(-A) = -\inf(A), \qquad
+\inf(-A) = -\sup(A) \]
+
+具体来说，实数 \( c \) 是 \( -A \) 的上界，当且仅当每个 \( a \in A \) 都满足
+\( -a \leq c \) ，也就是 \( -c \leq a \) 。所以 \( c \) 是 \( -A \) 的上界，当且仅当
+\( -c \) 是 \( A \) 的下界。若 \( A \) 有下界，取负便把它的最大下界变成 \( -A \) 的
+最小上界；若 \( A \) 没有下界，则 \( -A \) 没有上界，此时第一个等式两边都为
+\( \infty \) 。对 \( -A \) 应用第一个等式，就得到第二个等式。
+
+** 集合的和
+
+对非空集合 \( A, B \subseteq \mathbb{R} \) ，定义
+
+\[ A + B := \{ a + b; a \in A, \quad b \in B \} \]
+
+集合的和满足以下确界公式：
+
+\[ \sup(A + B) = \sup(A) + \sup(B), \qquad
+\inf(A + B) = \inf(A) + \inf(B) \]
+
+先证明上确界的等式。假设 \( \alpha := \sup(A) \) 与 \( \beta := \sup(B) \) 都是实数。
+每个 \( a \in A \) 和 \( b \in B \) 都满足 \( a \leq \alpha \) 与 \( b \leq \beta \) ，所以
+\( a + b \leq \alpha + \beta \) 。这说明 \( \alpha + \beta \) 是 \( A + B \) 的上界。
+
+要证明它是最小上界，任取 \( A + B \) 的实数上界 \( c \) 。固定 \( b \in B \) ，则每个
+\( a \in A \) 都满足 \( a + b \leq c \) ，即 \( a \leq c - b \) 。所以 \( c - b \) 是
+\( A \) 的上界，从而 \( \alpha \leq c - b \) 。改写为 \( b \leq c - \alpha \) ，并注意这对
+每个 \( b \in B \) 都成立，就知道 \( c - \alpha \) 是 \( B \) 的上界。因此
+\( \beta \leq c - \alpha \) ，也就是 \( \alpha + \beta \leq c \) 。
+
+若 \( A \) 没有上界，固定 \( b_0 \in B \) ，集合 \( \{ a + b_0; a \in A \} \) 也没有上界。
+它包含于 \( A + B \) ，所以 \( \sup(A + B) = \infty \) ，上确界等式仍然成立。
+若 \( B \) 没有上界，同样固定一个 \( a_0 \in A \) 即可。
+
+下确界的等式可由取负得到。因为 \( -(A + B) = (-A) + (-B) \) ，所以
+
+\begin{align*}
+\inf(A + B)
+&= -\sup\bigl((-A) + (-B)\bigr) \\
+&= -\bigl(\sup(-A) + \sup(-B)\bigr) \\
+&= \inf(A) + \inf(B).
+\end{align*}
+
+** 正数集合的积
+
+对非空集合 \( A, B \subseteq (0, \infty) \) ，定义
+
+\[ A \cdot B := \{ ab; a \in A, \quad b \in B \} \]
+
+此时有
+
+\[ \sup(A \cdot B) = \sup(A)\sup(B), \qquad
+\inf(A \cdot B) = \inf(A)\inf(B) \]
+
+先设 \( \alpha := \sup(A) \) 和 \( \beta := \sup(B) \) 都有限。它们都为正数，并且
+对每个 \( a \in A \) 和 \( b \in B \) 有 \( ab \leq \alpha\beta \) ，所以
+\( \alpha\beta \) 是 \( A \cdot B \) 的上界。
+
+任取另一个实数上界 \( c \) 。固定 \( b \in B \) ，由 \( ab \leq c \) 和 \( b > 0 \) 得到
+\( a \leq c/b \) 对每个 \( a \in A \) 成立。因此 \( \alpha \leq c/b \) ，即
+\( b \leq c/\alpha \) 。由于这对每个 \( b \in B \) 都成立，\( c/\alpha \) 是 \( B \) 的
+上界，故 \( \beta \leq c/\alpha \) 。于是 \( \alpha\beta \leq c \) ，证明了它是最小上界。
+
+若 \( A \) 没有上界，固定 \( b_0 \in B \) 。因为 \( b_0 > 0 \) ，集合
+\( \{ ab_0; a \in A \} \) 也没有上界，所以 \( \sup(A \cdot B) = \infty \) 。
+\( B \) 没有上界时同理。这也证明了无界情形的上确界等式。
+
+再证明下确界等式。记 \( \mu := \inf(A) \) 和 \( \nu := \inf(B) \) ；它们都是非负实数。
+由 \( a \geq \mu \geq 0 \) 和 \( b \geq \nu \geq 0 \) ，可知
+\( ab \geq \mu\nu \) ，所以 \( \mu\nu \) 是 \( A \cdot B \) 的下界。
+
+任取另一个实数下界 \( d \) 。对固定的 \( b \in B \) ，每个 \( a \in A \) 都满足
+\( d \leq ab \) ，即 \( d/b \leq a \) 。所以 \( d/b \) 是 \( A \) 的下界，必有
+\( d/b \leq \mu \) ，即 \( d \leq \mu b \) 。若 \( \mu = 0 \) ，这已经给出
+\( d \leq 0 = \mu\nu \) 。若 \( \mu > 0 \) ，则 \( d/\mu \leq b \) 对每个 \( b \in B \)
+成立，所以 \( d/\mu \leq \nu \) ，仍有 \( d \leq \mu\nu \) 。因此 \( \mu\nu \) 是最大下界。
+
+乘积的这两个公式不能直接用于任意实数集合。例如，取
+\( A = B = \{ -2, -1 \} \) ，则 \( A \cdot B = \{ 1, 2, 4 \} \) ，而
+
+\[ \sup(A)\sup(B) = 1 < 4 = \sup(A \cdot B), \qquad
+\inf(A)\inf(B) = 4 > 1 = \inf(A \cdot B) \]
+
+** 取倒数
+
+设非空集合 \( A \subseteq (0, \infty) \) ，并记
+
+\[ A^{-1} := \{ 1/a; a \in A \}, \qquad
+\mu := \inf(A), \quad \alpha := \sup(A) \]
+
+这里的 \( A^{-1} \) 表示逐个取倒数得到的集合。正数上取倒数反转大小关系，因此有
+
+\[ \sup(A^{-1}) = \frac{1}{\mu}, \qquad
+\inf(A^{-1}) = \frac{1}{\alpha} \]
+
+其中 \( \mu = 0 \) 时，\( 1/\mu = \infty \) ；\( \alpha = \infty \) 时，
+\( 1/\alpha = 0 \) ，沿用前面对扩展实数的约定。
+
+先设 \( \mu > 0 \) 。由 \( a \geq \mu \) 得 \( 1/a \leq 1/\mu \) ，所以 \( 1/\mu \) 是
+\( A^{-1} \) 的上界。若 \( c \) 是另一个实数上界，则 \( c > 0 \) ，并且对每个 \( a \in A \)
+都有 \( 1/a \leq c \) ，即 \( 1/c \leq a \) 。因此 \( 1/c \) 是 \( A \) 的下界，必有
+\( 1/c \leq \mu \) ，即 \( c \geq 1/\mu \) 。这就证明了第一个等式。
+
+若 \( \mu = 0 \) 而 \( A^{-1} \) 有有限上界 \( c \) ，同样的推理会得到
+\( 1/c \leq \mu = 0 \) ，与 \( c > 0 \) 矛盾。因此 \( A^{-1} \) 没有上界，其上确界为
+\( \infty \) 。
+
+再设 \( \alpha < \infty \) 。由 \( a \leq \alpha \) 得 \( 1/a \geq 1/\alpha \) ，所以
+\( 1/\alpha \) 是 \( A^{-1} \) 的下界。任取另一个实数下界 \( d \) 。若 \( d \leq 0 \) ，则有
+\( d \leq 1/\alpha \) 。若 \( d > 0 \) ，则 \( d \leq 1/a \) 等价于 \( a \leq 1/d \) ；
+这对每个 \( a \in A \) 成立，所以 \( \alpha \leq 1/d \) ，仍有 \( d \leq 1/\alpha \) 。
+因此 \( 1/\alpha \) 是最大下界。
+
+若 \( \alpha = \infty \) ，则 \( A^{-1} \) 不可能有正下界 \( d \) ，否则 \( 1/d \) 就是
+\( A \) 的有限上界。由于 \( 0 \) 本身是 \( A^{-1} \) 的下界，此时其下确界等于 \( 0 \) 。
+
 * 阿基米德性质
+:PROPERTIES:
+:ID:       52a2f625-d73f-4993-a669-991a0494171f
+:END:
 
 在有序域 \( K \) 中，把 \( n \in \mathbb{N} \) 认作单位元 \( 1_K \) 的 \( n \) 倍
 \( n \cdot 1_K \) 。若这些元素组成的集合
@@ -396,6 +528,9 @@ x \cdot (-\infty) := \begin{cases}
 对每个 \( n \) 都成立，则 \( a = 0 \) 。
 
 * 有理数的稠密性
+:PROPERTIES:
+:ID:       574944fc-7335-4de3-92b4-bc48e72439ac
+:END:
 
 实数之间无论相隔多近，总能插入一个有理数。更准确地说，若 \( a, b \in \mathbb{R} \) 且
 \( a < b \) ，则存在 \( r \in \mathbb{Q} \) 使
@@ -556,6 +691,8 @@ s^n - (s - \varepsilon)^n
 在整个 \( \mathbb{R} \) 上的逆函数。两种情形中，相应的幂函数都严格递增，所以方根函数在
 各自的定义域上也严格递增。
 
+* 有理数次幂
+
 正实数还可以取有理数次幂。设 \( a > 0 \) ，并把 \( r \in \mathbb{Q} \) 写成唯一的
 [[id:19fd57e1-b52b-4425-9f44-82d7bdf3a1c2][最简分数]]
 
@@ -585,11 +722,112 @@ v := \left(\sqrt[q']{a}\right)^{p'} \]
 由 \( p/q = p'/q' \) 可得 \( p q' = p' q \) ，所以 \( u^{q q'} = v^{q q'} \) 。
 正数上的 \( q q' \) 次幂函数严格递增，因而 \( u = v \) ，即两种分数表示给出的结果相同。
 
-特别地， \( \sqrt{2} \) 现在作为实数存在，而前面已经证明它不属于 \( \mathbb{Q} \) 。不属于
-\( \mathbb{Q} \) 的实数称为无理数（irrational number），它们组成集合
-\( \mathbb{R} \setminus \mathbb{Q} \) 。
+** 有理数幂的运算法则
+
+对 \( a, b > 0 \) 和 \( r, s \in \mathbb{Q} \) ，整数次幂的三条运算法则仍然成立：
+
+\[ a^{r + s} = a^r a^s, \qquad
+(ab)^r = a^r b^r, \qquad
+(a^r)^s = a^{rs} \]
+
+先证明指数相加的公式。把 \( r \) 与 \( s \) 通分，写成 \( r = p/q \) 和 \( s = m/q \) ，
+其中 \( p, m \in \mathbb{Z} \) 且 \( q \in \mathbb{N}^{\times} \) 。由于不必要求分数最简，
+令 \( t := \sqrt[q]{a} \) ，就可以把三个有理数次幂都写成 \( t \) 的整数次幂：
+
+\[ a^{r + s} = t^{p + m} = t^p t^m = a^r a^s \]
+
+再证明乘积的幂公式。正数 \( \sqrt[q]{a}\sqrt[q]{b} \) 的 \( q \) 次幂等于 \( ab \) ，
+由非负方根的唯一性，
+
+\[ \sqrt[q]{ab} = \sqrt[q]{a}\sqrt[q]{b} \]
+
+因此对 \( r = p/q \) ，整数次幂的运算法则给出
+
+\[ (ab)^r = \left(\sqrt[q]{a}\sqrt[q]{b}\right)^p =
+\left(\sqrt[q]{a}\right)^p \left(\sqrt[q]{b}\right)^p = a^r b^r \]
+
+最后证明幂的幂公式。写 \( r = p/q \) 和 \( s = m/n \) ，其中
+\( p, m \in \mathbb{Z} \) 且 \( q, n \in \mathbb{N}^{\times} \) 。为了同时处理这两个分母，
+取 \( t := \sqrt[qn]{a} > 0 \) 。由于 \( (t^n)^q = a \) ，有 \( \sqrt[q]{a} = t^n \) ，从而
+
+\[ a^r = (t^n)^p = t^{np} = (t^p)^n \]
+
+又因为 \( t^p > 0 \) ，方根的唯一性给出 \( \sqrt[n]{a^r} = t^p \) 。因此
+
+\[ (a^r)^s = (t^p)^m = t^{pm} = a^{pm/(qn)} = a^{rs} \]
+
+* 算术—几何均值不等式
+
+设 \( n \in \mathbb{N}^{\times} \) ，并取非负实数 \( x_1, \ldots, x_n \) 。它们的算术平均数
+（arithmetic mean）和几何平均数（geometric mean）分别为
+
+\[ M := \frac{1}{n}\sum_{j = 1}^{n} x_j, \qquad
+G := \sqrt[n]{\prod_{j = 1}^{n} x_j} \]
+
+算术—几何均值不等式断言
+
+\[ G \leq M \]
+
+并且等号成立当且仅当 \( x_1 = \cdots = x_n \) 。
+
+若某个 \( x_j = 0 \) ，则 \( G = 0 \leq M \) ；此时取等当且仅当 \( M = 0 \) ，也就是
+所有 \( x_j \) 都为零。以下设所有 \( x_j > 0 \) ，于是 \( M > 0 \) 。
+
+为了比较两个平均数，把每个 \( x_j \) 除以 \( M \) ，使算术平均数变成 \( 1 \) 。记
+\( y_j := x_j/M \) ，则
+
+\[ \sum_{j = 1}^{n} y_j = n, \qquad
+\prod_{j = 1}^{n} x_j = M^n \prod_{j = 1}^{n} y_j \]
+
+所以只需证明 \( \prod_{j = 1}^{n} y_j \leq 1 \) 。下面在保持总和不变的同时，把各项逐步
+变成 \( 1 \) ，并说明这个过程不会减小乘积。
+
+若各个 \( y_j \) 不全等于 \( 1 \) ，由它们的和等于 \( n \) ，必有一项小于 \( 1 \) ，另有
+一项大于 \( 1 \) 。选取这样的 \( y_i < 1 < y_j \) ，把这两项替换为
+
+\[ 1, \qquad y_i + y_j - 1 \]
+
+新的两项都为正，总和仍是 \( y_i + y_j \) ，而且
+
+\[ (y_i + y_j - 1) - y_i y_j = (1 - y_i)(y_j - 1) > 0 \]
+
+所以这两项的乘积严格增大，其余项又都为正，整个乘积也严格增大。每次只选取不等于
+\( 1 \) 的项进行替换，因此已有的 \( 1 \) 不会改变，且至少多出一个 \( 1 \) 。经过有限次
+替换，所有项都会变成 \( 1 \) ，最终乘积为 \( 1 \) 。故原来的乘积不超过 \( 1 \) ，且只有
+原来就全为 \( 1 \) 时才取等。
+
+回到 \( x_j \) ，便有
+
+\[ \prod_{j = 1}^{n} x_j \leq M^n \]
+
+两边取非负 \( n \) 次方根，得到 \( G \leq M \) 。等号条件 \( y_1 = \cdots = y_n = 1 \)
+等价于所有 \( x_j \) 都等于 \( M \) ，也就是 \( x_1 = \cdots = x_n \) 。
+
+** 整数权的均值不等式
+
+给各项不同的重复次数，就得到加权形式。设 \( m \in \mathbb{N}^{\times} \) ，取非负实数
+\( x_1, \ldots, x_m \) ，并给每一项指定正整数权 \( \alpha_1, \ldots, \alpha_m \) 。
+这些权组成[[id:304cadce-3218-4925-bcca-a8ebc65c2d55][多维指标]] \( \alpha := (\alpha_1, \ldots, \alpha_m) \) ，记总权为
+
+\[ N := \lvert \alpha \rvert = \sum_{j = 1}^{m} \alpha_j \]
+
+则有
+
+\[ \sqrt[N]{\prod_{j = 1}^{m} x_j^{\alpha_j}}
+\leq \frac{1}{N}\sum_{j = 1}^{m} \alpha_j x_j \]
+
+证明只需把 \( x_j \) 重复列出 \( \alpha_j \) 次。这样一共得到 \( N \) 个非负数，它们的
+乘积为 \( \prod_{j = 1}^{m} x_j^{\alpha_j} \) ，和为 \( \sum_{j = 1}^{m} \alpha_j x_j \) 。
+对这 \( N \) 个数应用前面的均值不等式，就得到所需结论。
+
+若允许某些权为零，先删去对应的项即可，但总权必须为正。等号成立当且仅当所有正权所
+对应的 \( x_j \) 都相等。
 
 * 无理数的稠密性
+
+前面已经证明 \( \sqrt{2} \) 作为实数存在，但不属于 \( \mathbb{Q} \) 。不属于
+\( \mathbb{Q} \) 的实数称为无理数（irrational number），它们组成集合
+\( \mathbb{R} \setminus \mathbb{Q} \) 。
 
 无理数也可以插入任意两个不同的实数之间。设 \( a < b \) 。先利用有理数的稠密性依次取
 \( r_1, r_2 \in \mathbb{Q} \) ，使
@@ -655,3 +893,70 @@ a, b \in \mathbb{R}, \quad a \leq b \]
 \[ \lvert J\rvert := \sup(J) - \inf(J) \]
 
 长度只由两个端点决定，与端点是否属于区间无关。
+
+** 区间套
+
+设 \( I_n = [a_n, b_n] \) 是非空有界闭区间，\( n \in \mathbb{N} \) 。若这些区间逐层包含：
+
+\[ I_{n + 1} \subseteq I_n, \qquad n \in \mathbb{N} \]
+
+并且对每个 \( \varepsilon > 0 \) ，都存在 \( n \in \mathbb{N} \) 使
+\( b_n - a_n < \varepsilon \) ，就称 \( (I_n)_{n \in \mathbb{N}} \) 是一个区间套。
+
+区间套定理断言：存在唯一的 \( x \in \mathbb{R} \) 属于所有这些区间，即
+
+\[ \bigcap_{n \in \mathbb{N}} I_n = \{ x \} \]
+
+先证明公共点存在。由 \( I_n \subseteq I_0 \) ，每个左端点 \( a_n \) 都不超过 \( b_0 \) ，
+所以左端点组成的非空集合有上界。由[[id:535546a3-5830-408d-80b2-e159f1230a65][序完备性]]，可以取
+
+\[ x := \sup\{ a_n; n \in \mathbb{N} \} \]
+
+要证明 \( x \in I_n \) ，只需证明 \( a_n \leq x \leq b_n \) 。其中 \( a_n \leq x \) 来自
+上确界的定义。为证明另一边，固定 \( n \) ，并考察任意左端点 \( a_m \) ：若 \( m \geq n \) ，
+则 \( I_m \subseteq I_n \) ，所以 \( a_m \leq b_n \) ；若 \( m < n \) ，则
+\( a_m \leq a_n \leq b_n \) 。因此 \( b_n \) 是所有左端点的上界，故 \( x \leq b_n \) 。
+这证明了 \( x \) 属于每个 \( I_n \) 。
+
+再证明唯一性。若另有 \( y \neq x \) 也属于所有 \( I_n \) ，则
+\( \lvert x - y \rvert > 0 \) 。按区间套的长度条件，可以选取 \( n \) 使
+\( b_n - a_n < \lvert x - y \rvert \) 。但 \( x, y \) 都在 \( [a_n, b_n] \) 中，又有
+
+\[ \lvert x - y \rvert \leq b_n - a_n < \lvert x - y \rvert \]
+
+产生矛盾，所以公共点唯一。
+
+闭性和长度条件各有作用。若换成开区间 \( (0, 1/(n + 1)) \) ，虽然逐层包含且长度可以任意
+小，却没有公共点。若只要求逐层包含而不要求长度任意小，则所有 \( I_n = [0, 1] \) 就给出
+公共点不唯一的例子。
+
+** 有理端点的区间套
+
+每个实数都可以由有理端点的区间套唯一确定。给定 \( x \in \mathbb{R} \) ，先由
+[[id:574944fc-7335-4de3-92b4-bc48e72439ac][有理数的稠密性]]取有理数 \( a_0 < x < b_0 \) ，令 \( I_0 := [a_0, b_0] \) 。
+
+已经取好包含 \( x \) 的 \( I_n = [a_n, b_n] \) 后，把它从中点
+\( c_n := (a_n + b_n)/2 \) 分成两半，并保留含有 \( x \) 的一半：
+
+\begin{equation*}
+I_{n + 1} := \begin{cases}
+[a_n, c_n], & x \leq c_n, \\
+[c_n, b_n], & x > c_n.
+\end{cases}
+\end{equation*}
+
+中点仍是有理数，所以所有端点都为有理数。每一步还保持 \( x \in I_{n + 1} \subseteq I_n \) ，
+并且将长度减半，因此
+
+\[ \lvert I_n \rvert = \frac{b_0 - a_0}{2^n} \]
+
+还要验证这些长度可以小于任意正数。给定 \( \varepsilon > 0 \) ，由
+[[id:52a2f625-d73f-4993-a669-991a0494171f][阿基米德性质]]取 \( n \in \mathbb{N} \) 使 \( n + 1 > (b_0 - a_0)/\varepsilon \) 。
+[[id:7d3bde0e-d63d-4268-82ce-4cfe4b5a31b6][Bernoulli 不等式]]给出 \( 2^n = (1 + 1)^n \geq n + 1 \) ，所以
+
+\[ \lvert I_n \rvert
+\leq \frac{b_0 - a_0}{n + 1} < \varepsilon \]
+
+于是这些区间确实构成区间套。因为 \( x \) 始终在保留的区间中，由公共点的唯一性，
+
+\[ \bigcap_{n \in \mathbb{N}} I_n = \{ x \} \]
