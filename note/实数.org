@@ -568,6 +568,9 @@ x \cdot (-\infty) := \begin{cases}
 因此取 \( r := m/n \) 即可。这个性质称为 \( \mathbb{Q} \) 在 \( \mathbb{R} \) 中稠密。
 
 * \( n \) 次方根
+:PROPERTIES:
+:ID:       fc7e1e2c-9fec-415c-98d3-c98e692d4a98
+:END:
 
 序完备性保证每个非负实数都有任意正整数次方根。
 设 \( a \in \mathbb{R} \) 满足 \( a \geq 0 \) ，并取
@@ -851,6 +854,9 @@ G := \sqrt[n]{\prod_{j = 1}^{n} x_j} \]
 \( \mathbb{R} \) 中同样稠密。
 
 * 区间
+:PROPERTIES:
+:ID:       a8fb8e39-5e0f-4ec8-9617-f6518179b214
+:END:
 
 实数子集 \( J \subseteq \mathbb{R} \) 若满足
 

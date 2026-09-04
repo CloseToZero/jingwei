@@ -222,6 +222,9 @@
 
 
 ** 非零元素的平方
+:PROPERTIES:
+:ID:       f92a1416-df49-40d9-b182-a6370fb88fbe
+:END:
 
 任意非零元素的平方都为正。若 \( x > 0 \) ，这直接来自正元素对乘法封闭。若 \( x < 0 \) ，则
 \( -x > 0 \) ，再由[[id:c2e9f35f-9675-4031-9935-574f999ee44b][环中的基本运算规律]]中的符号法则得到
@@ -308,7 +311,12 @@ x, & x \geq 0, \\
 \Longleftrightarrow
 a - \varepsilon < x < a + \varepsilon \]
 
-最重要的估计是三角不等式
+*** 三角不等式
+:PROPERTIES:
+:ID:       15828655-75b9-4218-872e-e8ca39253e6a
+:END:
+
+对任意 \( x, y \in R \) ，绝对值满足三角不等式
 
 \[ \lvert x + y \rvert \leq \lvert x \rvert + \lvert y \rvert \]
 
@@ -317,7 +325,12 @@ a - \varepsilon < x < a + \varepsilon \]
 \( -(x + y) \leq \lvert x \rvert + \lvert y \rvert \) 。而 \( \lvert x + y \rvert \) 正是
 \( x + y \) 与 \( -(x + y) \) 中的非负者，故结论成立。
 
-把 \( x \) 写成 \( (x - y) + y \) ，三角不等式给出
+*** 反三角不等式
+:PROPERTIES:
+:ID:       0e0fb179-ad36-4c96-ab25-7c55987c3745
+:END:
+
+三角不等式还可以推出反三角不等式。把 \( x \) 写成 \( (x - y) + y \) ，三角不等式给出
 
 \[ \lvert x \rvert \leq \lvert x - y \rvert + \lvert y \rvert \]
 

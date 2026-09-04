@@ -111,6 +111,9 @@ x \neq 0 \Longrightarrow x^{-1} \in L \]
 只能是 \( \{ 0 \} \) ，从而必为单射。
 
 ** 域同构
+:PROPERTIES:
+:ID:       4f0786ee-b94f-402f-b87d-4a9f5336f1b1
+:END:
 
 双射的域同态称为域同构（field isomorphism）。若域 \( K \) 与 \( K' \) 之间存在域同构，就称
 二者同构，记作

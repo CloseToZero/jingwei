@@ -1,0 +1,615 @@
+:PROPERTIES:
+:ID:       147f2e46-3c0c-47fc-939f-7878d74df7b0
+:END:
+#+filetags: :数学:代数:分析:数系:
+#+title: 复数
+
+* 从实数到复数
+
+在实数中，每个数的平方都非负，所以方程
+
+\[ z^2 = -1 \]
+
+没有实数解。我们希望把 \( \mathbb{R} \) 扩张成一个更大的[[id:2aadbc00-829a-4e2d-91fe-9fa95cceda51][域]]，使这个方程有解，并保留
+实数原有的加法与乘法。
+
+这种扩张不能继续保持有序域的结构，因为[[id:f92a1416-df49-40d9-b182-a6370fb88fbe][非零元素的平方为正]]并非实数特有的性质，而是
+任何有序域都满足的性质。复数的构造将保留域结构，但不再要求存在与两种运算相容的全
+序。
+
+* 复数域的构造
+
+** 运算从何而来
+
+先假设某个包含 \( \mathbb{R} \) 的域中存在元素 \( \eta \) ，满足 \( \eta^2 = -1 \) 。这个域必须
+包含所有形如 \( x + \eta y \) 的元素，其中 \( x, y \in \mathbb{R} \) 。
+
+对 \( x, y, u, v \in \mathbb{R} \) ，原有的运算法则给出
+
+\[ (x + \eta y) + (u + \eta v) = (x + u) + \eta(y + v) \]
+
+乘法则先用分配律展开，再用 \( \eta^2 = -1 \) 合并：
+
+\begin{align*}
+(x + \eta y)(u + \eta v)
+&= xu + \eta xv + \eta yu + \eta^2 yv \\
+&= (xu - yv) + \eta(xv + yu).
+\end{align*}
+
+因此，用有序对 \( (x, y) \) 记录 \( x + \eta y \) 时，加法与乘法应当分别遵循这两个公式。
+这些公式的右边只涉及实数运算，可以直接用来定义新结构，不必预先假定这样的域已经存
+在。
+
+** 用有序对构造域
+
+在集合 \( \mathbb{R}^2 \) 上定义
+
+\begin{align*}
+(x, y) + (u, v) &:= (x + u, y + v), \\
+(x, y)(u, v) &:= (xu - yv, xv + yu).
+\end{align*}
+
+加法是[[id:ee6f356c-dac6-4ec1-9fcb-814f9a5af1f8][群的直积]]中的逐坐标加法，零元是 \( (0, 0) \) ，加法逆元是
+\( -(x, y) = (-x, -y) \) 。乘法不是逐坐标乘法；直接代入定义可知，其单位元是 \( (1, 0) \) 。
+
+乘法交换律与分配律可以逐坐标化归为实数中的相应运算法则。乘法结合律也可这样验证：
+对 \( x, y, u, v, s, t \in \mathbb{R} \) ，分别计算 \( ((x, y)(u, v))(s, t) \) 和
+\( (x, y)((u, v)(s, t)) \) ，两者都得到
+
+\[ (xus - xvt - yut - yvs, xut + xvs + yus - yvt) \]
+
+因此，这两种运算使 \( \mathbb{R}^2 \) 成为交换含幺环。
+
+还需证明每个非零元素都有乘法逆元。
+
+取 \( (x, y) \neq (0, 0) \) 。我们要找到一个有序对，使它与 \( (x, y) \) 的乘积为单位元
+\( (1, 0) \) 。先把 \( (x, y) \) 乘以 \( (x, -y) \) ，可以使乘积的第二个坐标为零：
+
+\[ (x, y)(x, -y) = (x^2 + y^2, 0) \]
+
+接下来要把第一个坐标变为 \( 1 \) 。因为 \( x, y \) 不全为零，所以 \( x^2 + y^2 > 0 \) ，
+可以把第二个因子 \( (x, -y) \) 的两个坐标都除以 \( x^2 + y^2 \) 。根据乘法公式，
+
+\[ (x, y)\left( \frac{x}{x^2 + y^2}, \frac{-y}{x^2 + y^2} \right) = (1, 0) \]
+
+因此，每个非零元素的乘法逆元都存在，且
+
+\[ (x, y)^{-1} =
+\left( \frac{x}{x^2 + y^2}, \frac{-y}{x^2 + y^2} \right) \]
+
+综上，上述结构是一个域，称为复数域
+（field of complex numbers），记作 \( \mathbb{C} \) ；其中的元素称为复数。
+
+** 实数的嵌入与虚数单位
+
+映射
+
+\[ \iota: \mathbb{R} \to \mathbb{C}, \qquad x \mapsto (x, 0) \]
+
+是单射，并且
+
+\[ (x, 0) + (u, 0) = (x + u, 0), \qquad
+(x, 0)(u, 0) = (xu, 0) \]
+
+所以 \( \iota \) 保持加法、乘法与单位元。我们把实数 \( x \) 与 \( (x, 0) \) 认作同一个元素，
+从而把 \( \mathbb{R} \) 看作 \( \mathbb{C} \) 的[[id:69905d46-f53e-4891-b629-e555e47df8bb][子域]]。
+
+定义虚数单位（imaginary unit）
+
+\[ i := (0, 1) \]
+
+根据乘法定义，
+
+\[ i^2 = (0, 1)(0, 1) = (-1, 0) = -1 \]
+
+又因为 \( i(y, 0) = (0, y) \) ，每个有序对都可以写成
+
+\[ (x, y) = (x, 0) + i(y, 0) = x + iy \]
+
+这里的 \( x, y \) 已通过上述嵌入成为复数，所以 \( iy \) 和 \( x + iy \) 都是
+\( \mathbb{C} \) 中已经定义的运算。有序对的两个坐标唯一，因而每个复数都唯一地表示成
+\( x + iy \) ，其中 \( x, y \in \mathbb{R} \) 。
+
+* 最小性与唯一性
+
+设 \( K \) 是一个包含 \( \mathbb{R} \) 作为子域的域，并且存在 \( \eta \in K \) 满足
+\( \eta^2 = -1 \) 。 \( K \) 还可能含有许多与补入这个解无关的元素。我们要找出其中由
+实数和 \( \eta \) 必然产生的部分，并把它与已经构造的 \( \mathbb{C} \) 对应起来。
+
+令
+
+\[ K_0 := \{ x + \eta y; x, y \in \mathbb{R} \} \subseteq K \]
+
+前面推导加法与乘法时得到的公式说明， \( K_0 \) 对这两种运算封闭。它包含
+\( \mathbb{R} \) 和 \( \eta \) ，并且 \( -(x + \eta y) = -x + \eta(-y) \in K_0 \) 。
+
+若 \( x + \eta y \neq 0 \) ，则 \( x, y \) 不全为零，所以 \( x^2 + y^2 > 0 \) 。由
+\( (x + \eta y)(x - \eta y) = x^2 + y^2 \) 得到
+
+\[ (x + \eta y)^{-1} =
+\frac{x}{x^2 + y^2} + \eta\frac{-y}{x^2 + y^2} \in K_0 \]
+
+因此 \( K_0 \) 是 \( K \) 的子域。任何包含 \( \mathbb{R} \) 和 \( \eta \) 的子域都必须包含
+每个 \( x + \eta y \) ，所以 \( K_0 \) 正是 \( K \) 中包含它们的最小子域。
+
+现在定义
+
+\[ \Phi: \mathbb{C} \to K_0, \qquad x + iy \mapsto x + \eta y \]
+
+两边的加法与乘法遵循相同的公式，所以 \( \Phi \) 保持这两种运算；根据 \( K_0 \) 的定义，
+它还是满射。
+
+为了证明单射性，假设 \( x + \eta y = u + \eta v \) 。若 \( y \neq v \) ，则
+
+\[ \eta = \frac{u - x}{y - v} \in \mathbb{R} \]
+
+但 \( \eta^2 = -1 \) 在实数中不可能成立，产生矛盾。因此 \( y = v \) ，再由原等式得到
+\( x = u \) 。这说明 \( \Phi \) 是[[id:4f0786ee-b94f-402f-b87d-4a9f5336f1b1][域同构]]，而且它把每个实数映到自身，并把 \( i \) 映到 \( \eta \) 。
+于是
+
+\[ \mathbb{C} \cong K_0 \subseteq K \]
+
+如果 \( K \) 本身就是包含实数并使 \( z^2 = -1 \) 有解的最小域，那么它不能再含有
+\( K_0 \) 以外的元素，所以 \( K = K_0 \cong \mathbb{C} \) 。同一个论证适用于每个这样的
+最小扩张，因此它们都与 \( \mathbb{C} \) 同构；这就是复数域在同构意义下的唯一性。
+
+* 实部、虚部与复平面
+
+对 \( z = x + iy \) ，其中 \( x, y \in \mathbb{R} \) ，定义
+
+\[ \operatorname{Re} z := x, \qquad \operatorname{Im} z := y \]
+
+分别称为 \( z \) 的实部（real part）与虚部（imaginary part）。实部和虚部都是实数；
+虚部是 \( y \) ，不是 \( iy \) 。实部为零的非零复数称为纯虚数（pure imaginary number）。
+
+把 \( x + iy \) 对应到坐标平面中的点 \( (x, y) \) ，就得到复平面（complex plane）。
+横轴对应 \( \mathbb{R} \) ，称为实轴；纵轴对应 \( i\mathbb{R} := \{ iy; y \in \mathbb{R} \} \) ，
+称为虚轴。原点对应复数 \( 0 \) 。
+
+复数加法是坐标相加。因此，把复数画成从原点出发的箭头时， \( z + w \) 就是以
+\( z, w \) 为相邻两边的平行四边形的对角线所表示的复数。
+
+乘以 \( i \) 也有直接的几何意义：
+
+\[ i(x + iy) = -y + ix \]
+
+它把坐标 \( (x, y) \) 变为 \( (-y, x) \) ，即绕原点逆时针旋转四分之一圈。连续乘两次
+\( i \) 就旋转半圈：非零箭头的长度不变，方向与原来相反，对应的复数变为它的相反数。
+这正是乘以 \( -1 \) 的效果，与 \( i^2 = -1 \) 相符。
+
+若 \( f: X \to \mathbb{C} \) 是复值函数，定义其实部与虚部为两个实值函数
+
+\[ \operatorname{Re} f: X \to \mathbb{R}, \qquad
+x \mapsto \operatorname{Re}(f(x)) \]
+
+和
+
+\[ \operatorname{Im} f: X \to \mathbb{R}, \qquad
+x \mapsto \operatorname{Im}(f(x)) \]
+
+于是逐点有 \( f = \operatorname{Re} f + i\operatorname{Im} f \) 。
+
+* 共轭
+:PROPERTIES:
+:ID:       4fac113c-d816-4631-a319-ca8e35c5fe23
+:END:
+
+对 \( z = x + iy \) ，其中 \( x, y \in \mathbb{R} \) ，定义
+
+\[ \overline{z} := x - iy \]
+
+称为 \( z \) 的共轭复数（complex conjugate）。在复平面中，共轭把点 \( (x, y) \) 变为
+\( (x, -y) \) ，也就是关于实轴作镜像反射。
+
+由实部和虚部的唯一性，
+
+\[ \overline{\overline{z}} = z, \qquad
+z \in \mathbb{R} \Longleftrightarrow \overline{z} = z \]
+
+而把 \( z \) 与 \( \overline{z} \) 相加或相减，可以分别消去虚部或实部：
+
+\[ \operatorname{Re} z = \frac{z + \overline{z}}{2}, \qquad
+\operatorname{Im} z = \frac{z - \overline{z}}{2i} \]
+
+共轭保持加法与乘法。对 \( z = x + iy \) 和 \( w = u + iv \) ，其中
+\( x, y, u, v \in \mathbb{R} \) ，加法逐坐标进行，直接给出
+
+\[ \overline{z + w} = \overline{z} + \overline{w} \]
+
+乘法公式则给出
+
+\[ \overline{zw} = (xu - yv) - i(xv + yu) =
+(x - iy)(u - iv) = \overline{z}\,\overline{w} \]
+
+又因为连续共轭两次得到原数，共轭映射是双射。因此它是从 \( \mathbb{C} \) 到自身的域同构，
+也称域自同构（field automorphism）。当 \( z \neq 0 \) 时，它还满足
+
+\[ \overline{z^{-1}} = (\overline{z})^{-1} \]
+
+一个复数与其共轭的乘积总是非负实数：
+
+\[ z\overline{z} = (x + iy)(x - iy) = x^2 + y^2 \]
+
+这个等式既解释了前面的求逆公式，也为复数的模提供了定义。
+
+** 把每个实数映到自身的自同构
+
+在 \( \mathbb{C} \) 的域自同构中，把每个实数映到自身的恰好有两个：恒等映射与共轭映射。
+
+设 \( \varphi \) 是这样的自同构。因为它保持乘法，而且 \( \varphi(-1) = -1 \) ，所以
+
+\[ \varphi(i)^2 = \varphi(i^2) = \varphi(-1) = -1 \]
+
+方程 \( t^2 = -1 \) 等价于 \( (t - i)(t + i) = 0 \) 。域没有零因子，因此其全部解是
+\( i \) 与 \( -i \) ，从而 \( \varphi(i) = i \) 或 \( \varphi(i) = -i \) 。
+
+对任意 \( x, y \in \mathbb{R} \) ，
+
+\[ \varphi(x + iy) = x + \varphi(i)y \]
+
+所以第一种选择给出恒等映射，第二种选择给出共轭映射；两者都把每个实数映到自身。
+
+仅要求每个实数的像等于自身，还不足以唯一确定一个复数域自同构；若再指定 \( i \) 的像，
+每个 \( x + iy \) 的像才随之确定。
+
+* 模
+
+实数的[[id:29b3fc0d-b984-441e-a11b-24121bdbfc5b][绝对值]]表示它到原点的距离。对复平面中的点 \( z = x + iy \) ，其中
+\( x, y \in \mathbb{R} \) ，它到原点的距离由勾股定理给出。相应地，定义复数的模
+（modulus，也称 absolute value）
+
+\[ \lvert z \rvert := \sqrt{x^2 + y^2} = \sqrt{z\overline{z}} \]
+
+这里的平方根是非负实数的平方根，其存在性由[[id:fc7e1e2c-9fec-415c-98d3-c98e692d4a98][实数的 \( n \) 次方根]]保证。因此
+\( \lvert z \rvert \) 是非负实数，而不是给复数本身规定正负。
+
+若 \( z \in \mathbb{R} \) ，则 \( \lvert z \rvert = \sqrt{z^2} \) ，恰好等于原来的实数绝对值。
+所以实数绝对值与复数的模可以使用同一个记号。
+
+由定义立即得到
+
+\[ \lvert z \rvert = 0 \Longleftrightarrow z = 0, \qquad
+\lvert \overline{z} \rvert = \lvert z \rvert, \qquad
+\lvert -z \rvert = \lvert z \rvert \]
+
+因为 \( x^2 \leq x^2 + y^2 \) 且 \( y^2 \leq x^2 + y^2 \) ，对非负实数取平方根得到
+
+\[ \lvert \operatorname{Re} z \rvert \leq \lvert z \rvert, \qquad
+\lvert \operatorname{Im} z \rvert \leq \lvert z \rvert \]
+
+这两个不等式表示：点到任一坐标轴的距离都不超过它到原点的距离。
+
+** 乘积与商的模
+
+模保持乘法：对任意 \( z, w \in \mathbb{C} \) ，有
+
+\[ \lvert zw \rvert = \lvert z \rvert\lvert w \rvert \]
+
+为了证明它，利用[[id:4fac113c-d816-4631-a319-ca8e35c5fe23][共轭保持乘法]]，计算
+
+\[ \lvert zw \rvert^2 = zw\overline{zw} =
+z\overline{z}\,w\overline{w} = \lvert z \rvert^2\lvert w \rvert^2 \]
+
+\( \lvert zw \rvert \) 与 \( \lvert z \rvert\lvert w \rvert \) 都非负，所以它们的平方相等就意味着
+它们相等。
+
+若 \( w \neq 0 \) ，则 \( \lvert w \rvert > 0 \) 。由 \( \lvert w \rvert\lvert w^{-1} \rvert = \lvert 1 \rvert = 1 \) 可得
+
+\[ \lvert w^{-1} \rvert = \frac{1}{\lvert w \rvert}, \qquad
+\left\lvert \frac{z}{w} \right\rvert =
+\frac{\lvert z \rvert}{\lvert w \rvert} \]
+
+前面的乘法逆元公式也可以简写为
+
+\[ w^{-1} = \frac{\overline{w}}{\lvert w \rvert^2}, \qquad
+\frac{z}{w} = \frac{z\overline{w}}{\lvert w \rvert^2} \]
+
+因此，计算复数的商时，可以给分子、分母同乘分母的共轭，把分母变成正实数。例如：
+
+\[ \frac{1 + 2i}{3 - i} =
+\frac{(1 + 2i)(3 + i)}{(3 - i)(3 + i)} =
+\frac{1 + 7i}{10} \]
+
+从几何上看， \( w^{-1} = \overline{w}/\lvert w \rvert^2 \) 表示先关于实轴反射，再把位置
+乘以正实数 \( 1/\lvert w \rvert^2 \) 。于是到原点的距离从 \( \lvert w \rvert \) 变为
+\( 1/\lvert w \rvert \) 。
+
+** 三角不等式
+:PROPERTIES:
+:ID:       70057c5d-a849-4c6e-9206-cc9493b3de0b
+:END:
+
+复数的模也满足与有序环中的[[id:15828655-75b9-4218-872e-e8ca39253e6a][三角不等式]]形式相同的结论：对任意
+\( z, w \in \mathbb{C} \) ，有
+
+\[ \lvert z + w \rvert \leq \lvert z \rvert + \lvert w \rvert \]
+
+在复平面中，从 \( 0 \) 先走到 \( z \) ，再走到 \( z + w \) ，两段路程分别为
+\( \lvert z \rvert \) 与 \( \lvert w \rvert \) 。三角不等式说，直接从 \( 0 \) 到 \( z + w \)
+的距离不超过这两段路程之和。
+
+\( \mathbb{C} \) 没有与域运算相容的序，所以不能直接沿用有序环中的证明。下面用已经建立的
+代数公式证明这个不等式。因为要比较的两边都非负，可以先比较平方。展开得
+
+\begin{align*}
+\lvert z + w \rvert^2
+&= (z + w)(\overline{z} + \overline{w}) \\
+&= \lvert z \rvert^2 + z\overline{w} + \overline{z}w + \lvert w \rvert^2 \\
+&= \lvert z \rvert^2 + 2\operatorname{Re}(z\overline{w}) + \lvert w \rvert^2.
+\end{align*}
+
+最后一步使用了 \( \overline{z\overline{w}} = \overline{z}w \) ，所以中间两项互为共轭，它们的和
+等于 \( z\overline{w} \) 的实部的两倍。
+
+根据实部与模的大小关系以及模的乘法公式，
+
+\[ \operatorname{Re}(z\overline{w})
+\leq \lvert \operatorname{Re}(z\overline{w}) \rvert
+\leq \lvert z\overline{w} \rvert =
+\lvert z \rvert\lvert w \rvert \]
+
+把这个估计代回展开式，得到
+
+\[ \lvert z + w \rvert^2
+\leq \lvert z \rvert^2 + 2\lvert z \rvert\lvert w \rvert + \lvert w \rvert^2 =
+(\lvert z \rvert + \lvert w \rvert)^2 \]
+
+对两边取非负平方根，便得到三角不等式。
+
+** 反三角不等式
+
+三角不等式还给出
+
+\[ \lvert \lvert z \rvert - \lvert w \rvert \rvert \leq \lvert z - w \rvert \]
+
+这称为反三角不等式（reverse triangle inequality）：两个点到原点的距离之差的绝对
+值，不超过这两个点之间的距离。
+
+证明方法与[[id:0e0fb179-ad36-4c96-ab25-7c55987c3745][有序环中的反三角不等式]]相同。分别对
+\( z = (z - w) + w \) 和 \( w = (w - z) + z \) 使用三角不等式并移项，得到
+
+\[ \lvert z \rvert - \lvert w \rvert \leq \lvert z - w \rvert, \qquad
+\lvert w \rvert - \lvert z \rvert \leq \lvert z - w \rvert \]
+
+这就把实数 \( \lvert z \rvert - \lvert w \rvert \) 夹在 \( -\lvert z - w \rvert \) 与 \( \lvert z - w \rvert \) 之间，因而得到结论。
+
+** 平行四边形恒等式
+
+对任意 \( z, w \in \mathbb{C} \) ，有
+
+\[ \lvert z + w \rvert^2 + \lvert z - w \rvert^2 =
+2(\lvert z \rvert^2 + \lvert w \rvert^2) \]
+
+这称为平行四边形恒等式（parallelogram identity）。以 \( z, w \) 为相邻两边时，
+\( z + w \) 与 \( z - w \) 表示两条对角线的方向和长度，因此等式说，两条对角线的长度
+平方之和等于四条边的长度平方之和。
+
+证明只需使用[[id:70057c5d-a849-4c6e-9206-cc9493b3de0b][三角不等式证明中的展开式]]，分别展开 \( \lvert z + w \rvert^2 \) 与
+\( \lvert z - w \rvert^2 \) ：
+
+\[ \lvert z \pm w \rvert^2 =
+\lvert z \rvert^2 \pm 2\operatorname{Re}(z\overline{w}) + \lvert w \rvert^2 \]
+
+将两个等式相加，中间两项消去，便得到结论。
+
+* 复数的平方根
+:PROPERTIES:
+:ID:       bd252235-a647-4cc2-832e-7b45d77cafd8
+:END:
+
+补入 \( i \) 后，不仅 \( -1 \) 有了平方根，每个复数都有平方根。这里称 \( w \) 是
+\( z \) 的平方根，是指 \( w^2 = z \) ；复数没有与域运算相容的序，因此不再要求
+\( w \) 非负。
+
+先处理实数 \( z \) 。若 \( z \geq 0 \) ，实数中的平方根已经给出一个解；若 \( z < 0 \) ，则
+
+\[ \bigl(i\sqrt{-z}\bigr)^2 = -(\sqrt{-z})^2 = z \]
+
+所以负实数也有平方根。
+
+把 \( z \) 写成 \( x + iy \) ，其中 \( x, y \in \mathbb{R} \) 。当 \( y = 0 \) 时， \( z = x \)
+是实数，这种情形已经在上面处理。
+
+以下设 \( y \neq 0 \) 。为了了解平方根的两个坐标应当满足什么条件，把一个候选解写成
+\( s + it \) ，其中 \( s, t \in \mathbb{R} \) 。
+若 \( (s + it)^2 = z \) ，比较实部与虚部可得
+
+\[ s^2 - t^2 = x, \qquad 2st = y \]
+
+对 \( (s + it)^2 = z \) 两边取模，并使用模的乘法公式，得到
+
+\[ s^2 + t^2 = \lvert s + it \rvert^2 = \lvert z \rvert \]
+
+记 \( \rho := \lvert z \rvert = \sqrt{x^2 + y^2} \) 。把关于 \( s^2, t^2 \) 的两个等式相加、相减，
+可知候选解的坐标必须满足
+
+\[ s^2 = \frac{\rho + x}{2}, \qquad t^2 = \frac{\rho - x}{2} \]
+
+反过来，我们按照这些条件构造一个解。因为 \( y \neq 0 \) ，所以 \( \rho > \lvert x \rvert \) ，
+特别地 \( \rho + x > 0 \) 。先令
+
+\[ \alpha := \sqrt{\frac{\rho + x}{2}} \]
+
+则 \( \alpha > 0 \) ，因而可以继续令
+
+\[ \beta := \frac{y}{2\alpha} \]
+
+根据 \( \beta \) 的定义， \( 2\alpha\beta = y \) 。还需检查 \( \alpha^2 - \beta^2 = x \) 。由
+\( y^2 = \rho^2 - x^2 = (\rho - x)(\rho + x) \) ，有
+
+\[ \beta^2 = \frac{y^2}{4\alpha^2} =
+\frac{(\rho - x)(\rho + x)}{2(\rho + x)} =
+\frac{\rho - x}{2} \]
+
+所以 \( \alpha^2 - \beta^2 = x \) 。令 \( \widetilde{w} := \alpha + i\beta \) ，则
+
+\[ \widetilde{w}^2 =
+(\alpha^2 - \beta^2) + i(2\alpha\beta) = x + iy = z \]
+
+这就证明了每个复数都有平方根。
+
+若 \( z \neq 0 \) ，取它的一个平方根 \( w_0 \) 。任何其他解 \( w \) 都满足
+
+\[ 0 = w^2 - w_0^2 = (w - w_0)(w + w_0) \]
+
+域没有零因子，所以 \( w = w_0 \) 或 \( w = -w_0 \) 。因为 \( w_0 \neq 0 \) ，这两个解不同。
+因此非零复数恰有两个平方根，互为相反数；零的平方根只有零。
+
+** 主平方根
+
+为了从两个平方根中选定一个， 可以在 \( \mathbb{C} \setminus (-\infty, 0] \) 上要求平方根的实部为正。
+
+若 \( z \) 不是实数，上面的构造已经给出了实部 \( \alpha > 0 \) 的平方根，另一个平方根的
+实部则为 \( -\alpha < 0 \) 。若 \( z \) 是正实数，两个平方根是正负相反的实数，也恰有一个实部
+为正。因此对每个 \( z \in \mathbb{C} \setminus (-\infty, 0] \) ，存在唯一的 \( w \) 满足
+
+\[ w^2 = z, \qquad \operatorname{Re} w > 0 \]
+
+称这个 \( w \) 为 \( z \) 的主平方根（principal square root），记作 \( \sqrt{z} \) 。
+对正实数，这个记号与原来的实数平方根一致。排除非正实轴，是因为负实数的两个平方根
+都在虚轴上，而零的平方根也是零；它们都不满足实部为正的条件。
+
+例如，对 \( z = i \) ，有 \( x = 0 \) 、 \( y = 1 \) 、 \( \rho = 1 \) ，于是
+
+\[ \sqrt{i} = \frac{1 + i}{\sqrt{2}} \]
+
+方程 \( w^2 = i \) 的另一个解是 \( -(1 + i)/\sqrt{2} \) 。
+
+* 二次方程
+
+设 \( a, b, c \in \mathbb{C} \) 且 \( a \neq 0 \) 。我们要解方程
+
+\[ az^2 + bz + c = 0 \]
+
+记判别式（discriminant）为 \( \Delta := b^2 - 4ac \) 。将原方程乘以 \( 4a \) 并配方，得到
+
+\[ az^2 + bz + c = 0
+\Longleftrightarrow (2az + b)^2 = \Delta \]
+
+[[id:bd252235-a647-4cc2-832e-7b45d77cafd8][复数平方根的存在性]]保证可以取 \( d \in \mathbb{C} \) 使 \( d^2 = \Delta \) 。于是方程进一步等价于
+
+\[ (2az + b - d)(2az + b + d) = 0 \]
+
+域没有零因子，因此全部解为
+
+\[ z_1 = \frac{-b + d}{2a}, \qquad z_2 = \frac{-b - d}{2a} \]
+
+若 \( \Delta \neq 0 \) ，则 \( d \neq 0 \) ，两个解不同；若 \( \Delta = 0 \) ，则
+\( d = 0 \) ，两个表达式给出同一个解。把 \( d \) 换成另一个平方根 \( -d \) ，只会交换
+\( z_1, z_2 \) 的次序，不会改变解集。
+
+由这两个表达式可得
+
+\[ z_1 + z_2 = -\frac{b}{a}, \qquad z_1z_2 = \frac{c}{a} \]
+
+在[[id:7b49faf6-17b6-4625-aeb8-b323ef0d886e][多项式环]] \( \mathbb{C}[X] \) 中，把因式乘积展开，并代入这两个等式，便有
+
+\begin{align*}
+a(X - z_1)(X - z_2)
+&= aX^2 - a(z_1 + z_2)X + az_1z_2 \\
+&= aX^2 - a\left(-\frac{b}{a}\right)X + a\frac{c}{a} \\
+&= aX^2 + bX + c.
+\end{align*}
+
+这就把 \( aX^2 + bX + c \) 分解为 \( a \) 与两个一次多项式
+\( X - z_1, X - z_2 \) 的乘积。
+
+当系数 \( a, b, c \) 都是实数时，判别式 \( \Delta \) 也是实数。若 \( \Delta \geq 0 \) ，
+实数平方根 \( \sqrt{\Delta} \) 存在，可以在前面的求根公式中选择
+\( d = \sqrt{\Delta} \) 。
+
+若 \( \Delta < 0 \) ，则 \( -\Delta > 0 \) ，并且
+
+\[ \left(i\sqrt{-\Delta}\right)^2 =
+i^2(-\Delta) = \Delta \]
+
+所以此时可以选择 \( d = i\sqrt{-\Delta} \) 。把这两种 \( d \) 分别代入
+\( z_{1, 2} = (-b \pm d)/(2a) \) ，得到
+
+\begin{equation*}
+z_{1, 2} = \begin{cases}
+\dfrac{-b \pm \sqrt{\Delta}}{2a}, & \Delta \geq 0, \\
+\dfrac{-b \pm i\sqrt{-\Delta}}{2a}, & \Delta < 0.
+\end{cases}
+\end{equation*}
+
+当 \( \Delta > 0 \) 时有两个不同的实根， \( \Delta = 0 \) 时有一个二重实根；
+当 \( \Delta < 0 \) 时有两个非实根，且它们互为共轭。
+
+** 实系数多项式的共轭根
+
+实系数二次方程的非实根成共轭对出现，并非二次方程特有的现象。
+
+设 \( n \in \mathbb{N} \) 且 \( p = \sum_{k = 0}^{n} a_k X^k \in \mathbb{R}[X] \) 。通过
+\( \mathbb{R} \subseteq \mathbb{C} \) ，也可以把 \( p \) 看作 \( \mathbb{C}[X] \) 中的多项式，
+从而在任意 \( z \in \mathbb{C} \) 处取值。
+
+因为共轭保持加法、乘法，并且把每个实系数 \( a_k \) 映到自身，所以
+
+\[ \overline{p(z)} =
+\sum_{k = 0}^{n} a_k \overline{z}^{k} = p(\overline{z}) \]
+
+因此，若 \( p(z) = 0 \) ，就有 \( p(\overline{z}) = \overline{0} = 0 \) 。当 \( z \) 不是实数时，
+\( z \) 与 \( \overline{z} \) 不同，所以非实根总是成共轭对出现。
+
+* 实数与复数中的球
+
+以下令 \( \mathbb{K} \) 表示 \( \mathbb{R} \) 或 \( \mathbb{C} \) 。对 \( z, w \in \mathbb{K} \) ，
+\( \lvert z - w \rvert \) 表示它们之间的距离。给定中心 \( a \in \mathbb{K} \) 和实数半径
+\( r > 0 \) ，定义开球（open ball）
+
+\[ B_{\mathbb{K}}(a, r) := \{ z \in \mathbb{K}; \lvert z - a \rvert < r \} \]
+
+以及闭球（closed ball）
+
+\[ \overline{B}_{\mathbb{K}}(a, r)
+:= \{ z \in \mathbb{K}; \lvert z - a \rvert \leq r \} \]
+
+上下文明确时，可以省去下标 \( \mathbb{K} \) 。
+
+在实数中，它们分别是以 \( a \) 为中心的开[[id:a8fb8e39-5e0f-4ec8-9617-f6518179b214][区间]]与闭区间：
+
+\[ B_{\mathbb{R}}(a, r) = (a - r, a + r), \qquad
+\overline{B}_{\mathbb{R}}(a, r) = [a - r, a + r] \]
+
+在复数中，它们分别是复平面上的开圆盘（open disk）与闭圆盘（closed disk），也记作
+
+\[ D(a, r) := B_{\mathbb{C}}(a, r), \qquad
+\overline{D}(a, r) := \overline{B}_{\mathbb{C}}(a, r) \]
+
+两种情形下，闭球比开球多出的都是距离中心恰好为 \( r \) 的点：
+
+\[ \overline{B}_{\mathbb{K}}(a, r) \setminus B_{\mathbb{K}}(a, r) =
+\{ z \in \mathbb{K}; \lvert z - a \rvert = r \} \]
+
+在实数中只有两个端点 \( a - r, a + r \) ；在复数中则是一整条圆周。
+
+以原点为中心、半径为 \( 1 \) 的开圆盘和闭圆盘分别称为开单位圆盘与闭单位圆盘，记作
+
+\[ \mathbb{D} := D(0, 1), \qquad
+\overline{\mathbb{D}} := \overline{D}(0, 1) \]
+
+** 圆群
+
+单位圆周上的复数组成集合
+
+\[ S^1 := \{ z \in \mathbb{C}; \lvert z \rvert = 1 \} \]
+
+上标 \( 1 \) 不表示半径。把 \( z \) 写成 \( x + iy \) 后， \( \lvert z \rvert = 1 \) 等价于
+\( x^2 + y^2 = 1 \) 。圆周虽然位于二维平面中，但两个坐标受到这个条件的约束；沿圆周移动时，
+只需一个参数，例如转过的角度，就能记录所在的位置。这就是把圆周看作一维对象的直观
+理由，上标 \( 1 \) 记录的正是这个维数。圆周的半径为 \( 1 \) ，则由条件 \( \lvert z \rvert = 1 \) 表示。
+
+由[[id:2aadbc00-829a-4e2d-91fe-9fa95cceda51][域的定义]]， \( \mathbb{C}^{\times} = \mathbb{C} \setminus \{ 0 \} \) 是复数域的乘法群。
+
+因为 \( \lvert z \rvert = 1 \) 蕴含 \( z \neq 0 \) ，所以 \( S^1 \subseteq \mathbb{C}^{\times} \) 。
+它是 \( \mathbb{C}^{\times} \) 的[[id:fab9edf6-d3e0-4cf9-ab42-df69530cbbcf][子群]]，称为圆群（circle group）。
+
+首先 \( 1 \in S^1 \) 。若 \( z, w \in S^1 \) ，则
+\( \lvert zw \rvert = \lvert z \rvert\lvert w \rvert = 1 \) ，所以 \( zw \in S^1 \) 。又因为
+\( \lvert z^{-1} \rvert = 1/\lvert z \rvert = 1 \) ，每个元素的乘法逆元仍在 \( S^1 \) 中。
+因此它满足子群条件。
+
+在单位圆上， \( \lvert z \rvert^2 = 1 \) ，求逆公式简化为
+
+\[ z^{-1} = \overline{z}, \qquad z \in S^1 \]
