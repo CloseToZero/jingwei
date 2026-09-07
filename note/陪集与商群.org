@@ -9,8 +9,11 @@
 :ID:       2ffbbbef-8f89-4948-a64f-66c37627aa5d
 :END:
 
-设 \( G = (G, \circledast) \) 是一个[[id:16741eed-81e6-4d41-ae5c-758d5247aa22][群]]，\( N \) 是 \( G \) 的一个[[id:fab9edf6-d3e0-4cf9-ab42-df69530cbbcf][子群]]。对任意
-\( g \in G \) ，定义
+给定群的一个子群，我们不仅可以研究子群内部的运算，也可以用它来整理整个群中的
+元素。一种做法是固定一个群元素，让它与子群中的每个元素分别运算，再把所得结果
+收集起来。
+
+设 \( (G, \circledast) \) 是一个[[id:16741eed-81e6-4d41-ae5c-758d5247aa22][群]]，\( N \) 是 \( G \) 的一个[[id:fab9edf6-d3e0-4cf9-ab42-df69530cbbcf][子群]]。对任意 \( g \in G \) ，定义两个子集
 
 \[ g \circledast N := \{ g \circledast n; \ n \in N \}, \qquad
 N \circledast g := \{ n \circledast g; \ n \in N \} \]
@@ -19,19 +22,34 @@ N \circledast g := \{ n \circledast g; \ n \in N \} \]
 集中，\( g \) 写在 \( n \) 的左侧；在右陪集中，\( g \) 写在 \( n \) 的右侧。群运算未必满足交换律，所以两
 者不必相同。
 
+例如，在整数加法群中，取偶数子群 \( N = 2\mathbb{Z} \) 。这时运算写成加法，陪集就是
+
+\[ g + 2\mathbb{Z} = \{g + 2k: k \in \mathbb{Z}\} \]
+
+如果 \( g \) 是偶数，得到的仍是全体偶数；如果 \( g \) 是奇数，得到的就是全体奇数。
+因此，不同的 \( g \) 可能给出同一个陪集，例如 \( 1 + 2\mathbb{Z} = 3 + 2\mathbb{Z} \) 。
+
 ** 陪集是等价类
 :PROPERTIES:
 :ID:       ac9d2be9-6e22-425e-abd5-f1393a4e1edf
 :END:
 
-在 \( G \) 上定义关系
+刚才的例子把整数分成了互不重叠的两类。一般的左陪集是否也能把群分成这样的几块？
+为此，我们先判断两个元素何时属于同一个左陪集。
+
+沿用群中的逆元记号 \( g^{\flat} \) ，在 \( G \) 上定义关系
 
 \[ g \sim_N h
 \Longleftrightarrow g \in h \circledast N
 \Longleftrightarrow h^{\flat} \circledast g \in N \]
 
-第一个条件是说，\( g \) 可以由 \( h \) 在右侧乘上 \( N \) 中的某个元素得到。这个关系是一个
-[[id:dbf0e2c4-086b-4144-a816-a4f15b51526f][等价关系]]。因为 \( e \in N \) ，所以 \( g^{\flat} \circledast g = e \in N \) ，关系具有反身性。如果
+第一个条件是说，\( g \) 可以由 \( h \) 在右侧乘上 \( N \) 中的某个元素得到：\( g = h \circledast n \) 。
+在左侧与 \( h^{\flat} \) 运算，就得到 \( h^{\flat} \circledast g = n \in N \) ，所以两个条件等价。
+这里虽然是在右侧乘上子群元素，得到的集合仍叫左陪集，因为名称看的是代表元 \( h \)
+写在子群的哪一侧。
+
+子群的三个性质恰好保证这是一个[[id:dbf0e2c4-086b-4144-a816-a4f15b51526f][等价关系]]。因为 \( e \in N \) ，所以
+\( g^{\flat} \circledast g = e \in N \) ，关系具有自反性。如果
 \( h^{\flat} \circledast g \in N \) ，那么它的逆元
 
 \[ (h^{\flat} \circledast g)^{\flat} = g^{\flat} \circledast h \]
@@ -48,28 +66,47 @@ N \circledast g := \{ n \circledast g; \ n \in N \} \]
 
 \[ [g] = g \circledast N \]
 
-因此所有左陪集组成的集合记作
+特别地，\( g = g \circledast e \) 属于自己的左陪集。由等价类的性质，两个左陪集只要有公共元素，
+就必定相同。因此
+
+\[ g \circledast N = h \circledast N
+\Longleftrightarrow h^{\flat} \circledast g \in N \]
+
+这给出了判断两个代表元是否表示同一个陪集的方法。把所有左陪集作为元素，得到集合
 
 \[ G/N := \{ g \circledast N; \ g \in G \} \]
 
-陪集作为等价类，要么相同，要么不相交；它们的并是整个 \( G \) 。目前 \( G/N \) 还只是一个集合，
-尚未得到群运算，这是接下来要讨论的。
+这些陪集要么相同，要么不相交，而且覆盖整个 \( G \) ，所以它们确实把群分成了互不重叠的
+各类。\( G/N \) 就是相应的商集。例如，\( \mathbb{Z}/2\mathbb{Z} \) 只有两个元素：偶数集和奇数集。
+每一类本身包含无穷多个整数，但在商集中，它作为一个元素出现。
 
 * 正规子群
 :PROPERTIES:
 :ID:       429cee9b-3abb-44ad-b29e-b0e73a6365b0
 :END:
 
-我们希望直接用代表元定义两个左陪集的乘积：
+现在有了由陪集组成的集合 \( G/N \) ，还可以继续问：群 \( G \) 的运算能不能在这些类之间进行？
+最自然的尝试是从两个陪集中各取一个代表元，先在 \( G \) 中运算，再取结果所在的陪集：
 
 \[ (g \circledast N) \circledast (h \circledast N)
 := (g \circledast h) \circledast N \]
 
-问题在于，同一个陪集可以选择不同的代表元，右边必须与选择无关。保证这一点的条件是
+问题在于，同一个陪集可以选择不同的代表元。若换一组代表元就得到不同的结果，这个
+规则便不能定义陪集之间的二元运算。我们需要的不是代表元乘积完全相同，而是它们落在
+同一个陪集中。
+
+例如，用奇数类与奇数类相加，选 \( 1+1=2 \) 或选 \( 3+5=8 \) ，具体整数不同，但都属于偶数类。
+因此这些选择给出了同一个陪集结果。
+
+一般地，保证这种独立性的条件是：对每个 \( g \in G \) ，左陪集与右陪集相同，即
 
 \[ g \circledast N = N \circledast g, \qquad g \in G \]
 
-满足这个条件的子群 \( N \) 称为 \( G \) 的正规子群（normal subgroup）。
+满足这个条件的子群 \( N \) 称为 \( G \) 的 *正规子群（normal subgroup）* 。这里说的是两个集合
+相等，并不要求 \( g \circledast n = n \circledast g \) 对每个 \( n \in N \) 成立。允许在换边时，将 \( n \)
+换成 \( N \) 中的另一个元素。
+
+** 为什么正规性足够
 
 下面验证正规性确实消除了代表元的影响。设
 
@@ -93,7 +130,26 @@ h' = h \circledast n_2, \qquad n_1, n_2 \in N \]
 \[ (g' \circledast h') \circledast N
 = (g \circledast h) \circledast N \]
 
-这正说明上面的陪集乘法不依赖代表元。
+这正说明上面的陪集乘法不依赖代表元。通常把这种“换代表元不改变结果”的要求称为
+运算的良定义性。
+
+** 为什么这个条件也是必要的
+
+如果上述规则已经与代表元的选择无关，取任意 \( n \in N \) 和 \( h \in G \) 。因为 \( n \circledast N = N = e \circledast N \) ，
+用 \( n \) 或 \( e \) 代表第一个陪集，结果必须相同。因此
+
+\[ (n \circledast h) \circledast N = h \circledast N \]
+
+于是 \( n \circledast h \in h \circledast N \) 。对所有 \( n \in N \) 都成立，就得到
+\( N \circledast h \subseteq h \circledast N \) 。还需要证明反方向的包含。
+
+将刚才的结论用于 \( h^{\flat} \) ，对每个 \( n \in N \) ，存在 \( m \in N \) 使
+\( n^{\flat} \circledast h^{\flat} = h^{\flat} \circledast m \) 。两边取逆，得到
+
+\[ h \circledast n = m^{\flat} \circledast h \in N \circledast h \]
+
+所以 \( h \circledast N \subseteq N \circledast h \) ，从而两边相等。也就是说，正规性恰好是这个
+代表元运算能在陪集上成立的条件。
 
 * 商群
 :PROPERTIES:
@@ -105,10 +161,16 @@ h' = h \circledast n_2, \qquad n_1, n_2 \in N \]
 \[ (g \circledast N) \circledast (h \circledast N)
 := (g \circledast h) \circledast N \]
 
-这个运算已经由正规性保证为良定义。它的结合律继承自 \( G \) ，单位元是
+运算结果仍是一个左陪集，而正规性保证结果与代表元的选择无关，所以这确实是
+\( G/N \) 上的二元运算。要确认它构成群，还需检查群的三个条件。
+
+结合律继承自 \( G \) ：连续运算三个陪集，两种加括号方式分别给出
+\( ((g \circledast h) \circledast k) \circledast N \) 和 \( (g \circledast (h \circledast k)) \circledast N \) ，它们相同。
+单位元则是子群 \( N \) 这个陪集，因为
 
 \[ N = e \circledast N \]
 
+用 \( e \) 作代表元与任意 \( g \) 运算，都仍得到 \( g \) ，所以 \( N \) 与任意陪集在两侧运算都不改变它。
 而 \( g \circledast N \) 的逆元是
 
 \[ (g \circledast N)^{\flat} = g^{\flat} \circledast N \]
@@ -122,8 +184,9 @@ h' = h \circledast n_2, \qquad n_1, n_2 \in N \]
 = (g \circledast g^{\flat}) \circledast N
 = N \]
 
-所以 \( G/N \) 构成群，称为 \( G \) 对 \( N \) 的商群（quotient group）。它的元素不是 \( G \)
-中的单个元素，而是 \( G \) 的陪集。
+所以 \( G/N \) 构成群，称为 \( G \) 对 \( N \) 的 *商群（quotient group）* 。它以陪集为元素，
+运算则由原群的运算给出。特别地，\( N \) 中所有元素都属于同一个陪集 \( N \) ，在商群中
+共同对应单位元。
 
 ** 交换群的子群都是正规子群
 :PROPERTIES:
@@ -134,4 +197,15 @@ h' = h \circledast n_2, \qquad n_1, n_2 \in N \]
 
 \[ g \circledast N = N \circledast g \]
 
-此时商群 \( G/N \) 也仍是交换群。
+此时商群 \( G/N \) 也仍是交换群，因为交换代表元的运算次序不会改变结果。
+
+例如，整数加法群是交换群，所以偶数子群 \( 2\mathbb{Z} \) 正规。商群 \( \mathbb{Z}/2\mathbb{Z} \) 的两个
+元素记为 \( E := 2\mathbb{Z} \) 和 \( O := 1+2\mathbb{Z} \) ，分别表示偶数类和奇数类。它们的运算为
+
+| \( + \) | \( E \) | \( O \) |
+|-+-+-|
+| \( E \) | \( E \) | \( O \) |
+| \( O \) | \( O \) | \( E \) |
+
+这里 \( E \) 是单位元； \( O+O=E \) ，所以 \( O \) 是自身的逆元。这张表记录了偶数与奇数相加的
+规律，而不再区分某个整数究竟是 \( 1 \) 、\( 3 \) 还是其他奇数。
