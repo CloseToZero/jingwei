@@ -10,7 +10,11 @@
 :ID:       638008c3-837c-41f1-a27f-2cec894eb9eb
 :END:
 
-设 \( G = (G, \circledast) \) 和 \( G' = (G', \ast) \) 是两个[[id:16741eed-81e6-4d41-ae5c-758d5247aa22][群]]，单位元分别为 \( e \) 和
+两个群之间的函数，除了对应元素，还可以与两边的运算相配合：在原群中先运算再映射，
+应当与先映射两个元素、再在目标群中运算得到相同的结果。满足这个要求的函数，就是
+我们要讨论的群同态。
+
+设 \( (G, \circledast) \) 和 \( (G', \ast) \) 是两个[[id:16741eed-81e6-4d41-ae5c-758d5247aa22][群]]，单位元分别为 \( e \) 和
 \( e' \) 。如果函数 \( \varphi: G \to G' \) 满足
 
 \[ \varphi(g \circledast h)
@@ -19,15 +23,31 @@
 就称 \( \varphi \) 是一个群同态（group homomorphism）。这个条件表示 \( \varphi \) 保持群运算：
 先在 \( G \) 中运算再应用 \( \varphi \) ，与先应用 \( \varphi \) 再在 \( G' \) 中运算，结果相同。
 
-从一个群到自身的同态称为自同态（endomorphism）。恒等函数 \( \operatorname{id}_G \) 是自同态；
-两个同态的[[id:d95641d3-d8c5-4fee-9495-3072c41d0520][复合]]仍是同态。
+两边的运算可以不同，因此这里分别用 \( \circledast \) 和 \( \ast \) 表示。定义也没有要求函数为单射
+或满射：不同元素可以有相同的像，目标群中也可以有元素没有被映到。
+
+例如，在整数加法群上，函数 \( d(n) := 2n \) 满足
+
+\[ d(m+n) = 2(m+n) = 2m+2n = d(m)+d(n) \]
+
+所以它是同态，尽管它的像只有偶数。作为对比，\( t(n) := n+1 \) 虽然是整数集到自身的
+双射，却不保持加法：\( t(m+n)=m+n+1 \) ，而 \( t(m)+t(n)=m+n+2 \) 。
+
+从一个群到自身的同态称为自同态（endomorphism），刚才的 \( d \) 就是一个例子。
+恒等函数 \( \operatorname{id}_G \) 也是自同态。两个同态的[[id:d95641d3-d8c5-4fee-9495-3072c41d0520][复合]]仍是同态：若 \( \psi: G' \to G'' \) 是另一个
+同态，\( G'' \) 的运算记为 \( \diamond \) ，则
+
+\[ (\psi\circ\varphi)(g\circledast h)
+= \psi\bigl(\varphi(g)\ast\varphi(h)\bigr)
+= (\psi\circ\varphi)(g)\diamond(\psi\circ\varphi)(h) \]
 
 * 平凡同态与零同态
 :PROPERTIES:
 :ID:       26fe7161-0276-4e44-85b9-773941ba5172
 :END:
 
-对任意两个群 \( G, G' \) ，把每个元素都映到 \( G' \) 的单位元 \( e' \) 的常值函数
+同态可以把不同元素映到同一个元素。最极端的情形，是把整个群都映到目标群的单位元。
+对任意两个群 \( G, G' \) ，常值函数
 
 \[ \tau_{G, G'}: G \to G', \qquad g \mapsto e' \]
 
@@ -40,12 +60,17 @@
 
 并称为零同态（zero homomorphism）；上下文明确时，通常简记为 \( 0 \) 。
 
+这里的 \( 0 \) 表示一个函数：它对每个输入都给出目标群的零元。
+
 * 同态自动保持单位元和逆元
 :PROPERTIES:
 :ID:       9691e919-f4b5-4b7a-894e-307c629d71e1
 :END:
 
-同态的定义只要求保持群运算，但这已经迫使它保持单位元和逆元。因为
+群的结构中还有单位元和逆元，而同态的定义只要求保持二元运算。这是否已经足以保证
+它们也被保持？答案是肯定的，因此不必在定义中再单独列出这两项要求。
+
+先看单位元。由 \( e\circledast e=e \) ，有
 
 \[ \varphi(e) \ast \varphi(e)
 = \varphi(e \circledast e)
@@ -56,7 +81,7 @@
 
 \[ \varphi(e) = e' \]
 
-进一步，
+再看逆元。沿用 \( g^{\flat} \) 表示逆元的记号，对逆元定义中的两个等式应用同态，得到
 
 \[ \varphi(g^{\flat}) \ast \varphi(g)
 = \varphi(g^{\flat} \circledast g)
@@ -73,24 +98,30 @@
 :ID:       f89172d6-6e35-46bc-b13f-d7ac41bec0f7
 :END:
 
-同态 \( \varphi: G \to G' \) 的像为
+一个同态实际能到达目标群的哪些元素？我们用像来记录这件事。同态 \( \varphi: G \to G' \) 的像为
 
 \[ \operatorname{im}(\varphi)
 := \{ \varphi(g); \ g \in G \} \]
 
-它由实际能够通过 \( \varphi \) 得到的元素组成。同态的核为
+它是 \( G' \) 的子集，\( \varphi \) 为满射就意味着这个子集等于整个 \( G' \) 。
+
+另一个值得单独考察的集合，是哪些原群元素被映到了单位元。它们在映射后与原来的
+单位元无法区分。我们把这些元素组成的集合称为同态的 *核（kernel）* ：
 
 \[ \ker(\varphi)
 := \varphi^{-1}(\{ e' \})
 = \{ g \in G; \ \varphi(g) = e' \} \]
 
-它由所有被 \( \varphi \) 映到单位元的元素组成。
+核是原群 \( G \) 的子集。这里 \( \varphi^{-1}(\{e'\}) \) 表示集合的原像，不要求 \( \varphi \) 有逆函数。
+例如，整数加法群上的同态 \( d(n)=2n \) 的像是 \( 2\mathbb{Z} \) ，核是 \( \{0\} \) ；平凡同态的像
+只有目标群的单位元，核则是整个原群。
 
 ** 像是子群
 :PROPERTIES:
 :ID:       cc40d01d-99db-4ed6-b021-7d86ed8015af
 :END:
 
+像不仅是一个子集，还沿用了目标群中的运算，成为一个群。我们用子群条件来检查。
 单位元 \( e' = \varphi(e) \) 属于 \( \operatorname{im}(\varphi) \) 。若
 \( g', h' \in \operatorname{im}(\varphi) \) ，取 \( g, h \in G \) 使
 \( g' = \varphi(g) \) 、\( h' = \varphi(h) \) ，则
@@ -116,7 +147,8 @@
 = \varphi(g)^{\flat}
 = e' \]
 
-所以核对群运算和取逆元封闭，是 \( G \) 的子群。它还具有更强的性质：对任意
+所以核对群运算和取逆元封闭，是 \( G \) 的子群。要进一步证明它正规，需要确认它的左右
+陪集相同。为此，先考察把一个核中元素放在 \( a \) 与 \( a^{\flat} \) 之间会发生什么。对任意
 \( a \in G \) 和 \( k \in \ker(\varphi) \) ，有
 
 \[ \varphi(a \circledast k \circledast a^{\flat})
@@ -147,7 +179,11 @@
 :ID:       f08723a5-2a44-49a0-8d8d-a118ec2a9ecb
 :END:
 
-令 \( K := \ker(\varphi) \) 。对任意 \( g \in G \) ，有
+核只记录了哪些元素被映到单位元，看起来只涉及一个函数值。但借助群运算，它其实能
+告诉我们任意两个元素是否具有相同的像：先用一个元素的逆元与另一个运算，就把比较
+两个像的问题转成判断是否落在核中。
+
+令 \( K := \ker(\varphi) \) 。我们来证明，对任意 \( g \in G \) ，有
 
 \[ g \circledast K
 = \varphi^{-1}(\{ \varphi(g) \}) \]
@@ -171,16 +207,23 @@
 \Longleftrightarrow
 g \circledast K = h \circledast K \]
 
-因此，核的陪集正是被同态识别为同一个像的各组元素。特别地，
+因此，核的陪集正是被同态识别为同一个像的各组元素。只要知道核，就知道原群中哪些
+元素被合并了。特别地，
 
 \[ \varphi \text{ 是单射}
 \Longleftrightarrow
 \ker(\varphi) = \{ e \} \]
 
+如果 \( \varphi \) 是单射，由 \( \varphi(e)=e' \) 可知只有 \( e \) 能被映到 \( e' \) 。反过来，如果核只有
+\( e \) ，每个核的陪集就是单元素集 \( \{g\} \) ，所以不同元素不能有相同的像，\( \varphi \) 是单射。
+
 * 商同态
 :PROPERTIES:
 :ID:       434cb349-6e4f-4194-a180-544da97f3188
 :END:
+
+核必定正规。反过来，一个正规子群能不能成为某个同态的核？将元素映到它所在的陪集，
+就能得到所需的同态。
 
 设 \( N \) 是 \( G \) 的正规子群。[[id:7a2de05b-32fc-49e1-aeec-21b23a2f5417][商群]] \( G/N \) 所对应的
 [[id:176477d9-5624-4251-ae88-25dcf2c87de1][典范商映射]]为
@@ -188,7 +231,7 @@ g \circledast K = h \circledast K \]
 \[ p: G \to G/N, \qquad
 g \mapsto g \circledast N \]
 
-是满同态（满射的群同态），因为
+这个函数是满同态，即满射的群同态。它保持运算，因为
 
 \[ p(g \circledast h)
 = (g \circledast h) \circledast N
@@ -202,12 +245,19 @@ g \mapsto g \circledast N \]
 因为 \( p(g) \) 等于商群的单位元 \( N \) ，当且仅当 \( g \in N \) 。这个映射也称为商同态
 （quotient homomorphism）。
 
+例如，\( p: \mathbb{Z}\to\mathbb{Z}/2\mathbb{Z} \) 把偶数映到偶数类，把奇数映到奇数类。
+商群的单位元是偶数类，因此 \( \ker(p)=2\mathbb{Z} \) 。这个同态保留了加法的奇偶规律，
+却不再区分同一类中的不同整数。
+
 * 同构
 :PROPERTIES:
 :ID:       7912c576-ce75-44ca-87be-3cb0262b1f5c
 :END:
 
-双射的群同态称为群同构（group isomorphism）。如果 \( G \) 与 \( G' \) 之间存在同构，就称
+一般同态可能合并元素，也可能只到达目标群的一部分。如果两种情况都没有发生，
+同态又是一一对应，就能用它在两个群之间完整地对应元素和运算。
+
+双射的群同态称为 *群同构（group isomorphism）* 。如果 \( G \) 与 \( G' \) 之间存在同构，就称
 二者同构，记作
 
 \[ G \cong G' \]
@@ -215,6 +265,10 @@ g \mapsto g \circledast N \]
 同构不仅使两个集合中的元素一一对应，还保持群运算。因此可以把 \( \varphi(g) \) 看成元素
 \( g \) 在另一套标签下的名字：元素的写法变了，单位元、逆元和任意有限次群运算之间的关
 系都没有变。
+
+例如，同一个公式 \( n\mapsto2n \) ，作为 \( \mathbb{Z}\to\mathbb{Z} \) 的函数不是满射，但将陪域改为
+偶数加法群 \( 2\mathbb{Z} \) 后就是同构。每个偶数都有唯一的原像，所以
+\( (\mathbb{Z},+)\cong(2\mathbb{Z},+) \) 。判断是否同构时，陪域也是需要明确的一部分。
 
 同构 \( \varphi \) 的逆函数 \( \varphi^{-1}: G' \to G \) 仍是同态。下面验证这一点。若
 \( g' = \varphi(g) \) 且 \( h' = \varphi(h) \) ，则
@@ -228,6 +282,9 @@ g \mapsto g \circledast N \]
 
 ** 自同构群
 
+自同构保持同一个群的运算，同时重新对应它的元素。把这些对应本身作为研究对象，
+还可以得到一个新的群。
+
 一个群 \( G \) 的所有自同构组成集合 \( \operatorname{Aut}(G) \) 。恒等函数属于其中；自同构的复合
 仍是自同构；自同构的逆函数也仍是自同构。因此 \( \operatorname{Aut}(G) \) 在函数复合下构成群，
 称为 \( G \) 的自同构群（automorphism group）。
@@ -236,7 +293,8 @@ g \mapsto g \circledast N \]
 
 ** 内自同构
 
-固定 \( a \in G \) ，定义
+可以直接用群内的元素构造一类自同构：在一个元素左侧与 \( a \) 运算，右侧与 \( a^{\flat} \) 运算。
+这样，两个结果相乘时，中间的 \( a^{\flat} \) 与 \( a \) 就能相消。固定 \( a \in G \) ，定义
 
 \[ c_a: G \to G, \qquad
 c_a(g) := a \circledast g \circledast a^{\flat} \]
@@ -254,7 +312,10 @@ c_a(g) := a \circledast g \circledast a^{\flat} \]
 
 ** 通过双射搬运群结构
 
-设 \( X \) 是集合，\( \varphi: G \to X \) 是双射。可以利用 \( \varphi \) 在 \( X \) 上定义运算
+如果只有一个与 \( G \) 等势的集合 \( X \) ，还没有指定运算，能不能让它成为与 \( G \) 同构的群？
+可以先用双射将 \( X \) 的元素送回 \( G \) 中运算，再把结果送回 \( X \) 。
+
+设 \( \varphi: G \to X \) 是双射，按这个办法在 \( X \) 上定义二元运算
 
 \[ x \ast y
 := \varphi\bigl(\varphi^{-1}(x)
@@ -274,12 +335,15 @@ c_a(g) := a \circledast g \circledast a^{\flat} \]
 因此 \( (X, \ast) \) 是群，并且 \( \varphi: G \to X \) 是群同构。这个构造称为沿双射 \( \varphi \)
 搬运群结构；它把 \( G \) 的元素换成 \( X \) 中的新名字，同时按照这些新名字重新定义群运算。
 
-** 同态经过商群的分解
+* 同态经过商群的分解
 :PROPERTIES:
 :ID:       cec7ef6b-1c45-4034-a342-207ef36d5066
 :END:
 
-设 \( K := \ker(\varphi) \) 。前面已经证明，两个元素具有相同的像，当且仅当它们属于同一个
+对于一个一般同态，可以先把具有相同像的元素合并，再考察剩下的对应。这样会得到
+什么群，又与原同态的像有什么关系？
+
+设 \( \varphi: G\to G' \) 为群同态，令 \( K := \ker(\varphi) \) 。两个元素具有相同的像，当且仅当它们属于同一个
 \( K \) 的陪集。因此 \( \varphi \) 在每个陪集上取值不变，可以把对元素 \( g \) 的依赖改为对陪集
 \( g \circledast K \) 的依赖。又因为核是正规子群，\( G/K \) 是群，所以可以定义
 
@@ -304,7 +368,7 @@ g \circledast K \mapsto \varphi(g) \]
 \[ \operatorname{im}(\widetilde{\varphi})
 = \operatorname{im}(\varphi) \]
 
-若记 \( p: G \to G/K \) 为商同态，那么
+记 \( p: G \to G/K \) 为商同态，将这些映射画在一起：
 
 \begin{equation*}
 \begin{tikzcd}
@@ -313,7 +377,8 @@ G/K \arrow[ur, "\widetilde{\varphi}"']
 \end{tikzcd}
 \end{equation*}
 
-是交换图，即
+图中直接沿 \( \varphi \) 映射，与先沿 \( p \) 取陪集、再沿 \( \widetilde{\varphi} \) 映射，结果相同。
+这样的图称为交换图，等式表示就是
 
 \[ \varphi = \widetilde{\varphi} \circ p \]
 
@@ -326,6 +391,13 @@ G/K \arrow[ur, "\widetilde{\varphi}"']
 
 \[ G/\ker(\varphi) \cong \operatorname{im}(\varphi) \]
 
+这称为群的 *第一同构定理* 。它说明，商去核之后，同态原来合并的元素已经被归为一类，
+剩下的各类便与像中的元素一一对应，而且这种对应保持群运算。
+
 特别地，如果 \( \varphi \) 是满同态，那么
 
 \[ G/\ker(\varphi) \cong G' \]
+
+例如，取奇偶类的商同态 \( p: \mathbb{Z}\to\mathbb{Z}/2\mathbb{Z} \) 是满射，核是 \( 2\mathbb{Z} \) 。
+将所有偶数归为一类、所有奇数归为一类后，得到的两个类及其加法，恰好就是这个同态
+的全部像及其运算。
