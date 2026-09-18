@@ -607,6 +607,9 @@ v = c_1 b_1 + \cdots + c_n b_n \]
 * 常见的基与坐标
 
 ** 标准坐标与函数值
+:PROPERTIES:
+:ID:       3bcefd4b-6654-4596-8a4f-43d4a093e0c4
+:END:
 
 对 \( m \in \mathbb{N}^{\times} \) ，令 \( e_j \in K^m \) 的第 \( j \) 个坐标为 \( 1_K \) ，其余
 坐标为 \( 0_K \) 。任意 \( x = (x_1, \ldots, x_m) \in K^m \) 都唯一地写成
