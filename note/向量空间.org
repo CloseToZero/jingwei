@@ -102,6 +102,9 @@ x \in X, \quad \lambda \in K, \quad f, g \in K^X \]
 \( X = \emptyset \) 时，\( K^X \) 只含空函数，是零向量空间。
 
 ** 乘积空间
+:PROPERTIES:
+:ID:       f95a0646-cf4f-4d5f-a2da-4b502ba112a0
+:END:
 
 给定 \( m \in \mathbb{N}^{\times} \) 和 \( K \)-向量空间 \( V_1, \ldots, V_m \) ，笛卡尔积
 
@@ -175,6 +178,9 @@ T(\lambda v) = \lambda T(v) \]
 可知 \( T(-v) \) 是 \( T(v) \) 的加法逆元，所以 \( T(-v) = -T(v) \) 。
 
 ** 同构与逆映射
+:PROPERTIES:
+:ID:       3b59984d-5fb3-4a96-b81a-85ee46217acd
+:END:
 
 线性映射也称为线性同态（linear homomorphism）。
 从 \( V \) 到 \( W \) 的所有线性映射组成的集合记作 \( \operatorname{Hom}_K(V, W) \) ；
