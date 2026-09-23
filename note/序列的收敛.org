@@ -135,6 +135,9 @@
 这就满足了收敛的定义。
 
 ** 修改有限项不影响收敛
+:PROPERTIES:
+:ID:       be7d7960-395e-4bf0-8304-b7c83b312359
+:END:
 
 若两个序列 \( (x_n) \) 与 \( (y_n) \) 从某个下标 \( M \) 起相同，那么其中一个收敛于
 \( a \) 时，另一个也收敛于 \( a \) 。我们来验证这一点。若 \( x_n \to a \) ，给定
@@ -153,6 +156,9 @@
 * 怎样用定义证明收敛
 
 ** 常值序列与倒数序列
+:PROPERTIES:
+:ID:       bb0c4f5b-c307-47da-aa39-43fe204865cb
+:END:
 
 常值序列 \( x_n = a \) 收敛于 \( a \) ：对每个 \( \varepsilon > 0 \) ，所有项都满足
 \( d(x_n, a) = 0 < \varepsilon \) ，可以取 \( N = 0 \) 。
@@ -293,6 +299,9 @@ n \geq N_b \implies d(x_n, b) < \varepsilon \]
 \( \varepsilon \) ，即 \( d(x_n, a) < \varepsilon \) 。这就证明了 \( x_n \to a \) 。
 
 ** 复数的实部与虚部
+:PROPERTIES:
+:ID:       86add786-ab2a-4972-a455-5c9c074b86b4
+:END:
 
 写 \( z_n = u_n + i v_n \) 、\( z = u + i v \) ，其中实部与虚部都是实数。我们要证明
 

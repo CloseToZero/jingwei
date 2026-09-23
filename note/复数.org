@@ -310,6 +310,9 @@ z \in \mathbb{R} \Longleftrightarrow \overline{z} = z \]
 这两个不等式表示：点到任一坐标轴的距离都不超过它到原点的距离。
 
 ** 乘积与商的模
+:PROPERTIES:
+:ID:       b8a45c95-a9a1-4ae3-9492-1a71f3ec9083
+:END:
 
 模保持乘法：对任意 \( z, w \in \mathbb{C} \) ，有
 
@@ -387,6 +390,9 @@ z\overline{z}\,w\overline{w} = \lvert z \rvert^2\lvert w \rvert^2 \]
 对两边取非负平方根，便得到三角不等式。
 
 ** 反三角不等式
+:PROPERTIES:
+:ID:       a98939a8-47bf-4c09-94f6-12e0c9d415e7
+:END:
 
 三角不等式还给出
 
