@@ -277,6 +277,9 @@ n \geq N_b \implies d(x_n, b) < \varepsilon \]
 * 分量与收敛
 
 ** 有限乘积中的逐分量收敛
+:PROPERTIES:
+:ID:       5c4c43cc-0842-4729-83c9-3cdd4cd0e558
+:END:
 
 设 \( s \in \mathbb{N}^{\times} \) ，每个 \( (X_i, d_i) \) 都是度量空间，并让
 \( X = X_1 \times \cdots \times X_s \) 使用[[id:a085fd7f-5db6-46b6-873c-74120dd898cb][乘积度量]]，即

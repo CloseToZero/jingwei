@@ -1,0 +1,206 @@
+:PROPERTIES:
+:ID:       05a83fbf-32ac-4484-9a76-c5b7a63ce8c6
+:END:
+#+title: 收敛数列空间
+#+filetags: :数学:分析:线性代数:
+
+* 把收敛数列放在同一个空间中
+
+两个收敛数列逐项相加，所得数列仍然收敛；把一个收敛数列的每项乘以固定标量，
+所得数列也仍然收敛。这说明，若把所有收敛数列放在一起，逐项加法与数乘不会
+让结果离开这个集合。我们可以据此考察它的向量空间结构。
+
+令 \( \mathbb{K} \) 表示 \( \mathbb{R} \) 或 \( \mathbb{C} \) ，收敛使用自然度量。
+所有 \( \mathbb{K} \) 中的数列组成集合
+
+\[ s(\mathbb{K}) := \mathbb{K}^{\mathbb{N}} \]
+
+把整个数列记为 \( x = (x_n) \) 、\( y = (y_n) \) 。对
+\( \lambda \in \mathbb{K} \) ，逐项定义
+
+\[ x + y := (x_n + y_n)_{n \in \mathbb{N}}, \qquad
+\lambda x := (\lambda x_n)_{n \in \mathbb{N}} \]
+
+这两种运算得到的仍是 \( \mathbb{K} \) 中的数列。由于数列是以 \( \mathbb{N} \)
+为定义域的函数，[[id:905c3529-2a48-4e13-be49-73b665eefa1a][函数空间的逐点运算]]说明 \( s(\mathbb{K}) \) 是
+\( \mathbb{K} \)-向量空间。它的零向量是全零序列 \( \mathbf{0} := (0, 0, \ldots) \) 。
+
+其中所有收敛数列组成的集合记为
+
+\[ c(\mathbb{K}) :=
+\{ x = (x_n) \in s(\mathbb{K}); \ (x_n) \text{ 收敛} \} \]
+
+我们来说明 \( c(\mathbb{K}) \) 是 \( s(\mathbb{K}) \) 的子空间。全零序列收敛于
+\( 0 \) ，所以这个集合非空。由[[id:4ed5f79e-5ec9-4b29-b0cd-e2e4962f6e6e][加法与数乘的极限法则]]，任意两个
+\( c(\mathbb{K}) \) 中的数列相加，或任意一个乘以标量，结果都仍然收敛，因而仍在
+\( c(\mathbb{K}) \) 中。这正好满足[[id:2a58172f-33a5-4435-b73f-f775ce197ce7][子空间的判据]]，所以 \( c(\mathbb{K}) \)
+在这些逐项运算下本身也是 \( \mathbb{K} \)-向量空间。
+
+* 取极限是一个线性映射
+
+每个收敛数列都有极限，并且由[[id:a02e3e6d-4fb1-4787-83f1-1ef4f9b01b6f][极限唯一性]]，这个极限只有一个。因此，可以把
+“取极限”看成一个映射：输入整个收敛数列，输出它的极限。记这个映射为
+
+\[ L: c(\mathbb{K}) \to \mathbb{K}, \qquad
+x = (x_n) \mapsto \lim_{n \to \infty} x_n \]
+
+它称为极限映射，通常也记作 \( \lim \) 。
+
+加法与数乘的极限法则不仅保证运算后的数列仍属于 \( c(\mathbb{K}) \) ，还给出了
+结果的极限。对任意 \( x = (x_n), y = (y_n) \in c(\mathbb{K}) \) 以及
+\( \lambda, \mu \in \mathbb{K} \) ，有
+
+\begin{align*}
+L(\lambda x + \mu y)
+&= \lim_{n \to \infty}(\lambda x_n + \mu y_n) \\
+&= \lambda\lim_{n \to \infty} x_n + \mu\lim_{n \to \infty} y_n \\
+&= \lambda L(x) + \mu L(y)
+\end{align*}
+
+所以 \( L \) 是[[id:5faa367d-4dde-4393-a676-cede2187a4d0][线性映射]]。它也满射：对任意 \( a \in \mathbb{K} \) ，
+常值数列 \( (a, a, \ldots) \) 属于 \( c(\mathbb{K}) \) ，并被 \( L \) 映到 \( a \) 。
+
+** 极限映射的核
+
+所有收敛于 \( 0 \) 的数列，也就是无穷小序列，组成集合
+
+\[ c_0(\mathbb{K}) :=
+\{ x = (x_n) \in c(\mathbb{K}); \ x_n \to 0 \} \]
+
+这些恰好是被 \( L \) 映到零的元素，因此
+
+\[ \ker(L) = c_0(\mathbb{K}) \]
+
+由[[id:46ef8570-91e2-412c-9cc7-7aa94c8fcaa4][线性映射的核是子空间]]，\( c_0(\mathbb{K}) \) 是 \( c(\mathbb{K}) \) 的子空间。
+特别地，数列 \( (1/(n + 1))_{n \in \mathbb{N}} \) 不是全零序列，却也属于这个核，
+所以极限映射不是单射。
+
+* 逐项乘法与子代数
+
+除了加法与数乘，还可以把两个数列逐项相乘：
+
+\[ xy := (x_n y_n)_{n \in \mathbb{N}}, \qquad x, y \in s(\mathbb{K}) \]
+
+这里相乘的是两个数列，得到的仍是数列；数乘 \( \lambda x \) 中的 \( \lambda \)
+则是一个固定标量。由[[id:cc75f8b8-463d-42a5-827f-135d43deeab0][逐点运算的函数代数]]，这些运算使
+\( s(\mathbb{K}) \) 成为交换含幺 \( \mathbb{K} \)-代数，其单位元是常值数列
+\( \mathbf{1} := (1, 1, \ldots) \) 。
+
+如果 \( x, y \in c(\mathbb{K}) \) ，由[[id:dcc37059-6948-4b51-8e97-830c44061b6f][乘积的极限法则]]，数列 \( xy \) 也收敛，
+所以 \( xy \in c(\mathbb{K}) \) 。我们已经知道 \( c(\mathbb{K}) \) 是向量子空间，
+现在又知道它对乘法封闭，因此它是 \( s(\mathbb{K}) \) 的[[id:eb7a97f7-bdac-442b-9c4d-ec0078fbc875][子代数]]。
+常值数列 \( \mathbf{1} \) 也收敛，故这两个代数共享同一个乘法单位元。
+
+乘积法则同时说明极限映射保持乘法：
+
+\[ L(xy) = \lim_{n \to \infty}(x_n y_n)
+= \left(\lim_{n \to \infty} x_n\right)
+\left(\lim_{n \to \infty} y_n\right) = L(x)L(y) \]
+
+结合已经证明的线性性，\( L \) 是 \( \mathbb{K} \)-[[id:132f5383-2aed-4e99-995f-44dc93dd1c4e][代数同态]]。又因为
+\( L(\mathbf{1}) = 1 \) ，它还是保幺的。
+
+* 无穷小序列构成理想
+
+\( c_0(\mathbb{K}) \) 还有一个比自身的乘法封闭性更强的性质：一个无穷小序列
+与任意收敛数列相乘，结果仍是无穷小序列。另一个因子不必也趋于零。
+
+具体地，取 \( u = (u_n) \in c_0(\mathbb{K}) \) 和
+\( x = (x_n) \in c(\mathbb{K}) \) 。因为 \( u_n \to 0 \) ，而
+\( (x_n) \) 由[[id:eb24d18f-1bf2-4320-82db-a96075f9a41c][收敛序列有界]]可知有界，
+[[id:6d7a6970-a72e-4eba-9708-142ff27eae5c][无穷小序列乘有界数列]]的结论给出 \( u_n x_n \to 0 \) 。所以
+
+\[ ux \in c_0(\mathbb{K}), \qquad xu \in c_0(\mathbb{K}) \]
+
+第二个关系也成立，因为这里的逐项乘法交换。另一方面，
+\( c_0(\mathbb{K}) \) 已经是向量子空间，所以它是加法群的子群。
+加法子群条件与上面的乘法性质合起来，恰好说明 \( c_0(\mathbb{K}) \) 是
+\( c(\mathbb{K}) \) 的[[id:69877068-3c6f-443c-8f3c-ce2420cd35c6][理想]]。
+
+这里需要指明它是哪个环的理想。如果把另一个因子的范围扩大到所有数列组成的
+\( s(\mathbb{K}) \) ，这个性质就不成立。例如，取
+
+\[ u_n := \frac{1}{n + 1}, \qquad v_n := n + 1, \qquad n \in \mathbb{N} \]
+
+则 \( u \in c_0(\mathbb{K}) \) 、\( v \in s(\mathbb{K}) \) ，但
+\( uv = \mathbf{1} \notin c_0(\mathbb{K}) \) 。因此 \( c_0(\mathbb{K}) \)
+不是 \( s(\mathbb{K}) \) 的理想。
+
+* 有限维向量值序列
+
+数列的每一项也可以换成一个向量。固定 \( m \in \mathbb{N}^{\times} \) ，令
+\( \mathbb{K}^m \) 使用[[id:a085fd7f-5db6-46b6-873c-74120dd898cb][乘积度量]]
+
+\[ d(v, w) := \max_{1 \leq j \leq m}|v_j - w_j|, \qquad
+v, w \in \mathbb{K}^m \]
+
+所有以 \( \mathbb{K}^m \) 为取值空间的序列组成
+
+\[ s(\mathbb{K}^m) := (\mathbb{K}^m)^{\mathbb{N}} \]
+
+对其中的 \( x = (x_n) \) 、\( y = (y_n) \) ，仍逐项定义加法与数乘
+\( x + y = (x_n + y_n) \) 、\( \lambda x = (\lambda x_n) \) 。此时每个
+\( x_n \) 都是向量，加法与数乘按它的各个坐标进行。把所有项的第 \( j \) 个
+坐标放在一起，就得到一个标量数列；这些运算在每个坐标数列上都是
+\( s(\mathbb{K}) \) 的运算。因此向量空间的各条等式逐坐标成立，
+\( s(\mathbb{K}^m) \) 也是 \( \mathbb{K} \)-向量空间。
+
+其中所有收敛的序列组成集合
+
+\[ c(\mathbb{K}^m) :=
+\{ x = (x_n) \in s(\mathbb{K}^m); \ (x_n) \text{ 收敛} \} \]
+
+我们要证明，它是 \( s(\mathbb{K}^m) \) 的子空间，而且取极限给出线性映射
+
+\[ L_m: c(\mathbb{K}^m) \to \mathbb{K}^m, \qquad
+x = (x_n) \mapsto \lim_{n \to \infty} x_n \]
+
+** 用各坐标的极限验证线性性
+
+设 \( x_n \to a \) 、\( y_n \to b \) ，写成坐标形式
+
+\[ x_n = (x_{n,1}, \ldots, x_{n,m}), \qquad
+y_n = (y_{n,1}, \ldots, y_{n,m}) \]
+
+以及 \( a = (a_1, \ldots, a_m) \) 、\( b = (b_1, \ldots, b_m) \) 。由
+[[id:5c4c43cc-0842-4729-83c9-3cdd4cd0e558][有限乘积中的逐分量收敛]]，对每个 \( j \) 都有
+\( x_{n,j} \to a_j \) 、\( y_{n,j} \to b_j \) 。
+
+取固定标量 \( \lambda, \mu \in \mathbb{K} \) 。对每个坐标使用标量数列的
+加法与数乘法则，得到
+
+\[ \lambda x_{n,j} + \mu y_{n,j} \to \lambda a_j + \mu b_j,
+\qquad 1 \leq j \leq m \]
+
+这些正是向量 \( \lambda x_n + \mu y_n \) 的各个坐标。再由逐分量收敛的
+等价性，把这些坐标合起来，就有
+
+\[ \lambda x_n + \mu y_n \to \lambda a + \mu b \]
+
+因此收敛向量值序列的加法与数乘仍然收敛；全零向量序列也收敛，所以
+\( c(\mathbb{K}^m) \) 是子空间。同时，上式说明
+
+\[ L_m(\lambda x + \mu y) = \lambda L_m(x) + \mu L_m(y) \]
+
+故 \( L_m \) 是线性映射。
+
+** 标量也随下标变化时
+
+线性性中的标量 \( \lambda, \mu \) 是固定的。如果每一项乘以不同的标量，
+就需要另行考虑这个标量数列的极限。设 \( (\lambda_n) \) 是 \( \mathbb{K} \)
+中的数列，\( (x_n) \) 是 \( \mathbb{K}^m \) 中的序列，并且
+
+\[ \lambda_n \to \alpha, \qquad x_n \to a \]
+
+那么逐项数乘得到的向量值序列也收敛，并有
+
+\[ \lambda_n x_n \to \alpha a \]
+
+为证明这一点，仍看每个坐标。由 \( x_n \to a \) ，有 \( x_{n,j} \to a_j \) 。
+标量数列的乘积法则给出
+
+\[ \lambda_n x_{n,j} \to \alpha a_j, \qquad 1 \leq j \leq m \]
+
+左边是 \( \lambda_n x_n \) 的第 \( j \) 个坐标，右边是 \( \alpha a \) 的
+第 \( j \) 个坐标。所有坐标都趋于相应的值，所以由逐分量收敛，得到
+\( \lambda_n x_n \to \alpha a \) 。

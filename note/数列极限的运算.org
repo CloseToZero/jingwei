@@ -51,6 +51,9 @@
 这就证明了 \( u_n \to 0 \) 。
 
 * 加法与数乘的极限
+:PROPERTIES:
+:ID:       4ed5f79e-5ec9-4b29-b0cd-e2e4962f6e6e
+:END:
 
 对两个数列 \( (x_n) \) 、\( (y_n) \) 逐项相加，得到数列 \( (x_n + y_n) \) ；
 把 \( (x_n) \) 的每一项乘以固定的 \( \lambda \in \mathbb{K} \) ，则得到数列
@@ -99,6 +102,9 @@ n \geq N_y \implies |y_n - b| < \varepsilon/2 \]
 * 乘法的极限
 
 ** 无穷小序列乘有界数列
+:PROPERTIES:
+:ID:       6d7a6970-a72e-4eba-9708-142ff27eae5c
+:END:
 
 逐项相乘也得到一个数列。先考虑一个因子趋于零的情形：若 \( u_n \to 0 \) ，而
 \( (v_n) \) 有界，那么
@@ -133,6 +139,9 @@ n \geq N_y \implies |y_n - b| < \varepsilon/2 \]
 第二个因子组成有界数列，故 \( z_n \to 0 \) 。
 
 ** 两个收敛数列的乘积
+:PROPERTIES:
+:ID:       dcc37059-6948-4b51-8e97-830c44061b6f
+:END:
 
 现在设 \( x_n \to a \) 且 \( y_n \to b \) 。我们要证明
 
