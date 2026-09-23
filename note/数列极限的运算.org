@@ -31,6 +31,9 @@
 \[ u_n \to 0 \quad \Longleftrightarrow \quad |u_n| \to 0 \]
 
 ** 用已知的无穷小序列控制误差
+:PROPERTIES:
+:ID:       72675436-8aa4-4afc-b3d2-692ffd76437d
+:END:
 
 有时误差本身不容易计算，但可以给它找到一个趋于零的上界。具体地，设
 \( (u_n) \) 是 \( \mathbb{K} \) 中的数列，\( (r_n) \) 是实数数列。如果
@@ -186,6 +189,9 @@ n \geq N_y \implies |y_n - b| < \varepsilon/2 \]
 所以这些项不但非零，其模还有一个与 \( n \) 无关的正下界。
 
 ** 从倒数得到商法则
+:PROPERTIES:
+:ID:       59b78620-4c77-4d83-b73e-3e3c44c674ea
+:END:
 
 在同样的假设下，我们来证明
 
@@ -269,6 +275,9 @@ n \geq N_y \implies |y_n - b| < \varepsilon/2 \]
 * 方根与有理数次幂的极限
 
 ** 非负方根保持极限
+:PROPERTIES:
+:ID:       27acb550-329e-44e7-a4a4-8856bb66790a
+:END:
 
 取整数次幂可以反复使用乘法法则；取方根则要从幂的收敛推回方根的收敛，
 这个方向还需要证明。设

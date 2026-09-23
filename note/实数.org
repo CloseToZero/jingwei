@@ -811,6 +811,9 @@ v := \left(\sqrt[q']{a}\right)^{p'} \]
 \[ (a^r)^s = (t^p)^m = t^{pm} = a^{pm/(qn)} = a^{rs} \]
 
 * 算术—几何均值不等式
+:PROPERTIES:
+:ID:       2e9077e1-34a7-4216-b31d-328b6c48084b
+:END:
 
 设 \( n \in \mathbb{N}^{\times} \) ，并取非负实数 \( x_1, \ldots, x_n \) 。它们的算术平均数
 （arithmetic mean）和几何平均数（geometric mean）分别为
