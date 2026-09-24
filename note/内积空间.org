@@ -1,0 +1,411 @@
+:PROPERTIES:
+:ID:       8d6780b9-20db-4a53-bf72-14748017728d
+:END:
+#+title: 内积空间
+#+filetags: :数学:分析:线性代数:
+
+* 向量相加后的长度
+
+知道两个向量各自的长度，还不能确定它们相加后的长度。在通常的平面几何中，
+两个长度都为 \( 1 \) 的向量，同向时相加得到长度为 \( 2 \) 的向量，反向时相加
+却得到零向量。可见，相加后的长度还取决于两个向量之间的方向关系。
+
+这种关系怎样影响长度，可以从坐标公式中看出来。设
+\( x = (x_1, x_2), y = (y_1, y_2) \in \mathbb{R}^2 \) 。向量 \( x + y \)
+的长度平方为
+
+\[ (x_1 + y_1)^2 + (x_2 + y_2)^2
+= (x_1^2 + x_2^2) + 2(x_1y_1 + x_2y_2) + (y_1^2 + y_2^2) \]
+
+右边的第一个、最后一个平方和分别是两个向量各自的长度平方。在这两个长度固定时，
+向量的长度如何变化，就由 \( x_1y_1 + x_2y_2 \) 决定。这个量补充了单看各自
+长度时缺少的信息。
+
+对两个向量 \( x, y \in \mathbb{R}^2 \) ，将对应坐标相乘后相加，定义
+
+\[ (x\mid y) := x_1y_1 + x_2y_2 \]
+
+这个运算称为 \( \mathbb{R}^2 \) 上的标准内积。它不仅可以用来表达两个向量
+之间的关系，也包含单个向量的长度信息：让 \( y = x \) ，就得到
+\( x_1^2 + x_2^2 \) 。
+
+把这个想法推广到复数坐标时，我们仍希望一个向量与自身的内积能够表示它的长度平方。
+长度平方应当是非负实数，但若照搬 \( x_1y_1 + x_2y_2 \) ，对向量
+\( x = (i, 0) \) 就会得到 \( (x\mid x) = i^2 = -1 \) ，不能作这样的解释。
+
+因此，需要调整坐标相乘的方式。由[[id:4fac113c-d816-4631-a319-ca8e35c5fe23][复数共轭]]的性质，
+\( z\overline{z} = |z|^2 \) ，所以可以改用
+
+\[ (x\mid y) := x_1\overline{y_1} + x_2\overline{y_2},
+\qquad x, y \in \mathbb{C}^2 \]
+
+这样，\( (x\mid x) = |x_1|^2 + |x_2|^2 \) 就是非负实数，并且只有在
+\( x = 0 \) 时等于零，保留了我们希望长度平方具有的性质。
+
+** 内积的定义
+
+以下用 \( \mathbb{K} \) 表示 \( \mathbb{R} \) 或 \( \mathbb{C} \) 。设 \( E \) 是
+\( \mathbb{K} \)-向量空间。函数
+
+\[ (\cdot\mid\cdot): E \times E \to \mathbb{K}, \qquad
+(x, y) \mapsto (x\mid y) \]
+
+若满足以下条件，就称为 \( E \) 上的内积（inner product，也称 scalar product）：
+
+1. 共轭对称性：\( (x\mid y) = \overline{(y\mid x)} \) ；
+2. 对第一变量线性：\( (\lambda x + \mu y\mid z) = \lambda(x\mid z) + \mu(y\mid z) \) ；
+3. 正定性：\( (x\mid x) \) 是非负实数，且 \( (x\mid x) = 0 \) 当且仅当 \( x = 0 \) ；
+
+其中 \( x, y, z \in E \) 、\( \lambda, \mu \in \mathbb{K} \) 任取。向量空间 \( E \)
+连同这个内积，称为内积空间（inner product space）。
+
+在第一条中取 \( y = x \) ，就有 \( (x\mid x) = \overline{(x\mid x)} \) ，所以
+\( (x\mid x) \) 必为实数。第三条进一步要求 \( (x\mid x) \geq 0 \) ，并且只在
+零向量处等于零。这个不等式比较的是实数 \( (x\mid x) \) 与 \( 0 \) ，即使
+标量域是 \( \mathbb{C} \) ，它使用的也仍然是实数的大小关系。
+
+在实数情形，共轭不改变数值，第一条就是对称性
+\( (x\mid y) = (y\mid x) \) ；在复数情形，共轭对称性也称 Hermitian 对称性。
+
+* 内积与向量运算
+
+** 第二变量中的标量要取共轭
+
+定义只直接规定了第一变量的线性性。若要展开第二变量中的线性组合，可以先交换
+两个变量，使用线性性，再取共轭：
+
+\begin{align*}
+(x\mid\lambda y + \mu z)
+&= \overline{(\lambda y + \mu z\mid x)} \\
+&= \overline{\lambda(y\mid x) + \mu(z\mid x)} \\
+&= \overline{\lambda}\,\overline{(y\mid x)} + \overline{\mu}\,\overline{(z\mid x)} \\
+&= \overline{\lambda}(x\mid y) + \overline{\mu}(x\mid z)
+\end{align*}
+
+这里用了共轭保持加法和乘法。因此，固定第一变量后，第二变量中的加法被保持，
+但标量要先取共轭再提出。这种性质称为共轭线性（conjugate linearity）。
+
+一个取标量值的双变量映射，若对第一变量线性、对第二变量共轭线性，就称为
+半双线性形式（sesquilinear form）。所以复内积是正定的 Hermitian 半双线性形式。
+当 \( \mathbb{K} = \mathbb{R} \) 时，两个变量都线性，这时称为双线性形式
+（bilinear form），实内积就是正定的对称双线性形式。
+
+特别地，对任意 \( \lambda \in \mathbb{K} \) ，
+
+\[ (\lambda x\mid\lambda x)
+= \lambda\overline{\lambda}(x\mid x) = |\lambda|^2(x\mid x) \]
+
+在第一变量中取零倍数，有 \( (0\mid y) = 0 \) ；再由共轭对称性，
+\( (x\mid 0) = 0 \) 。
+
+** 展开两个向量的和与差
+
+在第一变量的线性性与第二变量的共轭线性性中，令标量都取 \( 1 \) ，由于
+\( \overline{1} = 1 \) ，可知两个变量都保持加法。先对第一变量展开，再对第二变量展开，得到
+
+\begin{align*}
+(x + y\mid x + y)
+&= (x\mid x + y) + (y\mid x + y) \\
+&= (x\mid x) + (x\mid y) + (y\mid x) + (y\mid y) \\
+&= (x\mid x) + 2\operatorname{Re}(x\mid y) + (y\mid y)
+\end{align*}
+
+最后一步用了 \( (y\mid x) = \overline{(x\mid y)} \) ，以及[[id:4fac113c-d816-4631-a319-ca8e35c5fe23][复数与其共轭之和等于实部的两倍]]。
+将 \( y \) 换成 \( -y \) ，则得到
+
+\[ (x - y\mid x - y)
+= (x\mid x) - 2\operatorname{Re}(x\mid y) + (y\mid y) \]
+
+这两个展开式与实数的平方展开相似，只是交叉项在复数情形下要取实部。
+
+* 坐标空间中的内积
+
+** 欧氏内积
+
+对 \( m \in \mathbb{N}^{\times} \) 以及
+\( x = (x_1, \ldots, x_m), y = (y_1, \ldots, y_m) \in \mathbb{K}^m \) ，定义
+
+\[ (x\mid y) := \sum_{j = 1}^{m} x_j\overline{y_j} \]
+
+我们来验证它是内积。交换 \( x, y \) 再取共轭，有
+
+\[ \overline{(y\mid x)}
+= \sum_{j = 1}^{m}\overline{y_j}x_j = (x\mid y) \]
+
+对第一变量，分配律给出
+
+\[ (\lambda x + \mu y\mid z)
+= \sum_{j = 1}^{m}(\lambda x_j + \mu y_j)\overline{z_j}
+= \lambda(x\mid z) + \mu(y\mid z) \]
+
+而一个向量与自身的内积为
+
+\[ (x\mid x) = \sum_{j = 1}^{m}|x_j|^2 \geq 0 \]
+
+每个求和项都非负，所以这个和为零，当且仅当所有坐标都为零，也就是 \( x = 0 \) 。
+三条条件都成立，所得内积称为欧氏内积（Euclidean inner product），也称标准内积。
+在实数情形，它就是 \( \sum_{j = 1}^{m}x_jy_j \) ，通常还记作点积 \( x\cdot y \) 。
+
+** 给不同坐标赋予权重
+
+还可以在求和时给各坐标乘上不同的系数。固定
+\( \lambda_1, \ldots, \lambda_m \in \mathbb{K} \) ，令
+
+\[ (x\mid y)_{\lambda} := \sum_{j = 1}^{m}\lambda_j x_j\overline{y_j} \]
+
+这个公式给出内积，当且仅当每个 \( \lambda_j \) 都是严格正实数。
+
+先看必要性。取第 \( j \) 个[[id:3bcefd4b-6654-4596-8a4f-43d4a093e0c4][标准基向量]] \( e_j \) ，它非零，且
+\( (e_j\mid e_j)_{\lambda} = \lambda_j \) 。内积的正定性要求这个值是严格正实数，
+因此每个权重都必须满足这一条件。
+
+反过来，若每个 \( \lambda_j > 0 \) 且为实数，它在取共轭时不变，所以
+
+\[ \overline{(y\mid x)_{\lambda}}
+= \sum_{j = 1}^{m}\lambda_j\overline{y_j}x_j = (x\mid y)_{\lambda} \]
+
+分配律仍保证第一变量线性。最后，
+
+\[ (x\mid x)_{\lambda} = \sum_{j = 1}^{m}\lambda_j|x_j|^2 \]
+
+各项都非负；由于权重严格为正，这个和为零恰好意味着每个 \( x_j = 0 \) 。
+所以三条内积条件都成立。
+
+* Cauchy–Schwarz 不等式
+
+内积 \( (x\mid y) \) 的大小，能否用 \( (x\mid x) \) 与 \( (y\mid y) \) 控制？
+Cauchy–Schwarz 不等式（柯西–施瓦茨不等式）断言，对任意内积空间中的 \( x, y \) ，
+
+\[ |(x\mid y)|^2 \leq (x\mid x)(y\mid y) \]
+
+而且，等号成立当且仅当 \( x, y \) [[id:83f509a6-a858-4a8b-9317-aff9f914170e][线性相关]]。
+
+** 从非负性得到不等式
+
+若 \( y = 0 \) ，两边都为零，不等式成立。以下设 \( y \neq 0 \) ，并记
+
+\[ b := (y\mid y) > 0, \qquad c := (x\mid y) \]
+
+要证明 \( |c|^2 \leq (x\mid x)b \) ，也就是要得到下界
+
+\[ (x\mid x) \geq \frac{|c|^2}{b} \]
+
+正定性本身只给出 \( (x\mid x) \geq 0 \) 。为了得到与 \( y \) 有关的下界，
+考虑向量 \( x - \alpha y \) ，其中
+\( \alpha \in \mathbb{K} \) 可以选取。由正定性，它与自身的内积非负。展开得到
+
+\begin{align*}
+0 \leq (x - \alpha y\mid x - \alpha y)
+&= (x\mid x) - \overline{\alpha}(x\mid y) - \alpha(y\mid x) + |\alpha|^2(y\mid y) \\
+&= (x\mid x) - 2\operatorname{Re}(\overline{\alpha}c) + b|\alpha|^2
+\end{align*}
+
+移项后，这个不等式给出
+
+\[ (x\mid x) \geq 2\operatorname{Re}(\overline{\alpha}c) - b|\alpha|^2 \]
+
+每选一个 \( \alpha \) ，就得到一个关于 \( (x\mid x) \) 的下界。例如，取
+\( \alpha = 0 \) 只会回到 \( (x\mid x) \geq 0 \) 。我们希望选取合适的
+\( \alpha \) ，使这个下界尽可能大，从而得到更强的结论。这等价于使展开式中的
+\( b|\alpha|^2 - 2\operatorname{Re}(\overline{\alpha}c) \) 尽可能小，可以通过配方来找出
+这样的 \( \alpha \) 。
+
+由于 \( b \) 是正实数，有 \( \overline{c/b} = \overline{c}/b \) 。先展开模的平方：
+
+\begin{align*}
+b\left|\alpha - \frac{c}{b}\right|^2
+&= b\left(\alpha - \frac{c}{b}\right)
+\left(\overline{\alpha} - \frac{\overline{c}}{b}\right) \\
+&= b|\alpha|^2 - \alpha\overline{c} - \overline{\alpha}c + \frac{|c|^2}{b} \\
+&= b|\alpha|^2 - 2\operatorname{Re}(\overline{\alpha}c) + \frac{|c|^2}{b}
+\end{align*}
+
+最后一步中，\( \alpha\overline{c} \) 与 \( \overline{\alpha}c \) 互为共轭，所以它们的和
+等于 \( 2\operatorname{Re}(\overline{\alpha}c) \) 。将最后一项移到另一边，就得到
+
+\[ b|\alpha|^2 - 2\operatorname{Re}(\overline{\alpha}c)
+= b\left|\alpha - \frac{c}{b}\right|^2 - \frac{|c|^2}{b} \]
+
+其中平方项总是非负，取 \( \alpha := c/b \) 时恰好为零。因此，含 \( \alpha \) 的部分
+最小可以取到 \( -|c|^2/b \) ，相应地，关于 \( (x\mid x) \) 的下界最大可以取到
+\( |c|^2/b \) ，正是我们需要的下界。将这个 \( \alpha \) 代回内积的展开式，得到
+
+\[ 0 \leq (x - \alpha y\mid x - \alpha y)
+= (x\mid x) - \frac{|c|^2}{b} \]
+
+两边乘以正实数 \( b \) 并移项，便得到
+\( |c|^2 \leq (x\mid x)b \) ，也就是所要证明的不等式。
+
+** 等号何时成立
+
+仍设 \( y \neq 0 \) ，并取上面的 \( \alpha = c/b = (x\mid y)/(y\mid y) \) 。
+由上面的等式 \( (x - \alpha y\mid x - \alpha y) = (x\mid x) - |c|^2/b \) 可知，
+Cauchy–Schwarz 中取等号，当且仅当 \( (x - \alpha y\mid x - \alpha y) = 0 \) 。
+由正定性，这又等价于
+
+\[ x = \alpha y \]
+
+由[[id:83f509a6-a858-4a8b-9317-aff9f914170e][线性相关与线性表示的等价关系]]，等号成立时，两个向量线性相关。反过来，若
+\( x, y \) 线性相关且 \( y \neq 0 \) ，则可以写成 \( x = \beta y \) 。此时
+
+\[ \frac{(x\mid y)}{(y\mid y)}
+= \frac{\beta(y\mid y)}{(y\mid y)} = \beta \]
+
+于是上述 \( x - \alpha y \) 确实为零，等号成立。若 \( y = 0 \) ，向量组
+\( x, 0 \) 本就线性相关，而不等式两边也都为零。因此等号条件包含所有情形。
+
+在 \( \mathbb{K}^m \) 上使用欧氏内积，便得到坐标形式
+
+\[ \left|\sum_{j = 1}^{m}x_j\overline{y_j}\right|^2
+\leq \left(\sum_{j = 1}^{m}|x_j|^2\right)
+\left(\sum_{j = 1}^{m}|y_j|^2\right) \]
+
+这里取等号，当且仅当存在不全为零的 \( a, b \in \mathbb{K} \) ，使
+\( ax_j + by_j = 0 \) 对每个 \( j \) 成立；这正是两个坐标向量线性相关的含义。
+
+* 内积诱导的范数
+
+内积已经给出了一个非负实数 \( (x\mid x) \) 。沿用长度平方的想法，定义
+
+\[ \|x\| := \sqrt{(x\mid x)}, \qquad x \in E \]
+
+我们要验证它满足[[id:19e24899-0c4b-41f7-9855-480e901360b0][范数的三条条件]]。正定性给出
+\( \|x\| = 0 \) 当且仅当 \( x = 0 \) 。对数乘，已有的展开式给出
+
+\[ \|\lambda x\| = \sqrt{(\lambda x\mid\lambda x)}
+= \sqrt{|\lambda|^2(x\mid x)} = |\lambda|\,\|x\| \]
+
+剩下的是三角不等式。先对 Cauchy–Schwarz 不等式两边取非负平方根，得到
+
+\[ |(x\mid y)| \leq \sqrt{(x\mid x)(y\mid y)} = \|x\|\,\|y\| \]
+
+再展开向量和与自身的内积，用 \( \operatorname{Re}(x\mid y) \leq |(x\mid y)| \)
+和刚才的不等式，便有
+
+\begin{align*}
+\|x + y\|^2
+&= (x\mid x) + 2\operatorname{Re}(x\mid y) + (y\mid y) \\
+&\leq \|x\|^2 + 2|(x\mid y)| + \|y\|^2 \\
+&\leq \|x\|^2 + 2\|x\|\,\|y\| + \|y\|^2 \\
+&= (\|x\| + \|y\|)^2
+\end{align*}
+
+两边都是非负数的平方，所以 \( \|x + y\| \leq \|x\| + \|y\| \) 。三条条件
+至此都已验证，\( \|\cdot\| \) 称为这个内积诱导的范数，也称 Hilbert 范数
+（Hilbert norm）。
+
+这个证明与[[id:70057c5d-a849-4c6e-9206-cc9493b3de0b][复数的三角不等式]]的证明采用相同的思路：先展开和的长度平方，再估计其中的
+交叉项。在复数情形，交叉项中的 \( z\overline{w} \) 满足
+\( |z\overline{w}| = |z|\,|w| \) ；在一般内积空间中，对应的量是 \( (x\mid y) \) ，
+Cauchy–Schwarz 不等式给出 \( |(x\mid y)| \leq \|x\|\,\|y\| \) ，从而使同样的估计成立。
+
+没有另外说明时，内积空间都采用这个范数，并通过
+[[id:6008a294-6672-44dc-acbf-22274287ba4b][范数诱导的距离]] \( d(x, y) = \|x - y\| \) 讨论距离与收敛。
+
+** 欧氏范数
+
+欧氏内积在 \( \mathbb{K}^m \) 上诱导的范数为
+
+\[ \|x\|_2 := \left(\sum_{j = 1}^{m}|x_j|^2\right)^{1/2} \]
+
+称为欧氏范数（Euclidean norm），也常记为 \( |x| \) 。这里用下标 \( 2 \)
+标明平方和形式，便于与[[id:926b895b-8f3d-4c4c-ba9a-62398cb4109a][最大值范数]] \( \|x\|_{\infty} \) 区分。
+
+当 \( m = 1 \) 时，它就是实数的绝对值或复数的模；在 \( \mathbb{R}^2 \) 中，
+它给出通常的长度 \( \sqrt{x_1^2 + x_2^2} \) 。因此本篇开头的长度公式也确实
+满足范数条件。
+
+* 平行四边形恒等式
+:PROPERTIES:
+:ID:       961faa81-b99f-42f3-ad24-b0ebc3a5c356
+:END:
+
+内积诱导的范数除了满足三条范数条件，还满足一个额外的等式。对向量和与向量差，
+分别使用已经证明的内积展开式，有
+
+\begin{align*}
+\|x + y\|^2 &= \|x\|^2 + 2\operatorname{Re}(x\mid y) + \|y\|^2, \\
+\|x - y\|^2 &= \|x\|^2 - 2\operatorname{Re}(x\mid y) + \|y\|^2.
+\end{align*}
+
+将两个等式相加，交叉项消去，得到平行四边形恒等式（parallelogram identity）
+
+\[ \|x + y\|^2 + \|x - y\|^2 = 2(\|x\|^2 + \|y\|^2) \]
+
+[[id:5f0af445-c988-4a3c-9ba5-4e9fb6c8397f][复数模的平行四边形恒等式]]就是这里的一维复内积空间情形。
+
+这个性质还能帮助判断一个范数是否可能来自内积。例如，在 \( \mathbb{R}^2 \) 上
+取最大值范数，并令 \( x := (1, 0) \) 、\( y := (0, 1) \) 。此时
+
+\[ \|x\|_{\infty} = \|y\|_{\infty}
+= \|x + y\|_{\infty} = \|x - y\|_{\infty} = 1 \]
+
+平行四边形等式的左边为 \( 2 \) ，右边为 \( 4 \) ，两者不相等。因此这个范数
+不可能由任何内积诱导：若能由某个内积诱导，就必须满足刚才证明的恒等式。
+
+* 实内积空间中向量和的上下界
+
+内积还可以给向量和的长度提供一个下界。设 \( E \) 是实内积空间，且
+\( x, y \in E \) 都非零。则
+
+\[ (\|x\| + \|y\|)\frac{(x\mid y)}{\|x\|\,\|y\|}
+\leq \|x + y\| \leq \|x\| + \|y\| \]
+
+右边就是三角不等式。左边的系数记录了内积相对于两个长度乘积的大小；它可以为负，
+所以不能不分情形就把左边的不等式平方来证明。
+
+** 用 Cauchy–Schwarz 证明下界
+
+记
+
+\[ a := \|x\| > 0, \qquad b := \|y\| > 0, \qquad
+t := \frac{(x\mid y)}{ab} \]
+
+由 Cauchy–Schwarz，\( |t| \leq 1 \) 。先将向量和 \( x + y \) 与 \( x \)
+取内积。这里是实内积空间，由对称性，\( (y\mid x) = (x\mid y) = abt \) ，所以
+
+\[ (x + y\mid x) = (x\mid x) + (y\mid x) = a^2 + abt \]
+
+再对 \( x + y \) 与 \( x \) 应用 Cauchy–Schwarz 不等式，得到
+
+\[ a^2 + abt = (x + y\mid x)
+\leq |(x + y\mid x)| \leq \|x + y\|a \]
+
+除以 \( a > 0 \) ，得到 \( \|x + y\| \geq a + bt \) 。由于 \( t \leq 1 \) ，
+
+\[ a + bt - (a + b)t = a(1 - t) \geq 0 \]
+
+所以 \( \|x + y\| \geq a + bt \geq (a + b)t \) ，这就是所需的下界。
+
+** 两边的等号条件
+
+在下界的证明中，若最后取等号，必有 \( a(1 - t) = 0 \) 。因为 \( a > 0 \) ，
+这要求 \( t = 1 \) 。反过来，\( t = 1 \) 时，平方展开给出
+\( \|x + y\|^2 = a^2 + 2ab + b^2 = (a + b)^2 \) ，所以
+\( \|x + y\| = a + b = (a + b)t \) ，下界确实取等号。
+
+对上界，同一个平方展开式表明
+
+\[ \|x + y\| = a + b
+\quad \Longleftrightarrow \quad a^2 + 2abt + b^2 = (a + b)^2
+\quad \Longleftrightarrow \quad t = 1 \]
+
+因此，上下两边取等号的条件相同，都是 \( (x\mid y) = ab \) 。下面说明，这个条件
+等价于两个非零向量正比例，也就是存在 \( c > 0 \) 使 \( x = cy \) 。
+
+先设 \( (x\mid y) = ab \) 。由 Cauchy–Schwarz 的等号条件，\( x, y \) 线性相关。
+由于 \( y \neq 0 \) ，存在实数 \( c \) 使 \( x = cy \) 。还需要说明这个倍数为正。
+对两边与 \( y \) 取内积，得到
+
+\[ (x\mid y) = (cy\mid y) = c(y\mid y) \]
+
+这里 \( (x\mid y) = ab \) ，而 \( (y\mid y) = \|y\|^2 = b^2 > 0 \) ，所以
+
+\[ c = \frac{(x\mid y)}{(y\mid y)} = \frac{ab}{b^2} = \frac{a}{b} > 0 \]
+
+反过来，设存在 \( c > 0 \) 使 \( x = cy \) 。由范数的齐次性，
+\( a = \|cy\| = c\|y\| = cb \) ，所以
+
+\[ (x\mid y) = (cy\mid y) = c\|y\|^2 = cb^2 = ab \]
+
+这就证明了所述等价关系。

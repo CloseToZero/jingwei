@@ -413,6 +413,9 @@ z\overline{z}\,w\overline{w} = \lvert z \rvert^2\lvert w \rvert^2 \]
 只需使用距离的三角不等式，不必使用复数的其他运算。
 
 ** 平行四边形恒等式
+:PROPERTIES:
+:ID:       5f0af445-c988-4a3c-9ba5-4e9fb6c8397f
+:END:
 
 对任意 \( z, w \in \mathbb{C} \) ，有
 
@@ -430,6 +433,8 @@ z\overline{z}\,w\overline{w} = \lvert z \rvert^2\lvert w \rvert^2 \]
 \lvert z \rvert^2 \pm 2\operatorname{Re}(z\overline{w}) + \lvert w \rvert^2 \]
 
 将两个等式相加，中间两项消去，便得到结论。
+
+这个等式也是[[id:961faa81-b99f-42f3-ad24-b0ebc3a5c356][内积诱导范数的平行四边形恒等式]]在复数上的特例。
 
 * 复数的平方根
 :PROPERTIES:
