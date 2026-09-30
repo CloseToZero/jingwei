@@ -172,6 +172,9 @@
 所以三条内积条件都成立。
 
 * Cauchy–Schwarz 不等式
+:PROPERTIES:
+:ID:       bd8fd9e7-3537-451f-9b07-b7e2bc8db585
+:END:
 
 内积 \( (x\mid y) \) 的大小，能否用 \( (x\mid x) \) 与 \( (y\mid y) \) 控制？
 Cauchy–Schwarz 不等式（柯西–施瓦茨不等式）断言，对任意内积空间中的 \( x, y \) ，
@@ -264,6 +267,9 @@ Cauchy–Schwarz 中取等号，当且仅当 \( (x - \alpha y\mid x - \alpha y) 
 \( ax_j + by_j = 0 \) 对每个 \( j \) 成立；这正是两个坐标向量线性相关的含义。
 
 * 内积诱导的范数
+:PROPERTIES:
+:ID:       c76d7d49-9080-4921-993b-da224d2e3c13
+:END:
 
 内积已经给出了一个非负实数 \( (x\mid x) \) 。沿用长度平方的想法，定义
 
@@ -303,6 +309,9 @@ Cauchy–Schwarz 不等式给出 \( |(x\mid y)| \leq \|x\|\,\|y\| \) ，从而�
 [[id:6008a294-6672-44dc-acbf-22274287ba4b][范数诱导的距离]] \( d(x, y) = \|x - y\| \) 讨论距离与收敛。
 
 ** 欧氏范数
+:PROPERTIES:
+:ID:       f518a196-e9b5-44af-85c9-89894232653f
+:END:
 
 欧氏内积在 \( \mathbb{K}^m \) 上诱导的范数为
 

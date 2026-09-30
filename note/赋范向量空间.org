@@ -196,6 +196,9 @@ d(\lambda x, \lambda y) = |\lambda|\,d(x, y) \]
 单位球面则是这个正方形的四条边。在复数的模下，单位球面才是通常的单位圆。
 
 ** 从单位球得到其他球
+:PROPERTIES:
+:ID:       da3f631f-f7e3-4a86-a63a-214c96367035
+:END:
 
 只要知道单位球，就可以通过缩放和平移得到任意球。这里正实数 \( r \) 也可以作为
 数乘的标量：当 \( \mathbb{K} = \mathbb{C} \) 时，将它看作复数 \( r + 0i \) 。
@@ -222,6 +225,9 @@ d(\lambda x, \lambda y) = |\lambda|\,d(x, y) \]
 \( \overline B_E(0, r) = r\overline B_E \) 。
 
 * 用范数判断有界性
+:PROPERTIES:
+:ID:       fc739bbd-493d-44b0-90e1-9385c0ca13e4
+:END:
 
 赋范向量空间中的子集是否[[id:f7375483-f748-4ddc-9f4c-ac43f74ea5b6][有界]]，可以用各向量的范数判断。具体地，\( A \subseteq E \)
 在诱导度量下有界，当且仅当存在 \( M > 0 \) ，使
