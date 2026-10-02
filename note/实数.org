@@ -112,6 +112,9 @@ U \supseteq V \]
 则会给出 \( u \in V \) ，两种情形都矛盾。因此反向包含序是全序。
 
 ** 为什么分割组成的全序集是序完备的
+:PROPERTIES:
+:ID:       3fb8685c-6e76-4d44-b4a9-32baecad802b
+:END:
 
 改用上分割作为元素以后，确界也可以由有理数集合直接构造。取一个非空分割族
 \( \mathcal{A} \subseteq \mathcal{D} \) ，并假设它有下界 \( L \in \mathcal{D} \) 。令
@@ -455,6 +458,9 @@ x \cdot (-\infty) := \begin{cases}
 于是每个 \( A \subseteq \mathbb{R} \) 都在 \( \overline{\mathbb{R}} \) 中具有上确界和下确界。
 
 ** 确界的逼近刻画
+:PROPERTIES:
+:ID:       995a03b9-5650-47c2-bbe5-9f683596d97a
+:END:
 
 确界的“最小”与“最大”可以改写成一种更适合分析的逼近性质。对任意
 \( A \subseteq \mathbb{R} \) 和 \( x \in \mathbb{R} \) ，有
@@ -480,6 +486,9 @@ x \cdot (-\infty) := \begin{cases}
 范围。这里讨论的集合都假设非空，确界允许取扩展实数中的值。
 
 ** 取负
+:PROPERTIES:
+:ID:       65bd09b4-b976-432a-85d7-934304d736de
+:END:
 
 对非空集合 \( A \subseteq \mathbb{R} \) ，记
 
