@@ -43,6 +43,9 @@
 \( x = 0 \) 时等于零，保留了我们希望长度平方具有的性质。
 
 ** 内积的定义
+:PROPERTIES:
+:ID:       3a2b8133-1d29-4a24-ab5e-6addff1d2853
+:END:
 
 以下用 \( \mathbb{K} \) 表示 \( \mathbb{R} \) 或 \( \mathbb{C} \) 。设 \( E \) 是
 \( \mathbb{K} \)-向量空间。函数
@@ -99,6 +102,9 @@
 \( (x\mid 0) = 0 \) 。
 
 ** 展开两个向量的和与差
+:PROPERTIES:
+:ID:       8bc9f5e4-dfcc-4ef6-ba18-df83a8bc6414
+:END:
 
 在第一变量的线性性与第二变量的共轭线性性中，令标量都取 \( 1 \) ，由于
 \( \overline{1} = 1 \) ，可知两个变量都保持加法。先对第一变量展开，再对第二变量展开，得到
@@ -121,6 +127,9 @@
 * 坐标空间中的内积
 
 ** 欧氏内积
+:PROPERTIES:
+:ID:       d22702e9-efd6-4c1e-a730-577d765e2fd2
+:END:
 
 对 \( m \in \mathbb{N}^{\times} \) 以及
 \( x = (x_1, \ldots, x_m), y = (y_1, \ldots, y_m) \in \mathbb{K}^m \) ，定义

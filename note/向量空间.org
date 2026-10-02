@@ -424,6 +424,9 @@ v + \ker(T) \mapsto T(v) \]
 上面的等式。
 
 * 子空间的和与直和
+:PROPERTIES:
+:ID:       d5923841-567d-4d18-9b90-ad908a7cd19b
+:END:
 
 若 \( U_1, U_2 \subseteq V \) 是子空间，定义它们的和
 
