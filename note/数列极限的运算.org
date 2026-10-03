@@ -332,6 +332,9 @@ n \geq N_y \implies |y_n - b| < \varepsilon/2 \]
 特别地，把 \( 1/n \to 0 \) 代入，可得 \( 1/\sqrt{n} = \sqrt{1/n} \to 0 \) 。
 
 ** 正实数的有理数次幂
+:PROPERTIES:
+:ID:       f0cf7eb3-330e-487b-90a9-cb85468a744a
+:END:
 
 设 \( x_n > 0 \) 且 \( x_n \to a > 0 \) 。对任意固定的
 \( r \in \mathbb{Q} \) ，都有

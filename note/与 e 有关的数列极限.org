@@ -1,0 +1,173 @@
+:PROPERTIES:
+:ID:       c41376a7-872b-467a-a3d8-ffb96858d215
+:END:
+#+title: 与 e 有关的数列极限
+#+filetags: :数学:分析:
+
+* \( (1 - 1/n)^n \) 的极限
+
+由[[id:5ae53c6c-e05f-40fa-9f70-cc65bb803bc7][数 \( e \) 的定义]]，已经知道
+
+\[ e_n := \left(1 + \frac{1}{n}\right)^n \longrightarrow e \]
+
+如果把加号换成减号，会得到什么极限？这两个表达式相乘后，一次项恰好消去：
+
+\[ \left(1 - \frac{1}{n}\right)^n
+\left(1 + \frac{1}{n}\right)^n
+= \left(1 - \frac{1}{n^2}\right)^n \]
+
+右侧的底数与 \( 1 \) 相差 \( 1/n^2 \) 。虽然次数仍随 \( n \) 增加，
+但可以用 Bernoulli 不等式把整个幂的误差控制在 \( 1/n \) 以内。
+
+具体地，对 \( n \geq 2 \) ，底数 \( 1 - 1/n^2 \) 在 \( (0, 1) \) 内，因此它的 \( n \) 次幂不超过 \( 1 \) 。
+另一方面，由[[id:7d3bde0e-d63d-4268-82ce-4cfe4b5a31b6][Bernoulli 不等式]]，
+
+\[ \left(1 - \frac{1}{n^2}\right)^n
+\geq 1 - n\frac{1}{n^2} = 1 - \frac{1}{n} \]
+
+所以
+
+\[ 1 - \frac{1}{n} \leq \left(1 - \frac{1}{n^2}\right)^n \leq 1 \]
+
+两侧都趋于 \( 1 \) ，由[[id:ce32b442-edaa-4333-866f-4d40ca502e78][夹逼定理]]，\( (1 - 1/n^2)^n \to 1 \) 。
+再将最初的乘积等式改写为商，利用 \( e > 0 \) 和[[id:59b78620-4c77-4d83-b73e-3e3c44c674ea][商的极限法则]]，得到
+
+\[ \left(1 - \frac{1}{n}\right)^n
+= \frac{(1 - 1/n^2)^n}{(1 + 1/n)^n}
+\longrightarrow \frac{1}{e} \]
+
+* 有理数参数的极限
+
+加号与减号分别对应参数 \( 1 \) 与 \( -1 \) 。现在把参数换成任意固定的有理数 \( r \) ，
+考虑
+
+\[ u_n := \left(1 + \frac{r}{n}\right)^n, \qquad n \geq 1 \]
+
+我们要证明
+
+\[ \left(1 + \frac{r}{n}\right)^n \longrightarrow e^r,
+\qquad r \in \mathbb{Q} \]
+
+这里 \( e^r \) 使用[[id:494bf531-a509-4e4b-80d0-c6d63a09a3e2][正实数的有理数次幂]]的定义。
+如果 \( r = 0 \) ，每项都等于 \( 1 = e^0 \) ，结论成立。以下分别证明正参数和负参数的情形。
+
+** 正有理数参数
+
+设 \( r = p/q > 0 \) ，其中 \( p, q \) 为固定的正整数。当下标是 \( p \) 的倍数时，
+分子 \( p \) 可以约去。由[[id:661939f5-aa3a-45c9-afa3-d31def5bb976][有理数幂的运算法则]]，对 \( k \geq 1 \) 有
+
+\begin{align*}
+u_{pk}
+&= \left(1 + \frac{p}{qpk}\right)^{pk}
+= \left(1 + \frac{1}{qk}\right)^{pk} \\
+&= \left[\left(1 + \frac{1}{qk}\right)^{qk}\right]^{p/q}
+= e_{qk}^{p/q}.
+\end{align*}
+
+由于 \( (e_{qk}) \) 是 \( (e_n) \) 的[[id:101c4831-39a9-4a4d-8148-821d5c061ed0][子列]]，所以 \( e_{qk} \to e \) 。
+指数 \( p/q \) 固定，且底数及其极限都为正，由[[id:f0cf7eb3-330e-487b-90a9-cb85468a744a][有理数次幂的极限法则]]，
+\( u_{pk} \to e^{p/q} \) 。
+
+这只处理了下标为 \( p \) 的倍数的项。要证明整个数列收敛，还需要控制相邻两个倍数之间的项。
+
+*** 相邻倍数之间的估计
+
+对每个 \( n \geq p \) ，取唯一的正整数 \( k \) ，使
+
+\[ pk \leq n < p(k + 1) \]
+
+由这个下标范围，可以同时估计底数和指数。先对底数，有
+
+\[ \frac{1}{q(k + 1)} \leq \frac{p}{qn} \leq \frac{1}{qk} \]
+
+记
+
+\[ A_k := 1 + \frac{1}{q(k + 1)}, \qquad
+B_k := 1 + \frac{1}{qk} \]
+
+于是 \( 1 < A_k \leq 1 + p/(qn) \leq B_k \) 。取正整数 \( n \) 次幂保持大小关系，得到
+
+\[ A_k^n \leq u_n \leq B_k^n \]
+
+再比较指数。由于 \( A_k, B_k > 1 \) ，增加指数会增大幂的值。
+结合 \( pk \leq n < p(k + 1) \) ，便有
+
+\[ A_k^{pk} \leq A_k^n \leq u_n \leq B_k^n \leq B_k^{p(k + 1)} \]
+
+因此，只要证明两端都趋于 \( e^{p/q} \) ，就能控制这一整组下标对应的项。
+令两端分别为
+
+\[ L_k := A_k^{pk}, \qquad U_k := B_k^{p(k + 1)} \]
+
+为了使用 \( e_n \to e \) ，注意
+
+\[ e_{q(k + 1)} = A_k^{q(k + 1)}, \qquad e_{qk} = B_k^{qk} \]
+
+所以可以把两端写成
+
+\begin{align*}
+L_k
+&= \frac{A_k^{p(k + 1)}}{A_k^p}
+= \frac{e_{q(k + 1)}^{p/q}}{A_k^p}, \\
+U_k
+&= B_k^{pk}B_k^p
+= e_{qk}^{p/q}B_k^p.
+\end{align*}
+
+当 \( k \to \infty \) 时，\( e_{q(k + 1)} \to e \) 、\( e_{qk} \to e \) ，
+而 \( A_k \to 1 \) 、\( B_k \to 1 \) 。上面出现的指数 \( p/q \) 与 \( p \) 都固定，
+由幂、乘积与商的极限法则，得到
+
+\[ L_k \to e^{p/q}, \qquad U_k \to e^{p/q} \]
+
+*** 整个数列的收敛
+
+现在把按 \( k \) 得到的估计用于原来的下标 \( n \) 。任给 \( \varepsilon > 0 \) ，
+由两端的收敛性，存在正整数 \( K \) ，使所有 \( k \geq K \) 都满足
+
+\[ e^{p/q} - \varepsilon < L_k, \qquad
+U_k < e^{p/q} + \varepsilon \]
+
+取 \( N := pK \) 。对于任意 \( n \geq N \) ，满足 \( pk \leq n < p(k + 1) \) 的整数 \( k \)
+必定不小于 \( K \) ：如果 \( k < K \) ，就会有 \( n < p(k + 1) \leq pK = N \) ，与 \( n \geq N \) 矛盾。
+因此
+
+\[ e^{p/q} - \varepsilon < L_k \leq u_n \leq U_k < e^{p/q} + \varepsilon \]
+
+这说明从 \( N \) 起的每一项都满足 \( \lvert u_n - e^{p/q} \rvert < \varepsilon \) ，
+所以整个数列 \( u_n \to e^{p/q} = e^r \) 。
+
+** 负有理数参数
+
+设 \( r = -s \) ，其中 \( s > 0 \) 是固定的有理数。正参数的情形已经给出
+
+\[ \left(1 + \frac{s}{n}\right)^n \longrightarrow e^s \]
+
+可以沿用处理参数 \( -1 \) 的方法，把正负两个表达式相乘：
+
+\[ \left(1 - \frac{s}{n}\right)^n
+\left(1 + \frac{s}{n}\right)^n
+= \left(1 - \frac{s^2}{n^2}\right)^n \]
+
+当 \( n > s \) 时，底数 \( 1 - s^2/n^2 \) 在 \( (0, 1) \) 内。
+由 Bernoulli 不等式及这个底数的上界，
+
+\[ 1 - \frac{s^2}{n}
+\leq \left(1 - \frac{s^2}{n^2}\right)^n \leq 1 \]
+
+这里 \( s \) 固定，所以左侧趋于 \( 1 \) 。由夹逼定理，中间的数列也趋于 \( 1 \) 。
+又因为 \( e^s > 0 \) ，由商的极限法则和有理数幂的运算法则，
+
+\[ \left(1 - \frac{s}{n}\right)^n
+= \frac{(1 - s^2/n^2)^n}{(1 + s/n)^n}
+\longrightarrow \frac{1}{e^s} = e^{-s} = e^r \]
+
+估计从 \( n > s \) 起成立已经足够，因为[[id:be7d7960-395e-4bf0-8304-b7c83b312359][有限个首项不影响收敛与极限]]。
+这就补齐了负参数的情形。
+
+例如，分别取 \( r = 2 \) 、\( r = 1/2 \) 和 \( r = -3/2 \) ，得到
+
+\[ \left(1 + \frac{2}{n}\right)^n \to e^2, \qquad
+\left(1 + \frac{1}{2n}\right)^n \to \sqrt{e}, \qquad
+\left(1 - \frac{3}{2n}\right)^n \to e^{-3/2} \]
+
