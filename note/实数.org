@@ -747,6 +747,9 @@ s^n - (s - \varepsilon)^n
 \[ \sqrt[n]{a} = -\sqrt[n]{-a} \]
 
 ** 方根函数的单调性
+:PROPERTIES:
+:ID:       f9bf26e2-f1ef-414e-8fd9-7599e659961c
+:END:
 
 当 \( n \) 为偶数时，\( x \mapsto \sqrt[n]{x} \) 是幂函数
 \( x \mapsto x^n \) 在 \( \mathbb{R}_{\geq 0} \) 上的逆函数；当 \( n \) 为奇数时，它是该幂函数
